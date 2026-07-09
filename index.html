@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex, nofollow">
-<title>MCCP · Demo 2 — Demo 2 completa (9 bloques + recorrido · Cierre) · v0.18.1</title>
+<title>MCCP · Demo 2 — Demo 2 completa (9 bloques + recorrido · Cierre) · v0.18.2</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Archivo:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -1927,14 +1927,14 @@ body::before{
      "var":"consulta"},
     {"id":"n4","type":"ia",
      "engine":"athenea",
-     "key":"byok:UNICC"},
+     "key":"apikey:UNICC"},
     {"id":"n5","type":"end"}
   ]
 }</div>
                 <div class="bf-node start" style="left:60px;top:42px" data-info="Punto de arranque del flujo. Orion persiste el grafo, su vista y su punto de inicio; el flujo se activa/desactiva al instante y queda aislado por marca. C087 · C088."><div class="bf-nt"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="1.6"/><path d="M10 9l5 3-5 3z" fill="currentColor"/></svg>Start</div><div class="bf-nb">Inicio</div></div>
                 <div class="bf-node" style="left:56px;top:132px" data-info="Envía un mensaje al usuario. Nodo básico del builder (Start/Send/Receive/Condition/End). C088."><div class="bf-nt"><svg viewBox="0 0 24 24" fill="none"><path d="M4 5h16v11H9l-4 4V5z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>Send Message</div><div class="bf-nb">Bienvenida</div></div>
                 <div class="bf-node" style="left:56px;top:234px" data-info="Captura una respuesta del usuario en una Variable (estado conversacional) reutilizable en mensajes y condiciones. C089."><div class="bf-nt"><svg viewBox="0 0 24 24" fill="none"><rect x="4" y="7" width="16" height="10" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M8 12h8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>Receive Input</div><div class="bf-nb">Variable: consulta</div></div>
-                <div class="bf-node ia" style="left:300px;top:234px" data-info="Paso de IA embebido en el flujo: Orion enlaza con Athenea como un nodo del grafo, siempre bajo la clave del Organismo. C077 · Diseño."><div class="bf-nt"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.7"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>IA · Athenea</div><div class="bf-nb">Clasificar intención</div><div class="bf-key"><svg viewBox="0 0 24 24" fill="none"><rect x="5" y="11" width="14" height="9" rx="2" stroke="currentColor" stroke-width="1.7"/><path d="M8 11V8a4 4 0 018 0v3" stroke="currentColor" stroke-width="1.7"/></svg>BYOK · clave UNICC</div></div>
+                <div class="bf-node ia" style="left:300px;top:234px" data-info="Paso de IA embebido en el flujo: Orion enlaza con Athenea como un nodo del grafo, siempre bajo la clave del Organismo. C077 · Diseño."><div class="bf-nt"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.7"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>IA · Athenea</div><div class="bf-nb">Clasificar intención</div><div class="bf-key"><svg viewBox="0 0 24 24" fill="none"><rect x="5" y="11" width="14" height="9" rx="2" stroke="currentColor" stroke-width="1.7"/><path d="M8 11V8a4 4 0 018 0v3" stroke="currentColor" stroke-width="1.7"/></svg>Clave de API propia · UNICC</div></div>
                 <div class="bf-node end" style="left:320px;top:42px" data-info="Fin del flujo. El grafo completo se exporta como JSON (View JSON) — versionable y portable. C090."><div class="bf-nt"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8" stroke="currentColor" stroke-width="1.6"/><rect x="9" y="9" width="6" height="6" rx="1" fill="currentColor"/></svg>End</div><div class="bf-nb">Cierre / escala a Agente</div></div>
                 <div class="bf-nodeinfo" id="bfNodeInfo">Toca un nodo para ver qué hace. «View JSON» exporta el flujo (portable).</div>
               </div>
@@ -1947,7 +1947,7 @@ body::before{
       <div class="bf-step" data-bfstep="1">
         <div class="bf-pane">
           <div class="bf-ph"><div class="bf-icn"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.7"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
-            <h3>Athenea · multiplexor BYOK de IA</h3><span class="bf-badge ver">Verificado</span></div>
+            <h3>Athenea · multiplexor de IA (clave de API propia)</h3><span class="bf-badge ver">Verificado</span></div>
           <p class="bf-psub">Enruta a cualquier proveedor de modelo con la clave propia del Organismo. Soberanía de modelo, sin lock-in.</p>
           <div class="bf-mux">
             <div class="bf-muxmain">
@@ -1961,7 +1961,7 @@ body::before{
             </div>
             <div class="bf-muxside">
               <div class="bf-mh">Enrutado actual</div>
-              <div class="bf-route">Athenea → <b id="bfRouteProv">OpenAI</b><br><span style="font-size:10.5px;color:var(--muted-2)">con la clave de API del Organismo (BYOK) · el proveedor queda como <b style="color:var(--muted)">subencargado</b> <span style="color:#e9c98c">[Diseño]</span> del tratamiento</span></div>
+              <div class="bf-route">Athenea → <b id="bfRouteProv">OpenAI</b><br><span style="font-size:10.5px;color:var(--muted-2)">con la clave de API del proveedor de IA propia del Organismo · el proveedor queda como <b style="color:var(--muted)">subencargado</b> <span style="color:#e9c98c">[Diseño]</span> del tratamiento</span></div>
               <div class="bf-membar"><span class="bf-tag">Memoria portable <span style="color:#e9c98c">· Diseño</span></span><b>La memoria del caso vive en Athenea</b>, por encima del LLM. Cambias de proveedor <b>sin romper la conversación</b> en curso.</div>
               <div style="margin-top:auto;font-size:10.5px;color:var(--muted-2)">Multiplexor multi-LLM (C069, Verificado) · memoria independiente del proveedor (C070) e IA como subencargado (C076) = Diseño.</div>
             </div>
@@ -2001,7 +2001,7 @@ body::before{
               <p>El absoluto <b>«el modelo nunca ve el dato»</b> requiere <b>confidential computing</b>: la IA razona dentro de un <b>enclave atestado</b> (Nitro / TDX / SEV-SNP) donde el dato va cifrado incluso en uso y ni MCCP ni el proveedor lo ven, con <b>atestación remota</b> que lo demuestra. Hoy el control base es la anonimización pre-LLM; el enclave propio es <b>roadmap</b> <span style="color:#e9c98c">(N5, a validar con producto)</span>.</p>
             </div>
             <div class="bf-confnote"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="1.9" fill="none" stroke-linecap="round"/></svg>
-              Regla de honestidad: se afirma lo verificable (anonimización pre-LLM · IA bajo la clave del Organismo, BYOK) y se nombra el resto como horizonte/Diseño (enclave TEE · figura de subencargado · memoria portable), sin sobre-declarar.</div>
+              Regla de honestidad: se afirma lo verificable (anonimización pre-LLM · IA bajo la clave de API propia del Organismo) y se nombra el resto como horizonte/Diseño (enclave TEE · figura de subencargado · memoria portable), sin sobre-declarar.</div>
           </div>
         </div>
       </div>
@@ -3397,7 +3397,7 @@ body::before{
     {k:"Voz y vídeo",motor:false,dom:"RTC",ic:'<path d="M3 5h11v14H3z" stroke="currentColor" stroke-width="1.6"/><path d="M14 10l7-4v12l-7-4z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>',txt:'Llamada de voz y vídeo con <b>grabación consentida</b> y transcripción buscable (Athenea); acto conversacional atestiguado / notarización remota <span class="av">[emergente · a validar]</span>.'},
     {k:"Flujo/Bot",motor:false,dom:"Flujo · Bot Builder",ic:'<circle cx="6" cy="6" r="2.4" stroke="currentColor" stroke-width="1.6"/><circle cx="18" cy="18" r="2.4" stroke="currentColor" stroke-width="1.6"/><path d="M8 7l8 9" stroke="currentColor" stroke-width="1.6"/>',txt:'Bot Builder y flujos conversacionales; el <b>bot escala a un Agente</b>; el Agente usa un <b>Flow</b> para estructurar la discrepancia dentro del expediente.'},
     {k:"Moderación",motor:false,dom:"Trust & Safety",ic:'<path d="M12 3l7 3v5c0 5-3 8-7 10-4-2-7-5-7-10V6z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>',txt:'Moderación de lenguaje (profanity/Athenea), antivirus y trust-safety por canal; el canal cifrado <b>rechaza contenido no admitido</b> (p. ej. captura con PII de terceros).'},
-    {k:"IA",motor:true,dom:"ATHENEA",ic:'<circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.7"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>',txt:'Capa de IA nativa por Organismo; <b>multiplexor multi-LLM con BYOK de IA</b> (modelo libre); Blind Retriever sobre dato cifrado <span class="av">[diseño · a validar]</span>.'},
+    {k:"IA",motor:true,dom:"ATHENEA",ic:'<circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.7"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>',txt:'Capa de IA nativa por Organismo; <b>multiplexor multi-LLM con clave de API propia de IA</b> (modelo libre); Blind Retriever sobre dato cifrado <span class="av">[diseño · a validar]</span>.'},
     {k:"Cifrado y clave",motor:true,dom:"AEGIS · BYOK/HYOK",ic:'<rect x="5" y="11" width="14" height="9" rx="2" stroke="currentColor" stroke-width="1.7"/><path d="M8 11V8a4 4 0 018 0v3" stroke="currentColor" stroke-width="1.7"/>',txt:'Cifrado gobernado <b>bajo la clave del Organismo (BYOK</b>, server-side, IV por canal/mensaje); reposo AES-256; HYOK y crypto-shredding <span class="av">[diseño · a validar]</span>. No es E2EE cliente-cliente.'},
     {k:"Retención",motor:false,dom:"Ciclo de vida",ic:'<ellipse cx="12" cy="6" rx="8" ry="3" stroke="currentColor" stroke-width="1.6"/><path d="M4 6v12c0 1.7 3.6 3 8 3s8-1.3 8-3V6" stroke="currentColor" stroke-width="1.6"/>',txt:'Política de retención por Caso; archivado cifrado y crypto-shredding. El <b>modo efímero queda fuera del Caso</b> (cifrado bajo la clave del Organismo · sin traza · no persiste) <span class="av">[a validar]</span>.'},
     {k:"Auditoría",motor:false,dom:"RegTech",ic:'<circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path d="M12 7v5l3 2" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>',txt:'Trazabilidad completa (timestamp, ID, canal); auditoría inmutable de claves y accesos (SoD); sello <b>WORM</b> / append-only <span class="av">[diseño · a validar]</span>.'}
@@ -3731,7 +3731,7 @@ body::before{
 
 <script id="blockFJs">
 (function(){
-  var STEPS=[{t:"Bot Builder · Orion"},{t:"Multiplexor BYOK"},{t:"IA confidencial (N5)"}];
+  var STEPS=[{t:"Bot Builder · Orion"},{t:"Multiplexor de IA"},{t:"IA confidencial (N5)"}];
   var TOTAL=STEPS.length, cur=0;
   var $=function(s){return document.querySelector(s);}, $$=function(s){return Array.from(document.querySelectorAll(s));};
   var blockF=document.getElementById("blockF");
