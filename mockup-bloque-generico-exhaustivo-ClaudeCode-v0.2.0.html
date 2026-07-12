@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <!-- MCCP · Bloque genérico «fuera de hilo narrativo» · RECORRIDO COMPLETO E01-E29 (29 escenas · 6 bloques) · v0.2.0 · (Claude-Code).
+     v0.2.0 (fix): tooltips de rail/actbar/tbar — la clase .show se añade en síncrono (con requestAnimationFrame no aparecían en paneles embebidos/pestañas con frames suspendidos; mismo bug latente en consola master D2CC-07 y cata, no tocadas por ser validadas).
      v0.2.0: barrido editorial aplicado en escenas editables (calcos «de primera clase»/«agnóstica»/«re-login»/«no-presentaciones»/«rehidratar»/«split»/«placeholders» corregidos; glosas KEK/blob/opt-out/Accepted/handshake; «Caso» unificado en E14/E21/E22; «operador»→«proveedor» en E27 SoD; «Operadores» en E02; «Ficha del contacto» en E10; «Registro de auditoría (SystemLog)» en E28). Congeladas E03·E09·E15·E23·E29 intactas; tooltips de actbar (sala segura/diligencia/retención) y renombrado retención→cuarentena APLAZADOS (tocan función compartida y consola master D2CC-07).
      Extiende la cata VALIDADA v0.2.0 (mismo motor/capa de página); las 5 escenas validadas E03·E09·E15·E23·E29 se conservan tal cual.
      Estructura aprobada por el owner 2026-07-12: B1 Backstage-Identidad y Permisos E01-E08 · B2 Operación E09-E14 · B3 Canal Moderado E15-E17 ·
@@ -1135,7 +1136,7 @@ function showTip(el){hideTip();const tip=el.getAttribute('data-tip');if(!tip)ret
   if(el.classList.contains('tip-r')){x=r.right+gap;y=r.top+(r.height-t.height)/2;if(x+t.width>window.innerWidth-pad)x=r.left-t.width-gap;}
   else{x=r.left+(r.width-t.width)/2;y=r.bottom+gap;if(y+t.height>window.innerHeight-pad)y=r.top-t.height-gap;}
   x=Math.max(pad,Math.min(x,window.innerWidth-pad-t.width));y=Math.max(pad,Math.min(y,window.innerHeight-pad-t.height));
-  tt.style.left=Math.round(x)+'px';tt.style.top=Math.round(y)+'px';requestAnimationFrame(()=>{if(tt)tt.classList.add('show');});}
+  tt.style.left=Math.round(x)+'px';tt.style.top=Math.round(y)+'px';tt.classList.add('show');/* síncrono: el layout ya está forzado por getBoundingClientRect; con rAF el tooltip no aparecía en paneles/pestañas con frames suspendidos */}
 function bindTips(){document.querySelectorAll('[data-tip]').forEach(el=>{el.addEventListener('mouseenter',()=>showTip(el));el.addEventListener('mouseleave',hideTip);});}
 window.addEventListener('scroll',hideTip,true);window.addEventListener('resize',hideTip);
 /* estilo tooltip */
