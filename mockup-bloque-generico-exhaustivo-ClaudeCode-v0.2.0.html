@@ -1,0 +1,1148 @@
+<!DOCTYPE html>
+<!-- MCCP · Bloque genérico «fuera de hilo narrativo» · RECORRIDO COMPLETO E01-E29 (29 escenas · 6 bloques) · v0.2.0 · (Claude-Code).
+     v0.2.0: barrido editorial aplicado en escenas editables (calcos «de primera clase»/«agnóstica»/«re-login»/«no-presentaciones»/«rehidratar»/«split»/«placeholders» corregidos; glosas KEK/blob/opt-out/Accepted/handshake; «Caso» unificado en E14/E21/E22; «operador»→«proveedor» en E27 SoD; «Operadores» en E02; «Ficha del contacto» en E10; «Registro de auditoría (SystemLog)» en E28). Congeladas E03·E09·E15·E23·E29 intactas; tooltips de actbar (sala segura/diligencia/retención) y renombrado retención→cuarentena APLAZADOS (tocan función compartida y consola master D2CC-07).
+     Extiende la cata VALIDADA v0.2.0 (mismo motor/capa de página); las 5 escenas validadas E03·E09·E15·E23·E29 se conservan tal cual.
+     Estructura aprobada por el owner 2026-07-12: B1 Backstage-Identidad y Permisos E01-E08 · B2 Operación E09-E14 · B3 Canal Moderado E15-E17 ·
+     B4 Broadcast E18-E19 · B5 Motor IA y Plataforma E20-E25 · B6 Soberanía-cierre E26-E29 (walk-away).
+     Capa de página = identidad MCCP del hilo narrativo VALIDADO (gradiente teal→púrpura, lockup+claim, contenido arriba, leyenda abajo, secuenciador).
+     Dentro de cada escena, la consola CORPUS v0.1.0 (D2CC-07) MANDA (interfaces inferidas del master) · «Organización» · usuarios nuevos · madurez honesta en la leyenda, nunca en la UI.
+     Motor: escenas conmutables + secuenciador (manual + play) + deep-link ?p=N (1..29). -->
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>MCCP · Bloque genérico E01–E29 — fuera de hilo narrativo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=Fraunces:ital,opsz,wght@0,9..144,500;1,9..144,500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --nv0:#0a1226; --nv1:#0d1a34; --nv2:#0f1c39; --topbar:#0a1428;
+  --line:rgba(160,190,230,.14); --line2:rgba(160,190,230,.22); --line3:#22355a;
+  --blue:#306cf0; --blue2:#3877f2; --blue-soft:#1c3a63; --green:#12c98a; --amber:#e4b363;
+  --tx0:#eef4fd; --tx1:#c4d3ee; --tx2:#93a6c4; --tx3:#6b7b98;
+  --conv:#ffffff; --c-in:#eef1f6; --c-out:#306cf0; --c-ink:#1b2632; --c-mut:#8894a6; --c-line:#e7ebf1;
+  --teal:#17b39a; --purple:#8e3b7a; --gold:#e2c391; --muted:#a3bac0;
+  --sans:'Archivo',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;
+  --serif:'Fraunces',Georgia,serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--sans);color:#eef5f3;-webkit-font-smoothing:antialiased;line-height:1.45;min-height:100vh;
+  background:radial-gradient(1200px 640px at 12% -4%, #164742 0%, transparent 52%),radial-gradient(1100px 720px at 92% 104%, #3d1743 0%, transparent 52%),linear-gradient(135deg,#0b2a27 0%,#10262f 46%,#241038 100%);
+  background-attachment:fixed}
+.app{max-width:1280px;margin:0 auto;width:100%;min-height:100vh;display:flex;flex-direction:column;padding-bottom:6px}
+.brandbar{padding:20px 30px 8px}
+.lockup{display:inline-flex;align-items:center;gap:15px}
+.lockup svg{width:52px;height:52px;flex:0 0 auto}
+.lockup .txt{border-left:2px solid rgba(23,179,154,.45);padding-left:15px}
+.lockup .txt .wm{font-size:28px;font-weight:800;letter-spacing:2px;color:#fff;line-height:.95;display:block}
+.lockup .txt .claim{font-family:var(--serif);font-size:21px;font-weight:500;font-style:italic;color:#eef7f4;margin-top:5px;display:block;line-height:1.05}
+.stage{flex:1;display:flex;align-items:center;justify-content:center;padding:2px 24px}
+.cwrap{width:100%;max-width:1232px}
+.caption{padding:12px 24px 4px;text-align:center;min-height:70px}
+.caption .step{font-size:10.5px;font-weight:700;letter-spacing:1.4px;text-transform:uppercase;color:var(--teal);margin-bottom:6px}
+.caption h2{font-family:var(--serif);font-size:23px;color:#fff;font-weight:500}
+.caption h2 em{font-style:italic;color:var(--gold)}
+.caption p{font-size:12.5px;color:#c3d6d1;max-width:660px;margin:6px auto 0}
+.seq{display:flex;align-items:center;justify-content:center;gap:14px;padding:10px 24px 20px}
+.seq .nav,.seq .play{border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.05);border-radius:12px;cursor:pointer;display:flex;align-items:center;justify-content:center;color:#dfeeeb}
+.seq .nav{width:40px;height:40px}.seq .play{width:48px;height:48px;background:linear-gradient(135deg,#17b39a,#8e3b7a);border:0;color:#fff}
+.seq .nav:hover{border-color:var(--teal);color:#fff}
+.seq .nav svg,.seq .play svg{width:19px;height:19px}
+.dots{display:flex;gap:7px}
+.dots button{width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,.24);border:0;cursor:pointer;padding:0;transition:.2s}
+.dots button.on{background:var(--teal);transform:scale(1.3)}
+.dots button.done{background:var(--purple)}
+/* ===== Shell de consola (master D2CC-07) ===== */
+.console{background:var(--nv2);border-radius:16px;overflow:hidden;border:1px solid var(--line2);
+  box-shadow:0 40px 90px -30px rgba(12,24,52,.55),0 8px 24px -12px rgba(12,24,52,.4);
+  display:grid;grid-template-rows:auto 1fr;height:640px}
+.tbar{background:var(--topbar);border-bottom:1px solid var(--line3);display:flex;align-items:center;gap:14px;padding:0 16px;height:52px;flex:0 0 auto}
+.tbar .brand{display:flex;align-items:center;gap:10px}
+.tbar .brand .mk{width:30px;height:30px;border-radius:9px;background:conic-gradient(from 140deg,#17b39a,#2b6f8c 55%,#8e3b7a);display:grid;place-items:center;box-shadow:inset 0 0 0 1px rgba(255,255,255,.14)}
+.tbar .brand .mk svg{width:17px;height:17px}
+.tbar .brand b{font-size:14px;color:#fff;font-weight:700;letter-spacing:.3px}
+.tbar .brand .crumb{font-size:12px;color:var(--tx2);padding-left:11px;margin-left:4px;border-left:1px solid var(--line3)}
+.tbar .search{flex:1;max-width:420px;margin:0 auto;background:#0e1c37;border:1px solid var(--line3);border-radius:9px;padding:8px 12px;display:flex;align-items:center;gap:9px;color:var(--tx3);font-size:12.5px}
+.tbar .search svg{width:15px;height:15px}
+.tbar .tools{display:flex;align-items:center;gap:6px;margin-left:auto}
+.tbar .tb{width:34px;height:34px;border-radius:9px;display:grid;place-items:center;color:var(--tx2);cursor:pointer;position:relative}
+.tbar .tb:hover{background:rgba(255,255,255,.06);color:#fff}
+.tbar .tb svg{width:17px;height:17px}
+.tbar .tb .dot{position:absolute;top:6px;right:7px;width:7px;height:7px;border-radius:50%;background:#ff5d52;border:2px solid var(--topbar)}
+.tbar .org{display:flex;align-items:center;gap:9px;padding-left:12px;margin-left:6px;border-left:1px solid var(--line3)}
+.tbar .org .oi{width:30px;height:30px;border-radius:8px;background:#20345c;display:grid;place-items:center;color:#bcd0f2;font-weight:700;font-size:11px}
+.tbar .org .ot b{font-size:12px;color:#e9f0fb;display:block;line-height:1.15}
+.tbar .org .ot span{font-size:10px;color:var(--tx2)}
+.cbody{display:grid;min-height:0}
+.cbody.dual{grid-template-columns:64px 292px minmax(0,1fr) 316px}
+.cbody.mod{grid-template-columns:64px minmax(0,1fr)}
+@media(max-width:1280px){.cbody.dual{grid-template-columns:64px 260px minmax(0,1fr) 288px}}
+/* rail */
+.rail{background:var(--nv0);border-right:1px solid var(--line);display:flex;flex-direction:column;align-items:center;padding:12px 0;gap:4px}
+.rail .ic{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;color:var(--tx3);cursor:pointer;position:relative;transition:.15s}
+.rail .ic svg{width:21px;height:21px}
+.rail .ic:hover{background:rgba(255,255,255,.05);color:var(--tx1)}
+.rail .ic.on{background:linear-gradient(140deg,rgba(48,108,240,.22),rgba(18,201,138,.14));color:#8fd3ff;box-shadow:inset 0 0 0 1px rgba(120,170,255,.28)}
+.rail .ic.on::before{content:"";position:absolute;left:-12px;top:50%;transform:translateY(-50%);width:3px;height:20px;border-radius:2px;background:var(--blue)}
+.rail .sp{flex:1}
+.rail .me{width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,#e4b363,#c98a3a);display:grid;place-items:center;color:#3a2906;font-weight:700;font-size:12.5px;margin-top:6px;cursor:pointer;box-shadow:0 0 0 2px rgba(255,255,255,.12)}
+.rail .div{width:26px;height:1px;background:var(--line);margin:5px 0}
+/* bandeja */
+.bandeja{background:var(--nv1);border-right:1px solid var(--line);display:flex;flex-direction:column;min-height:0}
+.bandeja .bh{padding:14px 15px 10px;display:flex;align-items:center;gap:8px;flex:0 0 auto}
+.bandeja .bh b{font-size:15px;color:#fff;font-weight:700;flex:1}
+.bandeja .bh .bi{width:28px;height:28px;border-radius:8px;display:grid;place-items:center;color:var(--tx2);cursor:pointer}
+.bandeja .bh .bi:hover{background:rgba(255,255,255,.06);color:#fff}
+.bandeja .bh .bi svg{width:16px;height:16px}
+.bandeja .search{margin:0 13px 10px;background:#0b1730;border:1px solid var(--line3);border-radius:9px;padding:8px 11px;font-size:12px;color:var(--tx3);display:flex;align-items:center;gap:8px;flex:0 0 auto}
+.bandeja .search svg{width:14px;height:14px}
+.bandeja .tabs{display:flex;gap:4px;padding:0 13px 10px;flex:0 0 auto}
+.bandeja .tabs span{font-size:11px;padding:5px 11px;border-radius:8px;color:var(--tx2);cursor:pointer;display:flex;align-items:center;gap:5px}
+.bandeja .tabs span.on{background:var(--blue-soft);color:#dcebff;font-weight:600}
+.bandeja .tabs span .n{background:#2a4a78;color:#cfe0ff;font-size:9px;border-radius:20px;padding:0 5px;font-weight:700}
+.bandeja .gt{font-size:9.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--tx3);padding:6px 15px 4px}
+.bandeja .list{flex:1;overflow-y:auto;padding:0 8px 10px;scrollbar-width:thin}
+.bandeja .list::-webkit-scrollbar{width:6px}.bandeja .list::-webkit-scrollbar-thumb{background:rgba(255,255,255,.08);border-radius:3px}
+.conv{padding:10px;border-radius:11px;display:flex;gap:10px;align-items:flex-start;cursor:pointer;margin-bottom:2px}
+.conv:hover{background:rgba(255,255,255,.04)}
+.conv.on{background:#15305a;box-shadow:inset 0 0 0 1px rgba(120,170,255,.22)}
+.conv .av{width:38px;height:38px;border-radius:50%;background:#22406e;display:grid;place-items:center;font-size:12px;font-weight:700;color:#d6e6fb;flex:0 0 auto;position:relative}
+.conv .av.grp{border-radius:12px;background:#1d3a5c}
+.conv .av .ch{position:absolute;bottom:-2px;right:-3px;width:16px;height:16px;border-radius:50%;display:grid;place-items:center;border:2px solid var(--nv1)}
+.conv.on .av .ch{border-color:#15305a}
+.conv .av .ch.wa{background:#25d366}.conv .av .ch.web{background:var(--blue)}.conv .av .ch.int{background:#7a5cd6}
+.conv .av .ch svg{width:8px;height:8px;color:#fff}
+.conv .x{flex:1;min-width:0}
+.conv .x .r1{display:flex;align-items:center;gap:6px}
+.conv .x .r1 b{font-size:12.5px;color:#eaf2fd;font-weight:600;flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.conv .x .r1 b svg{width:11px;height:11px;vertical-align:-1px;margin-left:3px}
+.conv .x .r1 .t{font-size:10px;color:var(--tx3);flex:0 0 auto}
+.conv .x .sn{font-size:11.5px;color:var(--tx2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:2px}
+.conv .x .r3{display:flex;align-items:center;gap:5px;margin-top:5px}
+.conv .x .tag{font-size:9px;color:#9fb0cf;background:rgba(120,150,200,.14);border-radius:5px;padding:1px 6px}
+.conv .x .tag.sec{color:#8fe6c4;background:#123a30}
+.conv .x .tag.mod{color:#f0c987;background:#3a2e13}
+.conv .un{flex:0 0 auto;min-width:18px;height:18px;border-radius:20px;background:var(--blue);color:#fff;font-size:10px;font-weight:700;display:grid;place-items:center;padding:0 5px;align-self:center}
+/* conversación */
+.cv{display:flex;flex-direction:column;background:var(--conv);min-width:0}
+.cv-h{padding:11px 16px;display:flex;align-items:center;gap:11px;border-bottom:1px solid var(--c-line);flex:0 0 auto}
+.cv-h .av{width:40px;height:40px;border-radius:50%;background:#eef1f6;display:grid;place-items:center;font-size:13px;font-weight:700;color:#42556a}
+.cv-h .av.grp{border-radius:12px}
+.cv-h .nm{min-width:0}
+.cv-h .nm b{font-size:14.5px;color:#1b2430;display:flex;align-items:center;gap:6px}
+.cv-h .nm b svg{width:14px;height:14px;color:var(--green)}
+.cv-h .nm span{font-size:11px;color:var(--c-mut);display:flex;align-items:center;gap:6px}
+.cv-h .nm span .cch{display:inline-flex;align-items:center;gap:3px}
+.cv-h .nm span .cch svg{width:11px;height:11px}
+.cv-h .seg{margin-left:auto;display:flex;background:#eef2f7;border-radius:9px;padding:3px}
+.cv-h .nm+.hact{margin-left:auto}
+.cv-h .seg button{border:0;background:transparent;font-family:var(--sans);font-size:11.5px;font-weight:600;color:#7b8a9c;padding:6px 12px;border-radius:7px;cursor:pointer;display:flex;align-items:center;gap:6px}
+.cv-h .seg button svg{width:12px;height:12px}
+.cv-h .seg button.on{background:#fff;color:#12855c;box-shadow:0 1px 3px rgba(20,40,70,.12)}
+.cv-h .seg button.on.pub{color:#3f70c9}
+.cv-h .hact{display:flex;gap:3px;margin-left:4px}
+.cv-h .hact .b{width:32px;height:32px;border-radius:8px;display:grid;place-items:center;color:#94a3b4;cursor:pointer}
+.cv-h .hact .b:hover{background:#eef2f7;color:#42556a}
+.cv-h .hact .b svg{width:16px;height:16px}
+.actbar{display:flex;align-items:center;gap:2px;padding:8px 12px;border-bottom:1px solid var(--c-line);background:#f8fafc;flex:0 0 auto;overflow-x:auto;scrollbar-width:none}
+.actbar .grp{display:flex;align-items:center;gap:1px;flex:0 0 auto}
+.actbar .sep{width:1px;height:22px;background:#dde4ec;margin:0 5px;flex:0 0 auto}
+.act{width:32px;height:32px;border-radius:9px;display:grid;place-items:center;color:#5a6b7e;background:transparent;border:1px solid transparent;cursor:pointer;flex:0 0 auto}
+.act svg{width:17.5px;height:17.5px}
+.act:hover{background:#fff;border-color:#dbe3ec;color:#1f3350;box-shadow:0 2px 6px -3px rgba(20,40,70,.18)}
+.act.pri:hover{color:var(--blue);border-color:#c3d6f7}
+.act.sec:hover{color:var(--green);border-color:#bfe6d5}
+.act.warn:hover{color:#c0552f;border-color:#f0d2c6}
+.act.on{background:linear-gradient(120deg,var(--green),#0e9e6f);color:#fff;border-color:transparent}
+.act.onwarn{background:linear-gradient(120deg,#e08a4f,#c0552f);color:#fff;border-color:transparent}
+.actbar .lbl{font-size:9px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;color:#a7b4c4;margin-right:3px;flex:0 0 auto}
+.cv-b{flex:1;padding:16px 18px;display:flex;flex-direction:column;gap:9px;overflow-y:auto;background:#fff;scrollbar-width:thin}
+.cv-b::-webkit-scrollbar{width:6px}.cv-b::-webkit-scrollbar-thumb{background:#dfe5ec;border-radius:3px}
+.sys{align-self:center;background:#eef2f7;color:#5a6b7d;font-size:10px;padding:5px 12px;border-radius:20px;text-align:center;max-width:82%;display:flex;align-items:center;gap:6px}
+.sys svg{width:12px;height:12px;color:var(--green);flex:0 0 auto}
+.sys.warn svg{color:#c98a3a}
+.msg{max-width:66%;padding:8px 12px 6px;border-radius:13px;font-size:12.5px;line-height:1.4;position:relative}
+.msg.in{background:var(--c-in);color:#26333d;align-self:flex-start;border-bottom-left-radius:4px}
+.msg.out{background:var(--c-out);color:#fff;align-self:flex-end;border-bottom-right-radius:4px}
+.msg .m{font-size:9px;opacity:.62;float:right;margin:4px 0 0 10px}
+.msg.out .m{opacity:.8}
+.msg .who{display:block;font-size:10px;font-weight:700;margin-bottom:2px;color:#4d75c4}
+.msg.blocked{background:#fdecec;border:1px solid #f3c1c1;color:#8c2f2f;align-self:flex-end;border-bottom-right-radius:4px}
+.msg.blocked .bi{display:flex;align-items:center;gap:6px;font-weight:600;margin-bottom:3px}
+.msg.blocked .bi svg{width:13px;height:13px;color:#c04747}
+.msg.blocked .ft{display:block;font-size:9.5px;color:#b06a6a;margin-top:3px}
+.msg.held{background:#fbf4e4;border:1px solid #ecd9ae;color:#6e5312;align-self:flex-start;border-bottom-left-radius:4px}
+.msg.held .bi{display:flex;align-items:center;gap:6px;font-weight:600;font-size:12px}
+.msg.held .bi svg{width:13px;height:13px;color:#c98a3a}
+.msg.held .vw{display:inline-block;margin-top:5px;font-size:10.5px;font-weight:700;color:#8a6215;background:#fff;border:1px solid #ecd9ae;border-radius:7px;padding:3px 9px;cursor:pointer}
+.cv-f{padding:11px 14px;border-top:1px solid var(--c-line);flex:0 0 auto;background:#fff}
+.cv-f .tools{display:flex;align-items:center;gap:2px;margin-bottom:8px}
+.cv-f .tools .t{width:32px;height:32px;border-radius:8px;display:grid;place-items:center;color:#9aa7b6;cursor:pointer}
+.cv-f .tools .t:hover{background:#f2f5f9;color:#42556a}
+.cv-f .tools .t svg{width:17px;height:17px}
+.cv-f .tools .sp{flex:1}
+.cv-f .tools .chip{font-size:10.5px;color:#5a6b7e;background:#eef2f7;border-radius:7px;padding:4px 9px;display:flex;align-items:center;gap:5px;cursor:pointer}
+.cv-f .tools .chip svg{width:12px;height:12px}
+.cv-f .row{display:flex;align-items:center;gap:10px}
+.cv-f .in{flex:1;background:#f2f5f9;border:1px solid #e4e9f0;border-radius:10px;padding:11px 13px;font-size:12.5px;color:#9aa7b6}
+.cv-f .snd{background:var(--blue2);color:#fff;border-radius:10px;padding:11px 18px;font-size:13px;font-weight:600;display:flex;align-items:center;gap:7px;cursor:pointer}
+.cv-f .snd svg{width:15px;height:15px}
+/* panel derecho */
+.panel{background:#0c1526;border-left:1px solid var(--line);overflow-y:auto;scrollbar-width:thin}
+.panel::-webkit-scrollbar{width:6px}.panel::-webkit-scrollbar-thumb{background:rgba(255,255,255,.08);border-radius:3px}
+.panel .ph{padding:20px 16px 16px;text-align:center;border-bottom:1px solid var(--line)}
+.panel .ph .big{width:64px;height:64px;border-radius:50%;margin:0 auto 10px;background:linear-gradient(135deg,#2a4064,#182339);display:grid;place-items:center;color:#cdd9ec;font-weight:700;font-size:22px;position:relative;box-shadow:0 0 0 3px rgba(120,170,255,.1)}
+.panel .ph .big.grp{border-radius:18px}
+.panel .ph .big .on{position:absolute;bottom:2px;right:2px;width:14px;height:14px;border-radius:50%;background:var(--green);border:2.5px solid #0c1526}
+.panel .ph .nm{font-size:16px;color:#fff;font-weight:600}
+.panel .ph .vf{display:inline-flex;align-items:center;gap:5px;font-size:11px;color:var(--green);margin-top:6px;background:#0f2a22;border:1px solid #1c4a3a;border-radius:20px;padding:3px 10px}
+.panel .ph .vf svg{width:12px;height:12px}
+.panel .ph .quick{display:flex;justify-content:center;gap:7px;margin-top:12px}
+.panel .ph .quick .q{width:34px;height:34px;border-radius:10px;background:#12213c;border:1px solid var(--line3);display:grid;place-items:center;color:var(--tx1);cursor:pointer}
+.panel .ph .quick .q:hover{background:#17284a;color:#fff}
+.panel .ph .quick .q svg{width:16px;height:16px}
+.panel .ph .vf.wt{color:#e4b363;background:#2c2210;border-color:#4a3a18}
+.panel .sec{padding:15px 16px;border-bottom:1px solid var(--line)}
+.panel .sec .t{font-size:10px;text-transform:uppercase;letter-spacing:.13em;color:var(--tx2);font-weight:700;margin-bottom:12px;display:flex;align-items:center;gap:7px}
+.panel .sec .t svg{width:13px;height:13px;color:#7fbfff}
+.row{display:flex;align-items:center;gap:10px;padding:6px 0;font-size:12px}
+.row .k{color:var(--tx2);flex:0 0 auto;width:78px}
+.row .v{color:#e6eefb;font-weight:500;flex:1;display:flex;align-items:center;gap:6px;min-width:0}
+.row .v.ok{color:var(--green)}
+.row .v.warn{color:#e4b363}
+.row .v .mask{letter-spacing:1px}
+.row .v svg{width:13px;height:13px}
+.row .reveal{margin-left:auto;width:26px;height:26px;border-radius:7px;display:grid;place-items:center;color:var(--tx3);background:#101f3a;border:1px solid var(--line3);cursor:pointer;flex:0 0 auto}
+.row .reveal svg{width:13px;height:13px}
+.audit-note{display:flex;gap:7px;align-items:flex-start;font-size:10px;color:var(--tx3);margin-top:10px;background:#0e1b33;border-radius:8px;padding:8px 10px}
+.audit-note svg{width:13px;height:13px;flex:0 0 auto;margin-top:1px;color:#7fbfff}
+.badge{font-size:10px;font-weight:700;border-radius:6px;padding:2px 9px;letter-spacing:.3px}
+.badge.tram{color:#e6b45a;background:#3a2e13}
+.pl{display:flex;align-items:center;gap:9px;padding:7px 0;font-size:12px;color:#dbe6f7}
+.pl .pav{width:30px;height:30px;border-radius:50%;background:#22406e;display:grid;place-items:center;font-size:10.5px;font-weight:700;color:#d6e6fb;flex:0 0 auto}
+.pl .pr{font-size:9.5px;color:var(--tx3);margin-left:auto;background:#101f3a;border:1px solid var(--line3);border-radius:6px;padding:2px 7px}
+/* ===== Pantallas de módulo ===== */
+.mod{background:#f2f5f9;overflow-y:auto;min-width:0;scrollbar-width:thin}
+.mod .mh{background:#fff;border-bottom:1px solid #e4e9f0;padding:16px 24px;display:flex;align-items:center;gap:12px}
+.mod .mh .ic{width:38px;height:38px;border-radius:11px;background:linear-gradient(140deg,rgba(48,108,240,.14),rgba(18,201,138,.1));border:1px solid #dbe6f5;display:grid;place-items:center;color:#2c5fb0}
+.mod .mh .ic svg{width:19px;height:19px}
+.mod .mh .tt2 b{font-size:15.5px;color:#1b2839;display:block}
+.mod .mh .tt2 span{font-size:11.5px;color:#68788f}
+.mod .mh .cta{margin-left:auto;background:var(--blue2);color:#fff;border-radius:9px;padding:9px 16px;font-size:12px;font-weight:600;display:flex;align-items:center;gap:7px;cursor:pointer}
+.mod .mh .cta svg{width:14px;height:14px}
+.mod .mx{padding:20px 24px;display:grid;gap:14px}
+.mcard{background:#fff;border:1px solid #e4e9f0;border-radius:13px;padding:16px 18px;box-shadow:0 6px 18px -12px rgba(20,40,70,.18)}
+.mcard .ct{font-size:12.5px;font-weight:700;color:#25324a;display:flex;align-items:center;gap:8px;margin-bottom:4px}
+.mcard .ct svg{width:15px;height:15px;color:#2c5fb0}
+.mcard .cd{font-size:11.5px;color:#68788f}
+.bd{font-size:9.5px;font-weight:700;border-radius:6px;padding:2px 8px;letter-spacing:.4px;text-transform:uppercase}
+.bd.ok{color:#0d7a52;background:#e0f5ec}.bd.pen{color:#8a6215;background:#faf0dc}.bd.rej{color:#a63a3a;background:#fbe4e4}.bd.dis{color:#5a6b7e;background:#edf1f6}
+.sw{width:38px;height:21px;border-radius:20px;background:#d5dde8;position:relative;flex:0 0 auto;cursor:pointer}
+.sw::after{content:"";position:absolute;top:2.5px;left:3px;width:16px;height:16px;border-radius:50%;background:#fff;box-shadow:0 1px 3px rgba(0,0,0,.25);transition:.15s}
+.sw.on{background:var(--green)}.sw.on::after{left:19px}
+.mrow{display:flex;align-items:center;gap:12px;padding:10px 0;border-top:1px solid #eef1f6;font-size:12.5px;color:#2a3850}
+.mrow:first-of-type{border-top:0}
+.mrow .mi{width:32px;height:32px;border-radius:9px;background:#f3f6fb;border:1px solid #e5eaf2;display:grid;place-items:center;color:#3a4d66;flex:0 0 auto}
+.mrow .mi svg{width:16px;height:16px}
+.mrow .mtx{flex:1;min-width:0}
+.mrow .mtx b{font-size:12.5px;color:#26333d;display:block}
+.mrow .mtx span{font-size:10.5px;color:#77869c}
+.mgrid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.mgrid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+@media(max-width:1100px){.mgrid3{grid-template-columns:1fr}.mgrid2{grid-template-columns:1fr}}
+.pipe{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:10px;align-items:stretch}
+.pipe .arrow{display:grid;place-items:center;color:#9fb0c8;font-size:20px}
+.pipe .pc{background:#fff;border:1px solid #e4e9f0;border-radius:12px;padding:14px}
+.pipe .pc.hoy{border-color:#bfe6d5;box-shadow:0 0 0 3px rgba(18,201,138,.08)}
+.pipe .pc h4{font-size:11px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;color:#4a5a74;display:flex;align-items:center;gap:7px;margin-bottom:8px}
+.pipe .pc h4 svg{width:14px;height:14px;color:#2c5fb0}
+.pipe .pc p{font-size:11px;color:#68788f;margin-top:7px}
+.tok{display:inline-block;font-size:10px;font-weight:700;background:#eef2f9;border:1px solid #dde5f0;border-radius:6px;padding:2px 8px;color:#3a4d66;margin:2px 3px 2px 0}
+.tok.red{background:#fdecec;border-color:#f3c1c1;color:#a63a3a}
+.tok.grn{background:#e0f5ec;border-color:#bfe6d5;color:#0d7a52}
+/* canvas builder */
+.canvas{position:relative;background:#fff;border:1px solid #e4e9f0;border-radius:13px;height:340px;overflow:hidden;
+  background-image:radial-gradient(#e7ecf3 1px, transparent 1px);background-size:22px 22px}
+.node{position:absolute;background:#fff;border:1.6px solid #d7dfeb;border-radius:11px;padding:9px 13px;box-shadow:0 6px 16px -10px rgba(20,40,70,.3);min-width:128px}
+.node h5{font-size:8.5px;font-weight:800;letter-spacing:.9px;text-transform:uppercase;color:#8794ab;display:flex;align-items:center;gap:5px}
+.node h5 svg{width:11px;height:11px}
+.node b{font-size:12px;color:#22314a}
+.node.start{border-color:#8fd3b8}.node.start h5{color:#0d7a52}
+.node.ia{border-color:#9fb4ec;box-shadow:0 0 0 3px rgba(48,108,240,.09)}.node.ia h5{color:#2c5fb0}
+.node.end{border-color:#e5c08e}.node.end h5{color:#8a6215}
+.node .sub{display:block;font-size:9.5px;color:#7d8ba1;margin-top:2px}
+.canvas svg.wires{position:absolute;inset:0;width:100%;height:100%}
+.nodepal{background:#fff;border:1px solid #e4e9f0;border-radius:13px;padding:14px;width:180px;flex:0 0 auto}
+.nodepal .tabs2{display:flex;gap:4px;margin-bottom:10px}
+.nodepal .tabs2 span{font-size:10.5px;font-weight:700;padding:4px 10px;border-radius:7px;color:#7b8a9c;cursor:pointer}
+.nodepal .tabs2 span.on{background:#eef2f9;color:#2c5fb0}
+.nodepal .np{display:flex;align-items:center;gap:8px;font-size:11.5px;color:#2a3850;padding:7px 8px;border:1px solid #e7ecf3;border-radius:9px;margin-bottom:6px;cursor:grab;background:#fbfcfe}
+.nodepal .np svg{width:14px;height:14px;color:#5a7099}
+/* tabla plantillas */
+.ttable{width:100%;border-collapse:collapse;font-size:12px}
+.ttable th{font-size:9.5px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;color:#8794ab;text-align:left;padding:8px 10px;border-bottom:1px solid #e4e9f0}
+.ttable td{padding:11px 10px;border-bottom:1px solid #eef1f6;color:#2a3850;vertical-align:middle}
+.ttable td b{color:#22314a}
+.ttable td .cat{font-size:9.5px;font-weight:700;color:#5a6b7e;background:#edf1f6;border-radius:5px;padding:2px 7px;text-transform:uppercase;letter-spacing:.4px}
+/* garantías / export */
+.gline{display:flex;gap:10px;align-items:flex-start;padding:9px 0;border-top:1px solid #eef1f6}
+.gline:first-of-type{border-top:0}
+.gline .gi{width:28px;height:28px;border-radius:8px;display:grid;place-items:center;flex:0 0 auto;background:#f3f6fb;border:1px solid #e5eaf2;color:#3a4d66}
+.gline .gi svg{width:15px;height:15px}
+.gline .gx b{font-size:12px;color:#26333d;display:block}
+.gline .gx span{font-size:10.5px;color:#77869c;line-height:1.35}
+.gline .bd{margin-left:auto;flex:0 0 auto}
+.keychain{display:flex;flex-direction:column;gap:9px;align-items:center}
+.keychain .kc{width:100%;max-width:420px;background:#fff;border:1px solid #e4e9f0;border-radius:11px;padding:11px 14px;display:flex;align-items:center;gap:11px}
+.keychain .kc .ki{width:32px;height:32px;border-radius:9px;background:#f3f6fb;border:1px solid #e5eaf2;display:grid;place-items:center;color:#2c5fb0;flex:0 0 auto}
+.keychain .kc .ki svg{width:16px;height:16px}
+.keychain .kc b{font-size:12.5px;color:#22314a;display:block}
+.keychain .kc span{font-size:10.5px;color:#77869c}
+.keychain .kv{color:#9fb0c8;font-size:15px;line-height:.6}
+.segkh{display:inline-flex;background:#edf1f6;border-radius:9px;padding:3px;margin-bottom:12px}
+.segkh span{font-size:11.5px;font-weight:700;padding:6px 16px;border-radius:7px;color:#7b8a9c;cursor:pointer}
+.segkh span.on{background:#fff;color:#2c5fb0;box-shadow:0 1px 3px rgba(20,40,70,.12)}
+/* login (E01) */
+.loginstage{display:grid;place-items:center;background:radial-gradient(760px 420px at 50% -10%,#13284e 0%,transparent 62%),var(--nv0)}
+.lcards{display:flex;gap:18px;align-items:stretch;flex-wrap:wrap;justify-content:center}
+.lcard{width:330px;background:var(--nv1);border:1px solid var(--line2);border-radius:16px;padding:24px 22px;box-shadow:0 24px 60px -28px rgba(0,0,0,.6);position:relative}
+.lcard .lstep{font-size:9.5px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:#7fbfff;margin-bottom:10px}
+.lcard h3{font-size:15px;color:#fff;font-weight:700;margin-bottom:3px}
+.lcard .lsub{font-size:11px;color:var(--tx2);margin-bottom:14px}
+.lfield{background:#0b1730;border:1px solid var(--line3);border-radius:9px;padding:10px 12px;font-size:12px;color:var(--tx1);margin-bottom:9px;display:flex;align-items:center;gap:8px}
+.lfield svg{width:14px;height:14px;color:var(--tx3);flex:0 0 auto}
+.lfield.ok{border-color:#1c4a3a;color:var(--green)}
+.lbtn{background:var(--blue2);color:#fff;border-radius:9px;padding:10px 0;font-size:12.5px;font-weight:700;text-align:center;cursor:pointer;margin-top:4px}
+.lotp{display:flex;gap:7px;justify-content:center;margin:6px 0 12px}
+.lotp span{width:36px;height:44px;border-radius:9px;background:#0b1730;border:1px solid var(--line3);display:grid;place-items:center;font-size:17px;font-weight:700;color:#eaf2fd}
+.lotp span.cur{border-color:var(--blue);box-shadow:0 0 0 3px rgba(48,108,240,.18)}
+.lnote{display:flex;gap:7px;align-items:flex-start;font-size:10px;color:var(--tx3);margin-top:12px;background:#0e1b33;border-radius:8px;padding:8px 10px}
+.lnote svg{width:13px;height:13px;flex:0 0 auto;margin-top:1px;color:#7fbfff}
+/* nota interna (E11) */
+.msg.inote{background:#fdf6df;border:1px dashed #dfc98b;color:#6e5312;align-self:flex-end;border-bottom-right-radius:4px;max-width:72%}
+.msg.inote .bi{display:flex;align-items:center;gap:6px;font-weight:700;font-size:10.5px;margin-bottom:3px;color:#8a6215}
+.msg.inote .bi svg{width:12px;height:12px}
+.msg.inote .mn{color:#2c5fb0;font-weight:700;background:#eaf1fd;border-radius:5px;padding:0 4px}
+/* llamada de equipo (E13) */
+.callwrap{background:#0a1226;display:flex;flex-direction:column;min-width:0}
+.tiles{flex:1;display:grid;grid-template-columns:repeat(3,1fr);gap:12px;padding:16px 18px;min-height:0}
+.tile{background:linear-gradient(160deg,#16294e,#0d1a34);border:1px solid var(--line2);border-radius:14px;display:grid;place-items:center;position:relative;min-height:150px}
+.tile .tav{width:62px;height:62px;border-radius:50%;background:#22406e;display:grid;place-items:center;font-size:19px;font-weight:700;color:#d6e6fb}
+.tile .tn{position:absolute;left:10px;bottom:8px;font-size:10.5px;color:#cfe0f5;background:rgba(6,12,26,.6);border-radius:7px;padding:3px 8px}
+.tile .tmic{position:absolute;right:10px;bottom:8px;width:22px;height:22px;border-radius:50%;background:rgba(6,12,26,.6);display:grid;place-items:center;color:#8fe6c4}
+.tile .tmic svg{width:12px;height:12px}
+.tile.speaking{border-color:rgba(18,201,138,.55);box-shadow:0 0 0 3px rgba(18,201,138,.14)}
+.subline{align-self:center;background:rgba(6,12,26,.78);border:1px solid var(--line3);color:#dfeaf8;font-size:11.5px;border-radius:9px;padding:7px 14px;margin:0 18px}
+.subline b{color:#8fd3ff}
+.callbar{display:flex;justify-content:center;align-items:center;gap:10px;padding:14px}
+.cbtn{width:42px;height:42px;border-radius:50%;background:#16294e;border:1px solid var(--line3);display:grid;place-items:center;color:#cfe0f5;cursor:pointer}
+.cbtn svg{width:18px;height:18px}
+.cbtn:hover{background:#1d3560;color:#fff}
+.cbtn.end{background:#c04747;border-color:transparent;color:#fff;width:52px;border-radius:22px}
+.recchip{display:inline-flex;align-items:center;gap:6px;font-size:10px;font-weight:700;color:#ffb3ab;background:rgba(192,71,71,.16);border:1px solid rgba(192,71,71,.4);border-radius:20px;padding:3px 10px}
+.recchip .rd{width:7px;height:7px;border-radius:50%;background:#ff5d52}
+/* audio + transcripción (E22) */
+.audio{display:flex;align-items:center;gap:10px;min-width:190px}
+.audio .pl2{width:30px;height:30px;border-radius:50%;background:rgba(255,255,255,.22);display:grid;place-items:center;color:#fff;flex:0 0 auto}
+.audio .pl2 svg{width:13px;height:13px}
+.wave{display:flex;gap:2.5px;align-items:center;flex:1}
+.wave i{width:3px;border-radius:2px;background:rgba(255,255,255,.65)}
+.trans{background:#f4f7fb;border:1px solid #e0e7f0;border-radius:11px;padding:10px 12px;margin-top:6px;font-size:11.5px;color:#3a4a5e;line-height:1.5}
+.trans .th{display:flex;align-items:center;gap:7px;font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:#4a5a74;margin-bottom:6px}
+.trans .th svg{width:13px;height:13px;color:#2c5fb0}
+.trans mark{background:#fff3c4;border-radius:3px;padding:0 2px;color:#6e5312}
+/* barras insights (E25) */
+.bars{display:flex;gap:12px;align-items:flex-end;height:110px;padding:6px 4px 0}
+.bars .bcol{flex:1;display:flex;flex-direction:column;align-items:center;gap:5px;height:100%;justify-content:flex-end}
+.bars .b{width:70%;border-radius:6px 6px 0 0;background:linear-gradient(180deg,#3877f2,#2c5fb0)}
+.bars .bl{font-size:9px;color:#8794ab;font-weight:700}
+/* blob BD (E26) */
+.blob{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:10px;line-height:1.65;color:#7fd8c2;background:#0a1226;border:1px solid var(--line3);border-radius:10px;padding:12px;word-break:break-all}
+.dbrow{display:flex;gap:8px;align-items:center;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:10px;color:#93a6c4;padding:6px 8px;border-bottom:1px dashed #22355a}
+.dbrow b{color:#c4d3ee;font-weight:600}
+.dbrow .miss{color:#e4b363;font-style:italic}
+/* matriz RBAC (E04) */
+.ttable td .yes{color:#0d7a52}.ttable td .no{color:#c8d2de}
+.ttable td svg{width:15px;height:15px;vertical-align:-3px}
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="brandbar">
+    <div class="lockup">
+      <svg viewBox="0 0 40 40" fill="none"><defs><linearGradient id="mccp" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#17b39a"/><stop offset=".55" stop-color="#3f6f8c"/><stop offset="1" stop-color="#8e3b7a"/></linearGradient></defs>
+        <path d="M20 4.5a15.5 15.5 0 0 1 14 22" stroke="url(#mccp)" stroke-width="5.4" stroke-linecap="round" fill="none"/>
+        <path d="M20 35.5a15.5 15.5 0 0 1 -14 -22" stroke="url(#mccp)" stroke-width="5.4" stroke-linecap="round" fill="none"/>
+      </svg>
+      <div class="txt"><span class="wm">MCCP</span><span class="claim">Plataforma Conversacional de Misión Crítica</span></div>
+    </div>
+  </div>
+
+  <div class="stage"><div class="cwrap" id="stage"></div></div>
+
+  <div class="caption">
+    <div class="step" id="capStep"></div>
+    <h2 id="capTitle"></h2>
+    <p id="capText"></p>
+  </div>
+
+  <div class="seq">
+    <button class="nav" id="prev" aria-label="Anterior"><svg viewBox="0 0 24 24" fill="none"><path d="M15 6l-6 6 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    <div class="dots" id="dots"></div>
+    <button class="play" id="play" aria-label="Reproducir"><svg viewBox="0 0 24 24" id="playIcon"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></button>
+    <button class="nav" id="next" aria-label="Siguiente"><svg viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+  </div>
+</div>
+
+<script>
+/* ================= plantillas compartidas (master D2CC-07) ================= */
+const SVGS = {
+  inbox:'<svg viewBox="0 0 24 24" fill="none"><path d="M3 13l3-8h12l3 8v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M3 13h5l1.2 2h5.6L16 13h5" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>',
+  channels:'<svg viewBox="0 0 24 24" fill="none"><path d="M9 4L7.2 20M16.8 4L15 20M4 8.5h16M3.4 15.5h16" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>',
+  bot:'<svg viewBox="0 0 24 24" fill="none"><rect x="4.5" y="8" width="15" height="10.5" rx="3" stroke="currentColor" stroke-width="1.7"/><circle cx="9.3" cy="13.2" r="1.25" fill="currentColor"/><circle cx="14.7" cy="13.2" r="1.25" fill="currentColor"/><path d="M12 4.2V8M2.6 12.5H4.5M19.5 12.5h1.9" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>',
+  bcast:'<svg viewBox="0 0 24 24" fill="none"><path d="M4 10v4h3l6 4V6L7 10H4z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>',
+  contacts:'<svg viewBox="0 0 24 24" fill="none"><rect x="5" y="3" width="14" height="18" rx="2.4" stroke="currentColor" stroke-width="1.7"/><circle cx="12" cy="10" r="2.4" stroke="currentColor" stroke-width="1.6"/><path d="M8.6 16.4c.7-1.6 2-2.4 3.4-2.4s2.7.8 3.4 2.4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><path d="M5 7.5H3.4M5 12H3.4M5 16.5H3.4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>',
+  audit:'<svg viewBox="0 0 24 24" fill="none"><rect x="6" y="4" width="12" height="17" rx="2.4" stroke="currentColor" stroke-width="1.7"/><path d="M9 4.5V3.5h6v1" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M9 13l2 2 4-4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+  insights:'<svg viewBox="0 0 24 24" fill="none"><path d="M5 20V12M10 20V6.5M15 20v-6M20 20V4.5" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/><path d="M3.5 20h17" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>',
+  market:'<svg viewBox="0 0 24 24" fill="none"><rect x="4" y="4" width="6.5" height="6.5" rx="1.6" stroke="currentColor" stroke-width="1.7"/><rect x="13.5" y="4" width="6.5" height="6.5" rx="1.6" stroke="currentColor" stroke-width="1.7"/><rect x="4" y="13.5" width="6.5" height="6.5" rx="1.6" stroke="currentColor" stroke-width="1.7"/><path d="M17 13.5v6.5M13.7 16.7h6.6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>',
+  settings:'<svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="3.1" stroke="currentColor" stroke-width="1.7"/><path d="M19.2 13.3a7.7 7.7 0 0 0 0-2.6l1.9-1.5-1.9-3.2-2.3.9a7.7 7.7 0 0 0-2.2-1.3L14.3 3H9.7l-.4 2.6a7.7 7.7 0 0 0-2.2 1.3l-2.3-.9-1.9 3.2 1.9 1.5a7.7 7.7 0 0 0 0 2.6l-1.9 1.5 1.9 3.2 2.3-.9a7.7 7.7 0 0 0 2.2 1.3l.4 2.6h4.6l.4-2.6a7.7 7.7 0 0 0 2.2-1.3l2.3.9 1.9-3.2z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>',
+  wa:'<svg viewBox="0 0 32 32" fill="currentColor"><path d="M16 4C9.9 4 5 8.9 5 15c0 1.9.5 3.8 1.5 5.4L5 26l5.8-1.5c1.5.8 3.3 1.3 5.2 1.3 6.1 0 11-4.9 11-11S22.1 4 16 4z"/></svg>',
+  web:'<svg viewBox="0 0 24 24" fill="none"><path d="M4 5h16v11H9l-4 4V5z" stroke="#fff" stroke-width="2" stroke-linejoin="round"/></svg>',
+  int:'<svg viewBox="0 0 24 24" fill="none"><circle cx="9" cy="9" r="3" stroke="#fff" stroke-width="2"/><path d="M4 19c.8-2.6 2.8-4 5-4s4.2 1.4 5 4" stroke="#fff" stroke-width="2" stroke-linecap="round"/></svg>',
+  lock:'<svg viewBox="0 0 24 24" fill="none"><rect x="5" y="11" width="14" height="9" rx="2" stroke="currentColor" stroke-width="1.7"/><path d="M8 11V8a4 4 0 0 1 8 0v3" stroke="currentColor" stroke-width="1.7"/></svg>',
+  shield:'<svg viewBox="0 0 24 24" fill="none"><path d="M12 3l7 3v5c0 5-3 8-7 10-4-2-7-5-7-10V6z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+  shieldwarn:'<svg viewBox="0 0 24 24" fill="none"><path d="M12 3l7 3v5c0 5-3 8-7 10-4-2-7-5-7-10V6z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M12 8.5v4M12 15.5h.01" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>',
+  key:'<svg viewBox="0 0 24 24" fill="none"><circle cx="8" cy="14" r="4.2" stroke="currentColor" stroke-width="1.7"/><path d="M11 11l8-8M15.5 6.5L18 9M13 9l2 2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>',
+  doc:'<svg viewBox="0 0 24 24" fill="none"><path d="M7 3h8l4 4v14H7z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M15 3v4h4" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>',
+  eye:'<svg viewBox="0 0 24 24" fill="none"><path d="M2 12s3.6-6.6 10-6.6S22 12 22 12s-3.6 6.6-10 6.6S2 12 2 12z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><circle cx="12" cy="12" r="2.6" stroke="currentColor" stroke-width="1.7"/></svg>',
+  check:'<svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+  ban:'<svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"/><path d="M5.8 5.8l12.4 12.4" stroke="currentColor" stroke-width="1.8"/></svg>',
+  warn:'<svg viewBox="0 0 24 24" fill="none"><path d="M12 3L2 20h20z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M12 9.5V14M12 17h.01" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>',
+  ai:'<svg viewBox="0 0 24 24" fill="none"><path d="M12 3l1.8 4.7L18.5 9.5l-4.7 1.8L12 16l-1.8-4.7L5.5 9.5l4.7-1.8z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M18.5 15l.9 2.3 2.3.9-2.3.9-.9 2.3-.9-2.3-2.3-.9 2.3-.9z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>',
+  export:'<svg viewBox="0 0 24 24" fill="none"><path d="M12 15V4M8 8l4-4 4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 15v3a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>',
+  sms:'<svg viewBox="0 0 24 24" fill="none"><rect x="7" y="2.5" width="10" height="19" rx="2.6" stroke="currentColor" stroke-width="1.7"/><path d="M11 18.5h2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>',
+  db:'<svg viewBox="0 0 24 24" fill="none"><ellipse cx="12" cy="5.5" rx="7.5" ry="2.8" stroke="currentColor" stroke-width="1.6"/><path d="M4.5 5.5v13c0 1.6 3.4 2.9 7.5 2.9s7.5-1.3 7.5-2.9v-13" stroke="currentColor" stroke-width="1.6"/><path d="M4.5 12c0 1.6 3.4 2.9 7.5 2.9s7.5-1.3 7.5-2.9" stroke="currentColor" stroke-width="1.6"/></svg>'
+};
+const RAILDEF=[['inbox','Inbox'],['channels','Channels'],['bot','Bot Builder'],['bcast','Broadcast'],['contacts','Contacts'],['audit','Audit'],['insights','Insights'],['market','Marketplace']];
+function tbar(crumb,user){return `<div class="tbar"><div class="brand"><div class="mk"><svg viewBox="0 0 40 40" fill="none"><path d="M20 6a14 14 0 0 1 12.6 19.8" stroke="#fff" stroke-width="4.4" stroke-linecap="round"/><path d="M20 34a14 14 0 0 1-12.6-19.8" stroke="#fff" stroke-width="4.4" stroke-linecap="round"/></svg></div><b>MCCP</b><span class="crumb">${crumb}</span></div><div class="search"><svg viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.7"/><path d="M20 20l-3.5-3.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>Buscar en todo el espacio de trabajo…</div><div class="tools"><div class="tb" data-tip="Novedades"><span class="dot"></span><svg viewBox="0 0 24 24" fill="none"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M13.7 21a2 2 0 0 1-3.4 0" stroke="currentColor" stroke-width="1.7"/></svg></div><div class="tb" data-tip="Ayuda"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.7"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.4 2.3c-.7.3-.9.8-.9 1.5M12 17h.01" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></div><div class="org"><div class="oi">OR</div><div class="ot"><b>[Organización]</b><span>${(user&&user.label)||'D. Robles · Agente · en línea'}</span></div></div></div></div>`;}
+function rail(active,user){let h='<div class="rail">';RAILDEF.forEach(r=>{h+=`<div class="ic tip-r${r[0]===active?' on':''}" data-tip="${r[1]}">${SVGS[r[0]]}</div>`;});h+=`<div class="sp"></div><div class="div"></div><div class="ic tip-r${active==='settings'?' on':''}" data-tip="Settings">${SVGS.settings}</div><div class="me tip-r" data-tip="${(user&&user.me)||'D. Robles (tú)'}">${(user&&user.ini)||'DR'}</div></div>`;return h;}
+function consoleShell(kind,crumb,railOn,inner,user){const u=(user&&user.ini)?user:null;return `<div class="console">${tbar(crumb,u)}<div class="cbody ${kind}">${rail(railOn,u)}${inner}</div></div>`;}
+/* sesión Manager para las pantallas que la matriz RBAC (E04) reserva al Manager */
+const MGR={ini:'IB',label:'I. Baena · Manager · en línea',me:'I. Baena (tú)'};
+function bandeja(items,activeIdx,secciones){
+  let h=`<div class="bandeja"><div class="bh"><b>Conversaciones</b><div class="bi" data-tip="Nueva conversación"><svg viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg></div><div class="bi" data-tip="Vista"><svg viewBox="0 0 24 24" fill="none"><path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></div></div>
+  <div class="search"><svg viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.7"/><path d="M20 20l-3.5-3.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>Buscar conversación…</div>
+  <div class="tabs"><span class="on">Todas <span class="n">12</span></span><span>Sin asignar <span class="n">4</span></span><span>Mías <span class="n">3</span></span></div><div class="list">`;
+  items.forEach((it,i)=>{h+=`${it.gt?`<div class="gt">${it.gt}</div>`:''}<div class="conv${i===activeIdx?' on':''}"><div class="av${it.grp?' grp':''}">${it.ini}<span class="ch ${it.ch}">${SVGS[it.ch==='wa'?'wa':it.ch==='web'?'web':'int']}</span></div><div class="x"><div class="r1"><b>${it.n}</b><span class="t">${it.t}</span></div><div class="sn">${it.sn}</div><div class="r3">${it.tags.map(tg=>`<span class="tag ${tg[1]||''}">${tg[0]}</span>`).join('')}</div></div>${it.un?`<div class="un">${it.un}</div>`:''}</div>`;});
+  return h+'</div></div>';
+}
+const BAND_STD=[
+  {ini:'AM',ch:'wa',n:'A. Moreno <svg viewBox=\"0 0 24 24\" fill=\"none\"><circle cx=\"12\" cy=\"12\" r=\"9\" fill=\"#12c98a\"/><path d=\"M8 12.3l2.6 2.6L16 9.4\" stroke=\"#fff\" stroke-width=\"2.2\" fill=\"none\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>',t:'09:52',sn:'Os adjunto el documento que me pedís…',tags:[['Securizada','sec'],['EXP-2026-0481','']]},
+  {ini:'LV',ch:'wa',n:'L. Vidal',t:'09:41',sn:'Gracias, quedo a la espera.',tags:[['Abierta','']]},
+  {ini:'JO',ch:'web',n:'J. Ortega',t:'09:20',sn:'¿Podéis revisar mi solicitud?',tags:[['Webchat','']]},
+  {ini:'MC',ch:'wa',n:'M. Cano',t:'Ayer',sn:'Perfecto, entendido.',tags:[['Resuelta','']]},
+  {ini:'SD',ch:'web',n:'S. Duarte',t:'Ayer',sn:'Adjunto la documentación.',tags:[['Securizada','sec']]}
+];
+function actbar(states){ // states: {sec:'on', mod:'onwarn'...}
+  const a=(id,cls,tip,svg)=>`<div class="act ${cls}${states&&states[id]?' '+states[id]:''}" data-tip="${tip}">${svg}</div>`;
+  return `<div class="actbar"><span class="lbl">Acciones</span><div class="grp">
+  ${a('esc','pri','Escalar a sala segura','<svg viewBox="0 0 24 24" fill="none"><rect x="5" y="11" width="14" height="9" rx="2" stroke="currentColor" stroke-width="1.7"/><path d="M8 11V8a4 4 0 0 1 8 0v3" stroke="currentColor" stroke-width="1.7"/><path d="M12 14.5v2.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>')}
+  ${a('vid','pri','Videollamada','<svg viewBox="0 0 24 24" fill="none"><rect x="3" y="6" width="12" height="12" rx="2.4" stroke="currentColor" stroke-width="1.7"/><path d="M15 10l6-3.2v10.4L15 14z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>')}
+  ${a('call','pri','Llamada de voz','<svg viewBox="0 0 24 24" fill="none"><path d="M5 4h3l2 5-2 1c1 2 3 4 5 5l1-2 5 2v3c0 1-1 2-2 2C10 23 1 14 1 6c0-1 1-2 2-2z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>')}
+  ${a('att','','Adjuntar','<svg viewBox="0 0 24 24" fill="none"><path d="M16 8l-7 7a3 3 0 0 0 4 4l7-8a5 5 0 0 0-7-7l-7 7" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>')}
+  ${a('tpl','','Plantillas / respuesta rápida','<svg viewBox="0 0 24 24" fill="none"><path d="M13 2 4 14h7l-1 8 9-12h-7z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>')}
+  ${a('tra','','Traducir','<svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path d="M3 12h18M12 3c3 3.2 3 14.8 0 18M12 3c-3 3.2-3 14.8 0 18" stroke="currentColor" stroke-width="1.6"/></svg>')}
+  </div><div class="sep"></div><div class="grp">
+  ${a('stt','sec','Transcribir (STT)','<svg viewBox="0 0 24 24" fill="none"><path d="M4 10v4M8 6.5v11M12 8.5v7M16 5v14M20 10v4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>')}
+  ${a('flow','sec','Estructurar diligencia (Flow)','<svg viewBox="0 0 24 24" fill="none"><path d="M7 3h7l4 4v14H7z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M14 3v4h4M10 12h5M10 15.5h5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>')}
+  ${a('ter','sec','Invitar a un tercero','<svg viewBox="0 0 24 24" fill="none"><circle cx="9" cy="8" r="3.3" stroke="currentColor" stroke-width="1.7"/><path d="M3 19c1-3.5 3.5-5 6-5 1.2 0 2.4.3 3.3.9" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><path d="M18 13v6M15 16h6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>')}
+  </div><div class="sep"></div><div class="grp">
+  ${a('mod','warn','Moderación del canal','<svg viewBox="0 0 24 24" fill="none"><path d="M12 3l7 3v5c0 5-3 8-7 10-4-2-7-5-7-10V6z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M12 8.5v4M12 15.5h.01" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>')}
+  ${a('pii','warn','Revelar PII (auditado)','<svg viewBox="0 0 24 24" fill="none"><path d="M2 12s3.6-6.6 10-6.6S22 12 22 12s-3.6 6.6-10 6.6S2 12 2 12z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><circle cx="12" cy="12" r="2.8" stroke="currentColor" stroke-width="1.7"/></svg>')}
+  ${a('eph','warn','Modo efímero (fuera del Caso)','<svg viewBox="0 0 24 24" fill="none"><path d="M5 20V9.5a7 7 0 0 1 14 0V20l-2.3-1.8-2 1.8-2-1.8-2 1.8-2-1.8z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><circle cx="9.5" cy="10.5" r="1" fill="currentColor"/><circle cx="14.5" cy="10.5" r="1" fill="currentColor"/></svg>')}
+  </div><div class="sep"></div><div class="grp">
+  ${a('asg','','Asignar / transferir','<svg viewBox="0 0 24 24" fill="none"><path d="M4 8h13l-3.2-3.2M20 16H7l3.2 3.2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>')}
+  ${a('end','sec','Cerrar / finalizar sesión','<svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.7"/><path d="M8.2 12.2l2.5 2.5L16 9.4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>')}
+  </div></div>`;
+}
+function cvHeader(av,name,shield,sub,segOn){const seg=segOn===null?'':`<div class="seg"><button${segOn==='pub'?' class="on pub"':''}><svg viewBox="0 0 24 24" fill="none"><path d="M5 4h3l2 5-2 1c1 2 3 4 5 5l1-2 5 2v3c0 1-1 2-2 2C10 23 1 14 1 6c0-1 1-2 2-2z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>Público</button><button${segOn==='sec'?' class="on"':''}>${SVGS.lock}Securizado</button></div>`;return `<div class="cv-h"><div class="av${av.grp?' grp':''}">${av.ini}</div><div class="nm"><b>${name} ${shield?SVGS.shield:''}</b><span>${sub}</span></div>${seg}<div class="hact"><div class="b" data-tip="Buscar en la conversación"><svg viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.7"/><path d="M20 20l-3.5-3.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></div><div class="b" data-tip="Más opciones"><svg viewBox="0 0 24 24" fill="none"><circle cx="5" cy="12" r="1.6" fill="currentColor"/><circle cx="12" cy="12" r="1.6" fill="currentColor"/><circle cx="19" cy="12" r="1.6" fill="currentColor"/></svg></div></div></div>`;}
+function composer(){return `<div class="cv-f"><div class="tools"><div class="t" data-tip="Emoji"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path d="M9 14c.8.9 1.9 1.4 3 1.4s2.2-.5 3-1.4M9 9.5h.01M15 9.5h.01" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></div><div class="t" data-tip="Adjuntar"><svg viewBox="0 0 24 24" fill="none"><path d="M16 8l-7 7a3 3 0 0 0 4 4l7-8a5 5 0 0 0-7-7l-7 7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></div><div class="t" data-tip="Imagen"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="2.4" stroke="currentColor" stroke-width="1.6"/><circle cx="8.5" cy="10" r="1.6" stroke="currentColor" stroke-width="1.5"/><path d="M4 17l5-4 4 3 3-2 4 3" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg></div><div class="sp"></div><div class="chip" data-tip="Insertar plantilla"><svg viewBox="0 0 24 24" fill="none"><path d="M13 2 4 14h7l-1 8 9-12h-7z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>Plantillas</div><div class="chip" data-tip="Sugerencia del bot"><svg viewBox="0 0 24 24" fill="none"><rect x="4.5" y="8" width="15" height="10.5" rx="3" stroke="currentColor" stroke-width="1.6"/><circle cx="9.3" cy="13.2" r="1.1" fill="currentColor"/><circle cx="14.7" cy="13.2" r="1.1" fill="currentColor"/><path d="M12 4.5V8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>Bot</div></div><div class="row"><div class="in">Escribe un mensaje…</div><div class="t" data-tip="Nota de voz" style="width:40px;height:40px;color:#5a6b7e"><svg viewBox="0 0 24 24" fill="none" style="width:19px;height:19px"><rect x="9" y="3" width="6" height="11" rx="3" stroke="currentColor" stroke-width="1.7"/><path d="M6 11a6 6 0 0 0 12 0M12 17v3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></div><div class="snd">Enviar<svg viewBox="0 0 24 24" fill="none"><path d="M4 12l16-8-6 16-3-6-7-2z" stroke="#fff" stroke-width="1.6" stroke-linejoin="round"/></svg></div></div></div>`;}
+function modHeader(icon,title,sub,cta){return `<div class="mh"><div class="ic">${SVGS[icon]}</div><div class="tt2"><b>${title}</b><span>${sub}</span></div>${cta?`<div class="cta">${cta}</div>`:''}</div>`;}
+
+/* ================= ESCENAS (29 de 29 · E01-E29) ================= */
+const SCENES=[
+{ id:'E01', bloque:'Bloque 1 · Backstage — Identidad', mad:['ver','Verificado en producto'],
+  title:'La puerta del <em>operador</em> — login + 2FA (TOTP)',
+  desc:'Nadie entra a la consola solo con contraseña: credencial corporativa + segundo factor TOTP de la app de autenticación. Aquí, «operador» es cualquier persona con acceso a la consola, sea cual sea su rol: Agente, Manager o Auditor. La sesión nace ya auditada.',
+  html(){ return `<div class="console" style="grid-template-rows:1fr"><div class="loginstage"><div>
+    <div style="text-align:center;margin-bottom:22px"><div style="display:inline-flex;align-items:center;gap:10px"><div style="width:38px;height:38px;border-radius:11px;background:conic-gradient(from 140deg,#17b39a,#2b6f8c 55%,#8e3b7a);display:grid;place-items:center;box-shadow:inset 0 0 0 1px rgba(255,255,255,.14)"><svg viewBox="0 0 40 40" fill="none" style="width:21px;height:21px"><path d="M20 6a14 14 0 0 1 12.6 19.8" stroke="#fff" stroke-width="4.4" stroke-linecap="round"/><path d="M20 34a14 14 0 0 1-12.6-19.8" stroke="#fff" stroke-width="4.4" stroke-linecap="round"/></svg></div><b style="font-size:20px;color:#fff;letter-spacing:.5px">MCCP</b></div><div style="font-size:11.5px;color:var(--tx2);margin-top:6px">Consola de la [Organización] · acceso de operador</div></div>
+    <div class="lcards">
+      <div class="lcard"><div class="lstep">Paso 1 · Credenciales</div><h3>Identifícate</h3><div class="lsub">Cuenta corporativa de la [Organización]</div>
+        <div class="lfield ok"><svg viewBox="0 0 24 24" fill="none"><path d="M4 6h16v12H4z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M4 7l8 6 8-6" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>d.robles@organizacion.example</div>
+        <div class="lfield ok">${SVGS.lock}<span class="mask">••••••••••••</span></div>
+        <div class="lbtn">Continuar</div>
+        <div class="lnote">${SVGS.shield}Política de la [Organización]: 2FA obligatorio para todos los operadores.</div></div>
+      <div class="lcard"><div class="lstep">Paso 2 · Segundo factor</div><h3>Código de verificación</h3><div class="lsub">TOTP de tu app de autenticación · caduca en 30 s</div>
+        <div class="lotp"><span>7</span><span>3</span><span>0</span><span>4</span><span class="cur">9</span><span></span></div>
+        <div class="lbtn">Entrar en la consola</div>
+        <div class="lnote"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path d="M12 7.5v5l3 1.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>Inicio de sesión registrado en auditoría: quién, cuándo, desde dónde.</div></div>
+    </div></div></div></div>`; } },
+
+{ id:'E02', bloque:'Bloque 1 · Backstage — Identidad', mad:['ver','Verificado parcial en producto'],
+  title:'El equipo se da de alta <em>sin tocar sistemas</em> — Agentes y multi-tenant',
+  desc:'El Manager invita a los Agentes desde la consola; cada operador puede pertenecer a varias Organizaciones (multi-tenant) y fija su favorita como arranque.',
+  html(){ return consoleShell('mod','Settings · Operadores y Organizaciones','settings',
+    `<div class="mod">${modHeader('contacts','Operadores de la [Organización]','Alta, rol y estado de cada operador. La invitación viaja por correo con enlace de un solo uso.','+ Invitar agente')}
+    <div class="mx"><div class="mgrid2">
+      <div class="mcard"><div class="ct">${SVGS.contacts}Operadores</div>
+        <div class="mrow"><div class="mi">IB</div><div class="mtx"><b>I. Baena (tú)</b><span>i.baena@organizacion.example</span></div><span class="bd ok">Manager</span></div>
+        <div class="mrow"><div class="mi">DR</div><div class="mtx"><b>D. Robles</b><span>d.robles@organizacion.example</span></div><span class="bd ok">Agente</span></div>
+        <div class="mrow"><div class="mi">PL</div><div class="mtx"><b>P. Lorente</b><span>p.lorente@organizacion.example</span></div><span class="bd ok">Agente</span></div>
+        <div class="mrow"><div class="mi">TS</div><div class="mtx"><b>T. Salas</b><span>t.salas@organizacion.example</span></div><span class="bd ok">Agente</span></div>
+        <div class="mrow"><div class="mi">＋</div><div class="mtx"><b>Invitación pendiente</b><span>operador.nuevo@organizacion.example · caduca en 48 h</span></div><span class="bd pen">Pendiente</span></div></div>
+      <div class="mcard"><div class="ct">${SVGS.market}Multi-tenant · tus Organizaciones</div><div class="cd">Un operador puede trabajar para varias Organizaciones; los datos de cada una permanecen aislados por tenant.</div>
+        <div class="mrow"><div class="mi">${SVGS.check}</div><div class="mtx"><b>[Organización] ★ favorita</b><span>Arranque por defecto al iniciar sesión</span></div><span class="bd ok">Activa</span></div>
+        <div class="mrow"><div class="mi">${SVGS.market}</div><div class="mtx"><b>[Organización B]</b><span>Acceso como Agente · tenant aislado</span></div><span class="bd dis">Disponible</span></div>
+        <div class="audit-note" style="background:#f3f6fb;border:1px solid #e5eaf2;color:#68788f"><svg viewBox="0 0 24 24" fill="none" style="color:#2c5fb0"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path d="M12 7.5v5l3 1.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>Cambiar de Organización cambia de espacio de datos: nada se comparte entre tenants.</div></div>
+    </div></div></div>`,MGR); } },
+
+{ id:'E03', bloque:'Bloque 1 · Backstage — Identidad', mad:['ver','Verificado en producto'],
+  title:'Verificación del <em>usuario final</em> — OTP por canal separado',
+  desc:'El usuario final acredita su identidad sin instalar nada: enlace único + código por SMS (factor separado, caduca) y passkey. La consola solo ve el resultado: identidad verificada.',
+  html(){ return consoleShell('dual','Inbox','inbox',
+    bandeja(BAND_STD,0)+
+    `<div class="cv">${cvHeader({ini:'AM'},'A. Moreno',true,`<span class="cch"><svg viewBox="0 0 32 32" fill="#25d366" style="width:11px;height:11px"><path d="M16 4C9.9 4 5 8.9 5 15c0 1.9.5 3.8 1.5 5.4L5 26l5.8-1.5c1.5.8 3.3 1.3 5.2 1.3 6.1 0 11-4.9 11-11S22.1 4 16 4z"/></svg>WhatsApp</span> · EXP-2026-0481`,'sec')}
+    ${actbar({esc:'on'})}
+    <div class="cv-b">
+      <div class="sys">${SVGS.lock}Invitación a conversación securizada enviada · enlace de un solo uso</div>
+      <div class="msg out">Te he enviado el acceso seguro. El código te llega por SMS, aparte del enlace.<span class="m">09:43</span></div>
+      <div class="sys">${SVGS.sms}Código OTP emitido por canal separado (SMS) · caducidad 5 min · nunca acompaña al enlace</div>
+      <div class="msg in">Ya tengo el código, entro ahora.<span class="m">09:44</span></div>
+      <div class="sys">${SVGS.shield}Identidad verificada — Flow + OTP (factor separado) · acceso con passkey · registrado en auditoría</div>
+      <div class="msg in">Ya estoy dentro, gracias.<span class="m">09:45</span></div>
+    </div>${composer()}</div>
+    <div class="panel"><div class="ph"><div class="big">AM<span class="on"></span></div><div class="nm">A. Moreno</div><div class="vf">${SVGS.shield}Identidad verificada</div><div class="quick"><div class="q" data-tip="Mensaje"><svg viewBox="0 0 24 24" fill="none"><path d="M4 5h16v11H9l-4 4V5z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg></div><div class="q" data-tip="Llamar"><svg viewBox="0 0 24 24" fill="none"><path d="M5 4h3l2 5-2 1c1 2 3 4 5 5l1-2 5 2v3c0 1-1 2-2 2C10 23 1 14 1 6c0-1 1-2 2-2z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg></div><div class="q" data-tip="Vídeo"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="6" width="12" height="12" rx="2.4" stroke="currentColor" stroke-width="1.7"/><path d="M15 10l6-3.2v10.4L15 14z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg></div><div class="q" data-tip="Ficha de contacto"><svg viewBox="0 0 24 24" fill="none"><rect x="5" y="3" width="14" height="18" rx="2.4" stroke="currentColor" stroke-width="1.7"/><circle cx="12" cy="10" r="2.4" stroke="currentColor" stroke-width="1.6"/><path d="M8.6 16.4c.7-1.6 2-2.4 3.4-2.4s2.7.8 3.4 2.4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></div></div></div>
+    <div class="sec"><div class="t"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.4" stroke="currentColor" stroke-width="1.7"/><path d="M5 19c1-3.6 4-5.4 7-5.4s6 1.8 7 5.4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>Identidad y verificación</div>
+      <div class="row"><span class="k">Método</span><span class="v ok">${SVGS.check}Flow de identidad + OTP</span></div>
+      <div class="row"><span class="k">Factor</span><span class="v ok">${SVGS.check}SMS · canal separado</span></div>
+      <div class="row"><span class="k">Acceso</span><span class="v ok">${SVGS.check}Passkey · sin contraseña</span></div>
+      <div class="row"><span class="k">Documento</span><span class="v"><span class="mask">····-4821-M</span></span><span class="reveal" data-tip="Revelar (auditado)">${SVGS.eye}</span></div>
+      <div class="row"><span class="k">Teléfono</span><span class="v"><span class="mask">··· ··· 481</span></span><span class="reveal" data-tip="Revelar (auditado)">${SVGS.eye}</span></div>
+      <div class="audit-note"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path d="M12 7.5v5l3 1.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>Verificación registrada: quién, cuándo y por qué método. Cada revelado de PII deja huella.</div></div></div>`,'inbox'); } },
+
+{ id:'E04', bloque:'Bloque 1 · Backstage — Seguridad · Permisos', mad:['ver','Verificado parcial en producto'],
+  title:'Quién puede <em>qué</em> — matriz RBAC de doble plano',
+  desc:'Los permisos viven en dos planos: lo que el rol puede hacer en la [Organización] y lo que puede hacer en cada canal. Agente, Manager y Auditor no ven el mismo mundo.',
+  html(){ const y='<span class="yes"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>',
+      n='<span class="no"><svg viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>';
+    return consoleShell('mod','Settings · Roles y permisos','settings',
+    `<div class="mod">${modHeader('shield','Matriz de permisos por rol','Doble plano: Organización × Canal. Cada celda es un permiso explícito — nada se hereda por defecto.','+ Nuevo rol')}
+    <div class="mx"><div class="mgrid2">
+      <div class="mcard"><div class="ct">${SVGS.market}Plano Organización</div>
+        <table class="ttable"><tr><th>Permiso</th><th>Agente</th><th>Manager</th><th>Auditor</th></tr>
+        <tr><td><b>Ver conversaciones asignadas</b></td><td>${y}</td><td>${y}</td><td>${y}</td></tr>
+        <tr><td><b>Reasignar conversaciones</b></td><td>${n}</td><td>${y}</td><td>${n}</td></tr>
+        <tr><td><b>Invitar operadores</b></td><td>${n}</td><td>${y}</td><td>${n}</td></tr>
+        <tr><td><b>Leer registro de auditoría</b></td><td>${n}</td><td>${y}</td><td>${y}</td></tr>
+        <tr><td><b>Exportar datos</b></td><td>${n}</td><td>${y}</td><td>${n}</td></tr>
+        </table></div>
+      <div class="mcard"><div class="ct">${SVGS.channels}Plano Canal</div>
+        <table class="ttable"><tr><th>Permiso</th><th>Agente</th><th>Manager</th><th>Auditor</th></tr>
+        <tr><td><b>Escribir en el canal</b></td><td>${y}</td><td>${y}</td><td>${n}</td></tr>
+        <tr><td><b>Revelar PII (auditado)</b></td><td>${n}</td><td>${y}</td><td>${n}</td></tr>
+        <tr><td><b>Cambiar postura de seguridad</b></td><td>${n}</td><td>${y}</td><td>${n}</td></tr>
+        <tr><td><b>Levantar retención (unstrike)</b></td><td>${y}</td><td>${y}</td><td>${n}</td></tr>
+        <tr><td><b>Lanzar difusión (Broadcast)</b></td><td>${n}</td><td>${y}</td><td>${n}</td></tr>
+        </table></div>
+    </div>
+    <div class="mcard"><div class="ct">${SVGS.audit}Lectura de la matriz</div><div class="cd">El mismo operador puede ser Agente en un canal y no tener acceso a otro: el plano Canal recorta al plano Organización, nunca lo amplía.</div></div>
+    </div></div>`,MGR); } },
+
+{ id:'E05', bloque:'Bloque 1 · Backstage — Seguridad · Permisos', mad:['ver','Verificado parcial en producto'],
+  title:'Permisos <em>en caliente</em> — efecto inmediato, con traza',
+  desc:'El Manager cambia un permiso y el efecto es inmediato en la sesión del operador — sin redespliegue, sin volver a iniciar sesión. Cada cambio deja quién, qué y cuándo.',
+  html(){ return consoleShell('mod','Settings · Roles · Agente','settings',
+    `<div class="mod">${modHeader('shield','Rol «Agente» · permisos en vivo','Los interruptores actúan sobre las sesiones abiertas. El cambio queda en el registro de auditoría.','')}
+    <div class="mx"><div class="mgrid2">
+      <div class="mcard"><div class="ct">${SVGS.settings}Permisos del rol</div>
+        <div class="mrow"><div class="mtx"><b>Escribir en canales asignados</b><span>Responder a usuarios finales</span></div><div class="sw on"></div></div>
+        <div class="mrow"><div class="mtx"><b>Levantar retención (unstrike)</b><span>Moderación · revisar contenido retenido</span></div><div class="sw on"></div></div>
+        <div class="mrow" style="background:#f0faf5;border-radius:9px;padding-left:8px;padding-right:8px"><div class="mtx"><b>Adjuntar documentos al Caso</b><span>Concedido ahora mismo — efecto inmediato</span></div><span class="bd ok" style="margin-right:8px">Aplicado</span><div class="sw on"></div></div>
+        <div class="mrow"><div class="mtx"><b>Revelar PII</b><span>Reservado al rol Manager</span></div><div class="sw"></div></div>
+        <div class="mrow"><div class="mtx"><b>Exportar conversaciones</b><span>Reservado al rol Manager</span></div><div class="sw"></div></div></div>
+      <div class="mcard"><div class="ct">${SVGS.audit}Traza del cambio</div>
+        <div class="mrow"><div class="mi">${SVGS.check}</div><div class="mtx"><b>«Adjuntar documentos al Caso» → Agente</b><span>I. Baena · Manager · hoy 10:12 · efecto inmediato en 3 sesiones</span></div><span class="bd ok">Registrado</span></div>
+        <div class="mrow"><div class="mi">${SVGS.check}</div><div class="mtx"><b>«Lanzar difusión (Broadcast)» retirado a Agente</b><span>I. Baena · Manager · ayer 17:03</span></div><span class="bd ok">Registrado</span></div>
+        <div class="audit-note" style="background:#f3f6fb;border:1px solid #e5eaf2;color:#68788f"><svg viewBox="0 0 24 24" fill="none" style="color:#2c5fb0"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path d="M12 7.5v5l3 1.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>D. Robles ve aparecer el botón de adjuntar sin cerrar sesión: RBAC en caliente.</div></div>
+    </div></div></div>`,MGR); } },
+
+{ id:'E06', bloque:'Bloque 1 · Backstage — Seguridad · Permisos', mad:['ver','Verificado en producto'],
+  title:'Postura de seguridad <em>por canal</em>',
+  desc:'Interruptores nativos: cada [Organización] fija cifrado, antivirus, moderación y bot canal a canal. Lo que se activa aquí se cumple en la conversación.',
+  html(){ const ch=(n,ic,sub,cy,av,md,bt)=>`<div class="mcard"><div class="mrow" style="border:0;padding:0 0 8px"><div class="mi">${SVGS[ic]}</div><div class="mtx"><b>${n}</b><span>${sub}</span></div><span class="bd ${cy?'ok':'dis'}">${cy?'Cifrado activo':'Sin cifrado'}</span></div>
+    <div class="mrow"><div class="mtx"><b>Cifrado del canal</b><span>Contenido cifrado bajo la clave de la [Organización]</span></div><div class="sw${cy?' on':''}"></div></div>
+    <div class="mrow"><div class="mtx"><b>Antivirus · File Check</b><span>Analiza cada adjunto antes de anclarlo</span></div><div class="sw${av?' on':''}"></div></div>
+    <div class="mrow"><div class="mtx"><b>Moderación</b><span>Filtra lenguaje ofensivo, enlaces maliciosos y contenido sensible</span></div><div class="sw${md?' on':''}"></div></div>
+    <div class="mrow"><div class="mtx"><b>Bot de bienvenida</b><span>Atiende y escala al Agente</span></div><div class="sw${bt?' on':''}"></div></div></div>`;
+    return consoleShell('mod','Channels · Postura de seguridad','channels',
+    `<div class="mod">${modHeader('channels','Canales de la [Organización]','La postura es del canal: cada interruptor tiene efecto inmediato y queda auditado. El salto securizado por conversación está disponible en todos los canales.','+ Añadir canal')}
+     <div class="mx"><div class="mgrid3">
+       ${ch('Canal Seguro','lock','Conversaciones securizadas · parte del Caso',true,true,true,false)}
+       ${ch('Atención · WhatsApp','inbox','Canal público de entrada',false,true,true,true)}
+       ${ch('Webchat','channels','Widget embebido en la web',false,false,true,true)}
+     </div>
+     <div class="mcard"><div class="ct">${SVGS.audit}Cambios de postura · auditados</div><div class="cd" style="margin-top:8px">
+       <div class="mrow"><div class="mi">${SVGS.check}</div><div class="mtx"><b>Moderación activada en «Webchat»</b><span>I. Baena · Manager · hoy 09:12 · registrado</span></div><span class="bd ok">Aplicado</span></div>
+       <div class="mrow"><div class="mi">${SVGS.check}</div><div class="mtx"><b>Cifrado activado en «Canal Seguro»</b><span>I. Baena · Manager · ayer 18:40 · registrado</span></div><span class="bd ok">Aplicado</span></div>
+     </div></div></div></div>`); } },
+
+{ id:'E07', bloque:'Bloque 1 · Backstage — Seguridad · Permisos', mad:['ver','Verificado en producto'],
+  title:'Los canales se <em>autogestionan</em> — alta, webhook y zona de peligro',
+  desc:'La [Organización] conecta sus propios canales sin tocar sistemas: alta guiada del conector (Meta / Woztell), webhook verificado y un ciclo de vida completo — incluida la baja, con doble confirmación.',
+  html(){ return consoleShell('mod','Channels · Alta y ciclo de vida','channels',
+    `<div class="mod">${modHeader('channels','Conectar un canal nuevo','Del conector al webhook verificado en minutos. Todo el ciclo queda auditado.','+ Añadir canal')}
+    <div class="mx"><div class="mgrid2">
+      <div class="mcard"><div class="ct">${SVGS.channels}Conector</div>
+        <div class="mrow"><div class="mi">${SVGS.wa}</div><div class="mtx"><b>WhatsApp · Meta Cloud API</b><span>Número verificado por Meta · plantillas sincronizadas</span></div><span class="bd ok">Conectado</span></div>
+        <div class="mrow"><div class="mi">${SVGS.channels}</div><div class="mtx"><b>Pasarela Woztell</b><span>Alta guiada · credenciales de la [Organización]</span></div><span class="bd ok">Conectado</span></div>
+        <div class="mrow"><div class="mi">${SVGS.web}</div><div class="mtx"><b>Webchat</b><span>Widget embebido · dominio autorizado</span></div><span class="bd ok">Conectado</span></div>
+        <div class="mrow"><div class="mi">${SVGS.sms}</div><div class="mtx"><b>SMS · pasarela</b><span>Alta en curso · verificación del remitente</span></div><span class="bd pen">Configurando</span></div></div>
+      <div class="mcard"><div class="ct">${SVGS.settings}Webhook del canal</div>
+        <div class="mrow"><div class="mi">${SVGS.check}</div><div class="mtx"><b>URL de entrega</b><span>https://mccp.organizacion.example/hooks/wa-atencion</span></div><span class="bd ok">Verificado</span></div>
+        <div class="mrow"><div class="mi">${SVGS.key}</div><div class="mtx"><b>Token de verificación</b><span class="mask">••••••••••••3f81</span></div><span class="bd ok">Rotado hoy</span></div>
+        <div class="mrow"><div class="mi">${SVGS.audit}</div><div class="mtx"><b>Última comprobación de conexión (handshake)</b><span>hoy 09:02 · 200 OK · latencia 84 ms</span></div><span class="bd ok">Activo</span></div></div>
+    </div>
+    <div class="mcard" style="border-color:#f3c1c1"><div class="ct" style="color:#a63a3a"><svg viewBox="0 0 24 24" fill="none" style="width:15px;height:15px"><path d="M12 3L2 20h20z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M12 9.5V14M12 17h.01" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>Zona de peligro</div><div class="cd">Eliminar el canal desconecta el webhook y archiva sus conversaciones (no las borra: el Caso permanece). Exige doble confirmación y rol Manager.</div>
+      <div class="mrow"><div class="mi" style="color:#a63a3a">${SVGS.ban}</div><div class="mtx"><b>Eliminar «Atención · WhatsApp»</b><span>Escribe el nombre del canal para confirmar · quedará registrado</span></div><span class="bd rej">Doble confirmación</span></div></div>
+    </div></div>`,MGR); } },
+
+{ id:'E08', bloque:'Bloque 1 · Backstage — Seguridad · Permisos', mad:['dis','Diseño · a validar con producto'],
+  title:'La PII vive <em>enmascarada</em> — revelado bajo demanda, auditado',
+  desc:'Documento y teléfono se muestran enmascarados por defecto; revelarlos exige permiso, motivo y deja huella. El dato completo nunca viaja a la pantalla si nadie lo pide.',
+  html(){ return consoleShell('dual','Inbox','inbox',
+    bandeja([...BAND_STD.slice(0,4),{ini:'SD',ch:'web',n:'S. Duarte',t:'12:05',sn:'Recibido. Verifico el documento…',tags:[['Securizada','sec']]}],4)+
+    `<div class="cv">${cvHeader({ini:'SD'},'S. Duarte',true,'Webchat · conversación securizada','sec')}
+    ${actbar({pii:'onwarn'})}
+    <div class="cv-b">
+      <div class="msg in">Os paso mis datos para el trámite: soy S. Duarte, documento <span style="background:#eef2f7;border-radius:5px;padding:0 6px;font-weight:700;letter-spacing:1px">····-7302-K</span> y teléfono <span style="background:#eef2f7;border-radius:5px;padding:0 6px;font-weight:700;letter-spacing:1px">··· ··· 917</span>.<span class="m">12:04</span></div>
+      <div class="sys">${SVGS.shield}PII detectada y enmascarada automáticamente · el dato completo queda protegido en el Caso</div>
+      <div class="msg out">Recibido. Verifico el documento para continuar con el trámite.<span class="m">12:05</span></div>
+      <div class="sys warn"><svg viewBox="0 0 24 24" fill="none"><path d="M2 12s3.6-6.6 10-6.6S22 12 22 12s-3.6 6.6-10 6.6S2 12 2 12z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><circle cx="12" cy="12" r="2.6" stroke="currentColor" stroke-width="1.7"/></svg>D. Robles solicita revelar «Documento» · motivo: cotejo del trámite · pendiente de permiso</div>
+    </div>${composer()}</div>
+    <div class="panel"><div class="ph"><div class="big">SD<span class="on"></span></div><div class="nm">S. Duarte</div><div class="vf">${SVGS.shield}Identidad verificada</div></div>
+    <div class="sec"><div class="t">${SVGS.eye}PII del contacto</div>
+      <div class="row"><span class="k">Documento</span><span class="v"><span class="mask">····-7302-K</span></span><span class="reveal" data-tip="Revelar (auditado)">${SVGS.eye}</span></div>
+      <div class="row"><span class="k">Teléfono</span><span class="v"><span class="mask">··· ··· 917</span></span><span class="reveal" data-tip="Revelar (auditado)">${SVGS.eye}</span></div>
+      <div class="row"><span class="k">Dirección</span><span class="v"><span class="mask">·····</span></span><span class="reveal" data-tip="Revelar (auditado)">${SVGS.eye}</span></div>
+      <div class="audit-note">${SVGS.audit}Revelar exige permiso del rol y un motivo. Queda: quién, qué campo, cuándo y por qué.</div></div>
+    <div class="sec"><div class="t">${SVGS.audit}Revelados recientes</div>
+      <div class="pl"><span class="pav">IB</span>I. Baena · «Documento»<span class="pr">ayer 13:40 · cotejo</span></div>
+      <div class="pl"><span class="pav">DR</span>D. Robles · «Teléfono»<span class="pr">02/07 · contacto</span></div></div></div>`); } },
+
+{ id:'E09', bloque:'Bloque 2 · Operación', mad:['ver','Verificado en producto'],
+  title:'Un único <em>puesto de trabajo</em> — Inbox multicanal',
+  desc:'Todos los canales en una bandeja: colas Todas / Sin asignar / Mías, asignación a agentes con roles y la conversación pública o securizada en la misma vista.',
+  html(){ return consoleShell('dual','Inbox','inbox',
+    bandeja(BAND_STD,0)+
+    `<div class="cv">${cvHeader({ini:'AM'},'A. Moreno',true,`EXP-2026-0481 · asignada a ti`,'sec')}
+    ${actbar()}
+    <div class="cv-b">
+      <div class="sys">${SVGS.check}Conversación asignada a <b>&nbsp;D. Robles&nbsp;</b> · antes en «Sin asignar»</div>
+      <div class="msg in">Buenas, necesito ayuda con mi expediente.<span class="m">09:41</span></div>
+      <div class="msg out">Hola, soy tu agente asignado. Reviso tu caso ahora mismo.<span class="m">09:42</span></div>
+      <div class="msg in">Os adjunto el documento que me pedís.<span class="m">09:51</span></div>
+      <div class="msg in"><div style="display:flex;align-items:center;gap:9px;background:#fff;border-radius:8px;padding:7px 9px;margin-top:3px"><div style="width:28px;height:28px;border-radius:7px;background:#e9f0fa;display:grid;place-items:center">${SVGS.doc}</div><div><b style="font-size:11px;display:block">documento.pdf</b><span style="font-size:9px;color:#8a97a3">Anclado al expediente</span></div></div><span class="m">09:52</span></div>
+      <div class="msg out">Recibido — queda anclado al expediente automáticamente. ¿Necesitas algo más?<span class="m">09:53</span></div>
+    </div>${composer()}</div>
+    <div class="panel"><div class="ph"><div class="big">AM<span class="on"></span></div><div class="nm">A. Moreno</div><div class="vf">${SVGS.shield}Identidad verificada</div><div class="quick"><div class="q" data-tip="Mensaje"><svg viewBox="0 0 24 24" fill="none"><path d="M4 5h16v11H9l-4 4V5z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg></div><div class="q" data-tip="Llamar"><svg viewBox="0 0 24 24" fill="none"><path d="M5 4h3l2 5-2 1c1 2 3 4 5 5l1-2 5 2v3c0 1-1 2-2 2C10 23 1 14 1 6c0-1 1-2 2-2z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg></div><div class="q" data-tip="Vídeo"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="6" width="12" height="12" rx="2.4" stroke="currentColor" stroke-width="1.7"/><path d="M15 10l6-3.2v10.4L15 14z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg></div><div class="q" data-tip="Ficha de contacto"><svg viewBox="0 0 24 24" fill="none"><rect x="5" y="3" width="14" height="18" rx="2.4" stroke="currentColor" stroke-width="1.7"/><circle cx="12" cy="10" r="2.4" stroke="currentColor" stroke-width="1.6"/><path d="M8.6 16.4c.7-1.6 2-2.4 3.4-2.4s2.7.8 3.4 2.4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></div></div></div>
+    <div class="sec"><div class="t">${SVGS.doc}Caso / Expediente</div>
+      <div class="row"><span class="k">Nº</span><span class="v">EXP-2026-0481</span></div>
+      <div class="row"><span class="k">Estado</span><span class="v"><span class="badge tram">En tramitación</span></span></div>
+      <div class="row"><span class="k">Asignado</span><span class="v">D. Robles (tú)</span></div>
+      <div class="row"><span class="k">SLA</span><span class="v ok">${SVGS.check}Dentro de plazo</span></div></div>
+    <div class="sec"><div class="t"><svg viewBox="0 0 24 24" fill="none"><circle cx="9" cy="8" r="3.3" stroke="currentColor" stroke-width="1.7"/><path d="M3 19c1-3.5 3.5-5 6-5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><path d="M18 13v6M15 16h6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>Participantes</div>
+      <div class="pl"><span class="pav">DR</span>D. Robles<span class="pr">Agente · asignado</span></div>
+      <div class="pl"><span class="pav">IB</span>I. Baena<span class="pr">Manager</span></div>
+      <div class="audit-note"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path d="M12 7.5v5l3 1.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>El manager puede redistribuir conversaciones; solo los asignados escriben.</div></div></div>`); } },
+
+{ id:'E10', bloque:'Bloque 2 · Operación', mad:['ver','Verificado en producto'],
+  title:'El contacto tiene <em>memoria</em> — ficha de contacto y notas',
+  desc:'CRM-lite integrado: ficha del contacto junto a la conversación, notas del equipo por contacto y «Refresh Info» para traer los datos actualizados del canal.',
+  html(){ return consoleShell('dual','Inbox','inbox',
+    bandeja(BAND_STD,1)+
+    `<div class="cv">${cvHeader({ini:'LV'},'L. Vidal',true,`<span class="cch"><svg viewBox="0 0 32 32" fill="#25d366" style="width:11px;height:11px"><path d="M16 4C9.9 4 5 8.9 5 15c0 1.9.5 3.8 1.5 5.4L5 26l5.8-1.5c1.5.8 3.3 1.3 5.2 1.3 6.1 0 11-4.9 11-11S22.1 4 16 4z"/></svg>WhatsApp</span> · conversación abierta`,'pub')}
+    ${actbar()}
+    <div class="cv-b">
+      <div class="msg in">Buenos días, ¿hay novedad de mi solicitud?<span class="m">09:38</span></div>
+      <div class="msg out">Buenos días. Veo en su ficha que la documentación entró el lunes; está en revisión. Le aviso en cuanto haya resolución.<span class="m">09:40</span></div>
+      <div class="msg in">Gracias, quedo a la espera.<span class="m">09:41</span></div>
+    </div>${composer()}</div>
+    <div class="panel"><div class="ph"><div class="big">LV<span class="on"></span></div><div class="nm">L. Vidal</div><div class="vf">${SVGS.shield}Identidad verificada</div>
+      <div class="quick"><div class="q" data-tip="Refresh Info · sincronizar con el canal"><svg viewBox="0 0 24 24" fill="none"><path d="M20 12a8 8 0 1 1-2.3-5.6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M20 3v4h-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div class="q" data-tip="Mensaje"><svg viewBox="0 0 24 24" fill="none"><path d="M4 5h16v11H9l-4 4V5z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg></div><div class="q" data-tip="Ficha de contacto">${SVGS.contacts}</div></div></div>
+    <div class="sec"><div class="t">${SVGS.contacts}Ficha del contacto</div>
+      <div class="row"><span class="k">Nombre</span><span class="v">L. Vidal</span></div>
+      <div class="row"><span class="k">Teléfono</span><span class="v"><span class="mask">··· ··· 204</span></span><span class="reveal" data-tip="Revelar (auditado)">${SVGS.eye}</span></div>
+      <div class="row"><span class="k">Segmento</span><span class="v">Solicitudes · 2026</span></div>
+      <div class="row"><span class="k">Sincronizado</span><span class="v ok">${SVGS.check}Refresh Info · hoy 09:37</span></div></div>
+    <div class="sec"><div class="t">${SVGS.doc}Notas del contacto</div>
+      <div class="audit-note" style="margin-top:0"><svg viewBox="0 0 24 24" fill="none"><path d="M7 3h8l4 4v14H7z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>«Prefiere ser contactada por la tarde.» — T. Salas · 03/07</div>
+      <div class="audit-note"><svg viewBox="0 0 24 24" fill="none"><path d="M7 3h8l4 4v14H7z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>«Documentación completa; pendiente de resolución.» — D. Robles · hoy</div>
+      <div class="pl" style="margin-top:6px"><span class="pav">+</span>Añadir nota del equipo<span class="pr">visible solo interno</span></div></div></div>`); } },
+
+{ id:'E11', bloque:'Bloque 2 · Operación', mad:['ver','Verificado en producto'],
+  title:'Hablar del caso <em>dentro del caso</em> — nota interna + @menciones',
+  desc:'La nota interna vive en el mismo hilo pero nunca sale hacia el usuario: coordinación con @menciones en el punto exacto de la conversación.',
+  html(){ return consoleShell('dual','Inbox','inbox',
+    bandeja(BAND_STD,0)+
+    `<div class="cv">${cvHeader({ini:'AM'},'A. Moreno',true,'EXP-2026-0481 · asignada a ti','sec')}
+    ${actbar()}
+    <div class="cv-b">
+      <div class="msg in">Os adjunto el documento que me pedís.<span class="m">09:51</span></div>
+      <div class="msg in"><div style="display:flex;align-items:center;gap:9px;background:#fff;border-radius:8px;padding:7px 9px;margin-top:3px"><div style="width:28px;height:28px;border-radius:7px;background:#e9f0fa;display:grid;place-items:center">${SVGS.doc}</div><div><b style="font-size:11px;display:block">documento.pdf</b><span style="font-size:9px;color:#8a97a3">Anclado al expediente</span></div></div><span class="m">09:52</span></div>
+      <div class="msg inote"><span class="bi"><svg viewBox="0 0 24 24" fill="none"><path d="M7 3h8l4 4v14H7z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M10 12h5M10 15.5h5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>Nota interna · solo equipo</span><span class="mn">@I. Baena</span> el documento llegó fuera de plazo — ¿lo admitimos por la vía de subsanación?<span class="m">09:54</span></div>
+      <div class="msg inote"><span class="bi"><svg viewBox="0 0 24 24" fill="none"><path d="M7 3h8l4 4v14H7z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M10 12h5M10 15.5h5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>Nota interna · I. Baena</span>Sí — admítelo y deja constancia en el Caso. Respondo yo si hay queja.<span class="m">09:56</span></div>
+      <div class="sys">${SVGS.check}Las notas internas no se envían al usuario · quedan ancladas en este punto del hilo</div>
+      <div class="msg out">Documento recibido y admitido a trámite. Gracias.<span class="m">09:57</span></div>
+    </div>${composer()}</div>
+    <div class="panel"><div class="ph"><div class="big">AM<span class="on"></span></div><div class="nm">A. Moreno</div><div class="vf">${SVGS.shield}Identidad verificada</div></div>
+    <div class="sec"><div class="t"><svg viewBox="0 0 24 24" fill="none"><circle cx="9" cy="8" r="3.3" stroke="currentColor" stroke-width="1.7"/><path d="M3 19c1-3.5 3.5-5 6-5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><path d="M18 13v6M15 16h6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>Participantes</div>
+      <div class="pl"><span class="pav">DR</span>D. Robles<span class="pr">Agente · asignado</span></div>
+      <div class="pl"><span class="pav">IB</span>I. Baena<span class="pr">Manager · mencionado</span></div>
+      <div class="audit-note"><svg viewBox="0 0 24 24" fill="none"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>La @mención notifica a I. Baena aunque no tenga la conversación abierta.</div></div>
+    <div class="sec"><div class="t">${SVGS.doc}Caso / Expediente</div>
+      <div class="row"><span class="k">Nº</span><span class="v">EXP-2026-0481</span></div>
+      <div class="row"><span class="k">Notas</span><span class="v">2 internas · en el hilo</span></div></div></div>`); } },
+
+{ id:'E12', bloque:'Bloque 2 · Operación', mad:['ver','Verificado en producto'],
+  title:'Comunicación <em>interna</em> del equipo — cifrada',
+  desc:'Grupos y 1:1 entre agentes junto a los casos: coordinación sin salir de la consola, con el contenido cifrado en reposo bajo la clave de la [Organización].',
+  html(){ const items=[
+    {gt:'Canales',ini:'AT',ch:'wa',n:'Atención · WhatsApp',t:'09:52',sn:'A. Moreno: Os adjunto el documento…',tags:[['Canal','']]},
+    {gt:'Equipo',ini:'DE',ch:'int',n:'Despliegue · viernes',t:'10:02',sn:'P. Lorente: Confirmo ventana 22:00…',tags:[['Grupo','']],grp:1},
+    {ini:'IB',ch:'int',n:'I. Baena',t:'09:58',sn:'¿Me revisas el borrador del turno?',tags:[['1:1','']],grp:0},
+    {ini:'TS',ch:'int',n:'T. Salas',t:'Ayer',sn:'Subido el acta de la reunión.',tags:[['1:1','']]}];
+   return consoleShell('dual','Inbox · Equipo','inbox',
+    bandeja(items,1)+
+    `<div class="cv">${cvHeader({ini:'DE',grp:1},'Despliegue · viernes',false,'Grupo interno · 3 miembros · cifrado',null)}
+    <div class="cv-b">
+      <div class="sys">${SVGS.lock}Mensajería interna · cifrada en reposo bajo la clave de la [Organización]</div>
+      <div class="msg in"><span class="who">P. Lorente</span>Confirmo ventana de despliegue el viernes a las 22:00.<span class="m">10:02</span></div>
+      <div class="msg in"><span class="who">I. Baena</span>Ok. <b>@D. Robles</b>, ¿revisas tú el plan de vuelta atrás?<span class="m">10:03</span></div>
+      <div class="msg out">Lo reviso esta tarde y os lo paso por aquí.<span class="m">10:04</span></div>
+      <div class="msg in"><span class="who">P. Lorente</span><div style="display:flex;align-items:center;gap:9px;background:#fff;border-radius:8px;padding:7px 9px;margin-top:3px"><div style="width:28px;height:28px;border-radius:7px;background:#e9f0fa;display:grid;place-items:center">${SVGS.doc}</div><div><b style="font-size:11px;display:block">plan-despliegue.pdf</b><span style="font-size:9px;color:#8a97a3">Cifrado · se descifra al abrir, solo en memoria</span></div></div><span class="m">10:05</span></div>
+    </div>${composer()}</div>
+    <div class="panel"><div class="ph"><div class="big grp">DE</div><div class="nm">Despliegue · viernes</div><div class="vf">${SVGS.lock}Grupo cifrado</div></div>
+    <div class="sec"><div class="t"><svg viewBox="0 0 24 24" fill="none"><circle cx="9" cy="8" r="3.3" stroke="currentColor" stroke-width="1.7"/><path d="M3 19c1-3.5 3.5-5 6-5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><path d="M18 13v6M15 16h6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>Miembros</div>
+      <div class="pl"><span class="pav">DR</span>D. Robles<span class="pr">tú</span></div>
+      <div class="pl"><span class="pav">PL</span>P. Lorente<span class="pr">Agente</span></div>
+      <div class="pl"><span class="pav">IB</span>I. Baena<span class="pr">Manager</span></div></div>
+    <div class="sec"><div class="t">${SVGS.lock}Cifrado</div>
+      <div class="row"><span class="k">En reposo</span><span class="v ok">${SVGS.check}Clave de la [Organización]</span></div>
+      <div class="row"><span class="k">Adjuntos</span><span class="v ok">${SVGS.check}Descifrado solo en memoria</span></div>
+      <div class="audit-note">${SVGS.db}En la base de datos el contenido reposa como un bloque cifrado (blob), ilegible sin la clave.</div></div></div>`); } },
+
+{ id:'E13', bloque:'Bloque 2 · Operación', mad:['ver','Verificado en producto'],
+  title:'El equipo se ve <em>sin salir de la consola</em> — llamadas embebidas',
+  desc:'Videollamada del equipo dentro de MCCP: dial-in SIP para quien está fuera, grabación con envoltorio probatorio (queda sellada con valor de prueba), pizarra compartida y subtítulos en vivo.',
+  html(){ return consoleShell('mod','Inbox · Llamada de equipo','inbox',
+    `<div class="callwrap"><div style="display:flex;align-items:center;gap:10px;padding:14px 18px 0">
+      <b style="font-size:13.5px;color:#fff">Despliegue · viernes — llamada de equipo</b>
+      <span class="recchip"><span class="rd"></span>REC · envoltorio probatorio</span>
+      <span style="margin-left:auto;font-size:10.5px;color:var(--tx2)">00:12:38 · 3 participantes + 1 SIP</span></div>
+    <div class="tiles">
+      <div class="tile speaking"><div class="tav">PL</div><span class="tn">P. Lorente</span><span class="tmic"><svg viewBox="0 0 24 24" fill="none"><rect x="9" y="3" width="6" height="11" rx="3" stroke="currentColor" stroke-width="1.7"/><path d="M6 11a6 6 0 0 0 12 0" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></span></div>
+      <div class="tile"><div class="tav">DR</div><span class="tn">D. Robles (tú)</span><span class="tmic"><svg viewBox="0 0 24 24" fill="none"><rect x="9" y="3" width="6" height="11" rx="3" stroke="currentColor" stroke-width="1.7"/><path d="M6 11a6 6 0 0 0 12 0" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></span></div>
+      <div class="tile"><div class="tav">IB</div><span class="tn">I. Baena</span><span class="tmic"><svg viewBox="0 0 24 24" fill="none"><rect x="9" y="3" width="6" height="11" rx="3" stroke="currentColor" stroke-width="1.7"/><path d="M6 11a6 6 0 0 0 12 0" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></span></div>
+      <div class="tile" style="grid-column:1/-1;min-height:64px"><div style="display:flex;align-items:center;gap:12px"><div class="tav" style="width:40px;height:40px;font-size:13px;border-radius:12px"><svg viewBox="0 0 24 24" fill="none" style="width:18px;height:18px"><path d="M5 4h3l2 5-2 1c1 2 3 4 5 5l1-2 5 2v3c0 1-1 2-2 2C10 23 1 14 1 6c0-1 1-2 2-2z" stroke="#d6e6fb" stroke-width="1.7" stroke-linejoin="round"/></svg></div><div><b style="font-size:12px;color:#eaf2fd;display:block">T. Salas · dial-in SIP</b><span style="font-size:10px;color:var(--tx2)">+34 9·· ··· ·10 · sin app, desde teléfono fijo</span></div></div></div>
+    </div>
+    <div class="subline"><b>Subtítulos en vivo:</b> «…confirmo la ventana del viernes a las 22:00 y el plan de vuelta atrás…»</div>
+    <div class="callbar">
+      <div class="cbtn" data-tip="Micrófono"><svg viewBox="0 0 24 24" fill="none"><rect x="9" y="3" width="6" height="11" rx="3" stroke="currentColor" stroke-width="1.7"/><path d="M6 11a6 6 0 0 0 12 0M12 17v3" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></div>
+      <div class="cbtn" data-tip="Cámara"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="6" width="12" height="12" rx="2.4" stroke="currentColor" stroke-width="1.7"/><path d="M15 10l6-3.2v10.4L15 14z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg></div>
+      <div class="cbtn" data-tip="Compartir pantalla"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="12" rx="2" stroke="currentColor" stroke-width="1.7"/><path d="M12 14v-4M10 12l2-2 2 2M8 20h8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="cbtn" data-tip="Pizarra compartida"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="4" width="18" height="13" rx="2" stroke="currentColor" stroke-width="1.7"/><path d="M7 12c2-3 4 2 6-1s4 0 4 0M9 21l3-4 3 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <div class="cbtn" data-tip="Subtítulos"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="2.4" stroke="currentColor" stroke-width="1.7"/><path d="M7 12h4M7 15.5h7M13.5 12H17" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></div>
+      <div class="cbtn end" data-tip="Colgar"><svg viewBox="0 0 24 24" fill="none"><path d="M4 14c4.5-4.5 11.5-4.5 16 0l-2.4 2.4c-.6.6-1.5.7-2.2.3l-1.9-1.2a1.8 1.8 0 0 1-.8-1.7v-1.2a12.6 12.6 0 0 0-5.4 0v1.2c0 .7-.3 1.3-.8 1.7l-1.9 1.2c-.7.4-1.6.3-2.2-.3z" stroke="#fff" stroke-width="1.6" stroke-linejoin="round"/></svg></div>
+    </div></div>`); } },
+
+{ id:'E14', bloque:'Bloque 2 · Operación', mad:['ver','Verificado en producto · demo en móvil'],
+  title:'Formularios <em>dentro del chat</em> — WhatsApp Flows y plantillas interactivas',
+  desc:'En lugar de veinte preguntas sueltas, un formulario nativo dentro de WhatsApp: el usuario responde en pasos guiados y la consola recibe el resultado estructurado.',
+  html(){ return consoleShell('dual','Inbox','inbox',
+    bandeja([...BAND_STD.slice(0,3),{ini:'MC',ch:'wa',n:'M. Cano',t:'10:24',sn:'Cita confirmada · jueves 16, mañana',tags:[['Resuelta','']]},BAND_STD[4]],3)+
+    `<div class="cv">${cvHeader({ini:'MC'},'M. Cano',true,`<span class="cch"><svg viewBox="0 0 32 32" fill="#25d366" style="width:11px;height:11px"><path d="M16 4C9.9 4 5 8.9 5 15c0 1.9.5 3.8 1.5 5.4L5 26l5.8-1.5c1.5.8 3.3 1.3 5.2 1.3 6.1 0 11-4.9 11-11S22.1 4 16 4z"/></svg>WhatsApp</span> · plantilla interactiva`,'pub')}
+    ${actbar({tpl:'on'})}
+    <div class="cv-b">
+      <div class="msg out">Hola, M. Cano. Para confirmar tu cita necesitamos tres datos. Puedes rellenarlos aquí mismo:<span class="m">10:20</span></div>
+      <div class="msg out"><div style="background:#fff;color:#1b2632;border-radius:10px;padding:10px 12px;margin-top:3px"><b style="font-size:12px;display:block;margin-bottom:3px">Confirma tu cita</b><span style="font-size:11px;color:#5a6b7e;display:block;margin-bottom:8px">Formulario seguro · 3 pasos · WhatsApp Flow</span><span style="display:block;text-align:center;background:#eaf1fd;color:#2c5fb0;font-weight:700;font-size:11.5px;border-radius:8px;padding:7px 0">Abrir formulario</span></div><span class="m">10:20</span></div>
+      <div class="sys">${SVGS.check}WhatsApp Flow abierto en el móvil del usuario · formulario nativo, sin salir del chat</div>
+      <div class="msg in"><div style="background:#fff;border-radius:8px;padding:8px 10px;margin-top:2px"><b style="font-size:11px;display:block;margin-bottom:4px">✓ Formulario enviado</b><span style="font-size:10.5px;color:#5a6b7e;display:block">Fecha: jueves 16 · Turno: mañana · Modalidad: presencial</span></div><span class="m">10:23</span></div>
+      <div class="msg out">Perfecto: cita confirmada para el jueves 16 por la mañana. Te llegará el recordatorio la víspera.<span class="m">10:24</span></div>
+    </div>${composer()}</div>
+    <div class="panel"><div class="ph"><div class="big">MC<span class="on"></span></div><div class="nm">M. Cano</div><div class="vf">${SVGS.shield}Identidad verificada</div></div>
+    <div class="sec"><div class="t">${SVGS.doc}Plantilla interactiva</div>
+      <div class="row"><span class="k">Plantilla</span><span class="v">confirma_cita_flow</span></div>
+      <div class="row"><span class="k">Estado</span><span class="v ok">${SVGS.check}Accepted (aprobada) · Utility</span></div>
+      <div class="row"><span class="k">Tipo</span><span class="v">WhatsApp Flow · 3 pasos</span></div>
+      <div class="row"><span class="k">Respuesta</span><span class="v ok">${SVGS.check}Estructurada · al Caso</span></div>
+      <div class="audit-note">${SVGS.doc}El resultado llega como datos estructurados, no como texto libre: directo al Caso.</div></div></div>`); } },
+
+{ id:'E15', bloque:'Bloque 3 · Canal Moderado', mad:['ver','Verificado en producto'],
+  title:'El canal <em>se defiende solo</em> — moderación en vivo',
+  desc:'Ofensivo entrante en cuarentena con revelado bajo demanda; salientes bloqueados antes de salir; enlaces de malware detectados en ambos sentidos. Todo configurable por canal.',
+  html(){ return consoleShell('dual','Inbox','inbox',
+    bandeja([{ini:'JO',ch:'web',n:'J. Ortega',t:'11:34',sn:'Contenido retenido por moderación',tags:[['Webchat',''],['Moderación','mod']]},...BAND_STD.slice(0,2)],0)+
+    `<div class="cv">${cvHeader({ini:'JO'},'J. Ortega',false,'Webchat · moderación activa','pub')}
+    ${actbar({mod:'onwarn'})}
+    <div class="cv-b">
+      <div class="msg in">Buenas, tengo una duda con mi solicitud.<span class="m">11:31</span></div>
+      <div class="msg out">Claro, dígame en qué le ayudo.<span class="m">11:32</span></div>
+      <div class="msg held"><span class="bi">${SVGS.warn}Contenido retenido por moderación</span>Lenguaje ofensivo detectado · el mensaje no se muestra por defecto<span class="vw">Ver mensaje (auditado)</span><span class="m">11:33</span></div>
+      <div class="msg held"><span class="bi">${SVGS.warn}Enlace retenido · posible malware</span>http://enlace-sospechoso.example/… · verificado contra listas de amenazas<span class="vw">Ver detalle</span><span class="m">11:34</span></div>
+      <div class="msg blocked"><span class="bi">${SVGS.ban}Mensaje bloqueado por el canal</span>El texto incumplía la política de la [Organización] — no se ha enviado.<span class="ft">Moderación saliente · registrado en auditoría</span><span class="m">11:36</span></div>
+    </div>${composer()}</div>
+    <div class="panel"><div class="ph"><div class="big">JO<span class="on"></span></div><div class="nm">J. Ortega</div><div class="vf wt">${SVGS.shieldwarn}Moderación · 3 eventos</div><div class="quick"><div class="q" data-tip="Mensaje"><svg viewBox="0 0 24 24" fill="none"><path d="M4 5h16v11H9l-4 4V5z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg></div><div class="q" data-tip="Llamar"><svg viewBox="0 0 24 24" fill="none"><path d="M5 4h3l2 5-2 1c1 2 3 4 5 5l1-2 5 2v3c0 1-1 2-2 2C10 23 1 14 1 6c0-1 1-2 2-2z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg></div><div class="q" data-tip="Vídeo"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="6" width="12" height="12" rx="2.4" stroke="currentColor" stroke-width="1.7"/><path d="M15 10l6-3.2v10.4L15 14z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg></div><div class="q" data-tip="Ficha de contacto"><svg viewBox="0 0 24 24" fill="none"><rect x="5" y="3" width="14" height="18" rx="2.4" stroke="currentColor" stroke-width="1.7"/><circle cx="12" cy="10" r="2.4" stroke="currentColor" stroke-width="1.6"/><path d="M8.6 16.4c.7-1.6 2-2.4 3.4-2.4s2.7.8 3.4 2.4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></div></div></div>
+    <div class="sec"><div class="t">${SVGS.shieldwarn}Moderación del canal</div>
+      <div class="row"><span class="k">Estado</span><span class="v ok">${SVGS.check}Activa</span></div>
+      <div class="row"><span class="k">Texto</span><span class="v">Entrante en cuarentena</span></div>
+      <div class="row"><span class="k">Saliente</span><span class="v">Bloqueo previo al envío</span></div>
+      <div class="row"><span class="k">Enlaces</span><span class="v">Listas de amenazas</span></div>
+      <div class="row"><span class="k">Imágenes</span><span class="v">Detección de contenido sensible</span></div></div>
+    <div class="sec"><div class="t">${SVGS.audit}Acciones</div>
+      <div class="pl"><span class="pav" style="border-radius:9px"><svg viewBox="0 0 24 24" fill="none" style="width:15px;height:15px"><path d="M4 10h11a5 5 0 0 1 0 10h-3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 6l-4 4 4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Levantar retención (unstrike)<span class="pr">auditado</span></div>
+      <div class="pl"><span class="pav" style="border-radius:9px"><svg viewBox="0 0 24 24" fill="none" style="width:15px;height:15px"><path d="M6 21V4h12l-2.5 4L18 12H6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Reportar usuario<span class="pr">Trust &amp; Safety</span></div>
+      <div class="pl"><span class="pav" style="border-radius:9px"><svg viewBox="0 0 24 24" fill="none" style="width:15px;height:15px"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"/><path d="M5.8 5.8l12.4 12.4" stroke="currentColor" stroke-width="1.8"/></svg></span>Bloquear conversación<span class="pr">reversible</span></div></div></div>`); } },
+
+{ id:'E16', bloque:'Bloque 3 · Canal Moderado', mad:['ver','Verificado en producto'],
+  title:'Retener no es <em>censurar</em> — cuarentena, unstrike y sentimiento',
+  desc:'Lo retenido no desaparece: el agente lo revisa y levanta la retención (unstrike) con traza. Cada mensaje lleva además su señal de sentimiento POS/NEG.',
+  html(){ return consoleShell('dual','Inbox','inbox',
+    bandeja([{ini:'JO',ch:'web',n:'J. Ortega',t:'11:41',sn:'Retención levantada por D. Robles',tags:[['Webchat',''],['Moderación','mod']]},...BAND_STD.slice(0,2)],0)+
+    `<div class="cv">${cvHeader({ini:'JO'},'J. Ortega',false,'Webchat · moderación activa','pub')}
+    ${actbar({mod:'onwarn'})}
+    <div class="cv-b">
+      <div class="msg held"><span class="bi">${SVGS.warn}Contenido retenido por moderación</span>Posible lenguaje ofensivo · en cuarentena, no visible por defecto<span class="vw">Revisar (auditado)</span><span class="m">11:38</span></div>
+      <div class="sys">${SVGS.check}Retención levantada (unstrike) por D. Robles · motivo: falso positivo · registrado en auditoría</div>
+      <div class="msg in">¡Es que llevo TRES semanas esperando y nadie me contesta!<span class="m">11:38</span><span style="display:block;font-size:9px;color:#c0552f;font-weight:700;margin-top:3px">Sentimiento: NEG</span></div>
+      <div class="msg out">Tiene razón y le pido disculpas por la espera. Acabo de reactivar su solicitud con prioridad; mañana tiene respuesta.<span class="m">11:40</span></div>
+      <div class="msg in">Vale, muchas gracias de verdad. Quedo pendiente.<span class="m">11:41</span><span style="display:block;font-size:9px;color:#0d7a52;font-weight:700;margin-top:3px">Sentimiento: POS</span></div>
+    </div>${composer()}</div>
+    <div class="panel"><div class="ph"><div class="big">JO<span class="on"></span></div><div class="nm">J. Ortega</div><div class="vf wt">${SVGS.shieldwarn}Moderación · 1 evento</div></div>
+    <div class="sec"><div class="t">${SVGS.shieldwarn}Cuarentena</div>
+      <div class="row"><span class="k">Retenidos</span><span class="v">1 · revisado</span></div>
+      <div class="row"><span class="k">Unstrike</span><span class="v ok">${SVGS.check}D. Robles · 11:38</span></div>
+      <div class="row"><span class="k">Traza</span><span class="v ok">${SVGS.check}Motivo registrado</span></div>
+      <div class="audit-note">${SVGS.audit}Revisar y liberar deja huella: quién levantó la retención, cuándo y por qué.</div></div>
+    <div class="sec"><div class="t">${SVGS.insights}Señal de sentimiento</div>
+      <div class="row"><span class="k">11:38</span><span class="v warn">NEG · frustración</span></div>
+      <div class="row"><span class="k">11:41</span><span class="v ok">POS · conforme</span></div>
+      <div class="audit-note">${SVGS.insights}La señal POS/NEG por mensaje alimenta la vista del Manager: colas con fricción, a la vista.</div></div></div>`); } },
+
+{ id:'E17', bloque:'Bloque 3 · Canal Moderado', mad:['ver','Verificado en producto'],
+  title:'Cuando la conversación <em>cruza la línea</em> — Trust &amp; Safety',
+  desc:'Reportar usuario, consultar su historial de reportes y bloquear la conversación: el circuito de Trust & Safety vive en la consola, y todo él deja traza.',
+  html(){ return consoleShell('dual','Inbox','inbox',
+    bandeja([{ini:'JO',ch:'web',n:'J. Ortega',t:'11:55',sn:'Usuario reportado · TS-2026-102',tags:[['Webchat',''],['T&S','mod']]},...BAND_STD.slice(0,2)],0)+
+    `<div class="cv">${cvHeader({ini:'JO'},'J. Ortega',false,'Webchat · circuito Trust &amp; Safety','pub')}
+    ${actbar({mod:'onwarn'})}
+    <div class="cv-b">
+      <div class="msg blocked"><span class="bi">${SVGS.ban}Mensaje bloqueado por el canal</span>Amenaza detectada — el contenido incumple la política de la [Organización].<span class="ft">Moderación entrante · registrado</span><span class="m">11:52</span></div>
+      <div class="sys warn"><svg viewBox="0 0 24 24" fill="none"><path d="M6 21V4h12l-2.5 4L18 12H6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>Usuario reportado a Trust &amp; Safety por D. Robles · caso TS-2026-102</div>
+      <div class="sys">${SVGS.ban}Conversación bloqueada · reversible por un Manager · el historial permanece en el Caso</div>
+    </div>${composer()}</div>
+    <div class="panel"><div class="ph"><div class="big">JO</div><div class="nm">J. Ortega</div><div class="vf wt">${SVGS.shieldwarn}Reportado · TS-2026-102</div></div>
+    <div class="sec"><div class="t">${SVGS.shieldwarn}Trust &amp; Safety</div>
+      <div class="pl"><span class="pav" style="border-radius:9px"><svg viewBox="0 0 24 24" fill="none" style="width:15px;height:15px"><path d="M6 21V4h12l-2.5 4L18 12H6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Reportar usuario<span class="pr">enviado · 11:53</span></div>
+      <div class="pl"><span class="pav" style="border-radius:9px">${SVGS.audit}</span>Report History<span class="pr">1 previo</span></div>
+      <div class="pl"><span class="pav" style="border-radius:9px"><svg viewBox="0 0 24 24" fill="none" style="width:15px;height:15px"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8"/><path d="M5.8 5.8l12.4 12.4" stroke="currentColor" stroke-width="1.8"/></svg></span>Bloquear conversación<span class="pr">aplicado · reversible</span></div></div>
+    <div class="sec"><div class="t">${SVGS.audit}Historial de reportes</div>
+      <div class="row"><span class="k">TS-2026-102</span><span class="v warn">Amenaza · hoy · abierto</span></div>
+      <div class="row"><span class="k">TS-2026-071</span><span class="v">Ofensivo · 28/06 · cerrado</span></div>
+      <div class="audit-note">${SVGS.audit}El reporte viaja con contexto: mensajes retenidos incluidos, nada se pierde por bloquear.</div></div></div>`); } },
+
+{ id:'E18', bloque:'Bloque 4 · Broadcast', mad:['ver','Verificado en producto'],
+  title:'Nada sale <em>sin aprobar</em> — plantillas con ciclo de aprobación',
+  desc:'Cada plantilla pasa un ciclo de aprobación por categoría (utility · marketing · authentication): aprobada (accepted), pendiente (pending) o rechazada (rejected). Solo las «accepted» pueden usarse.',
+  html(){ return consoleShell('mod','Broadcast · Plantillas','bcast',
+    `<div class="mod">${modHeader('bcast','Plantillas del canal','Ciclo de aprobación por categoría (utility · marketing · authentication). Solo las «accepted» pueden usarse.','+ Nueva plantilla')}
+    <div class="mx"><div class="mgrid2">
+      <div class="mcard"><div class="ct">${SVGS.doc}Plantillas del canal</div>
+        <table class="ttable"><tr><th>Nombre</th><th>Categoría</th><th>Estado</th></tr>
+        <tr><td><b>aviso_cita_utility</b><br><span style="font-size:10px;color:#8794ab">Recordatorio de cita</span></td><td><span class="cat">Utility</span></td><td><span class="bd ok">Accepted</span></td></tr>
+        <tr><td><b>campana_prevencion</b><br><span style="font-size:10px;color:#8794ab">Información estacional</span></td><td><span class="cat">Marketing</span></td><td><span class="bd pen">Pending</span></td></tr>
+        <tr><td><b>codigo_acceso_auth</b><br><span style="font-size:10px;color:#8794ab">Rechazada · variable no válida</span></td><td><span class="cat">Auth</span></td><td><span class="bd rej">Rejected</span></td></tr>
+        <tr><td><b>confirma_cita_flow</b><br><span style="font-size:10px;color:#8794ab">Interactiva · WhatsApp Flow</span></td><td><span class="cat">Utility</span></td><td><span class="bd ok">Accepted</span></td></tr>
+        </table></div>
+      <div class="mcard"><div class="ct">${SVGS.check}Ciclo de aprobación</div><div class="cd">El estado lo fija el proveedor del canal (p. ej. Meta) y la consola lo refleja tal cual — no se puede forzar.</div>
+        <div class="mrow"><div class="mi">${SVGS.doc}</div><div class="mtx"><b>1 · Borrador</b><span>Texto + variables ({{nombre}}, {{fecha}}) por categoría</span></div><span class="bd dis">Editable</span></div>
+        <div class="mrow"><div class="mi"><svg viewBox="0 0 24 24" fill="none" style="width:16px;height:16px"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path d="M12 7.5v5l3 1.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></div><div class="mtx"><b>2 · Enviada a revisión</b><span>Validación del proveedor del canal</span></div><span class="bd pen">Pending</span></div>
+        <div class="mrow"><div class="mi">${SVGS.check}</div><div class="mtx"><b>3 · Resolución</b><span>Accepted → utilizable · Rejected → vuelve a borrador con motivo</span></div><span class="bd ok">Accepted</span></div>
+        <div class="mrow"><div class="mi">${SVGS.warn}</div><div class="mtx"><b>Una plantilla no aprobada bloquea su uso</b><span>Ni en conversación ni en difusión — sin excepciones</span></div></div></div>
+    </div></div></div>`); } },
+
+{ id:'E19', bloque:'Bloque 4 · Broadcast', mad:['dis','Diseño · a validar con producto'],
+  title:'Llegar a <em>miles</em> sin perder el control — difusión segmentada',
+  desc:'La difusión masiva elige un grupo de destino y una plantilla «accepted»; sin plantilla aprobada no hay envío. El progreso y los fallos quedan a la vista.',
+  html(){ return consoleShell('mod','Broadcast · Difusión','bcast',
+    `<div class="mod">${modHeader('bcast','Difusión segmentada','Grupo de destino + plantilla aprobada. El envío se reparte respetando los límites del canal.','Programar difusión')}
+    <div class="mx"><div class="mgrid2">
+      <div class="mcard"><div class="ct">${SVGS.contacts}Grupo de destino</div>
+        <div class="mrow"><div class="mi">${SVGS.contacts}</div><div class="mtx"><b>Usuarios con cita esta semana</b><span>1.240 contactos · segmento dinámico</span></div><span class="bd ok">Elegido</span></div>
+        <div class="mrow"><div class="mi">${SVGS.contacts}</div><div class="mtx"><b>Zona norte · pendientes</b><span>318 contactos</span></div><span class="bd dis">—</span></div>
+        <div class="mrow"><div class="mi">${SVGS.ban}</div><div class="mtx"><b>Exclusiones</b><span>Quienes pidieron no recibir envíos (opt-out) y las conversaciones bloqueadas quedan fuera automáticamente</span></div><span class="bd ok">Aplicadas</span></div></div>
+      <div class="mcard"><div class="ct">${SVGS.bcast}Envío</div>
+        <div class="mrow"><div class="mi">${SVGS.doc}</div><div class="mtx"><b>aviso_cita_utility</b><span>Plantilla seleccionada · categoría Utility</span></div><span class="bd ok">Accepted</span></div>
+        <div class="mrow"><div class="mi">${SVGS.warn}</div><div class="mtx"><b>Plantilla no aprobada = envío bloqueado</b><span>La difusión exige estado «accepted» — sin excepciones</span></div></div>
+        <div style="margin-top:10px"><div style="display:flex;justify-content:space-between;font-size:10.5px;color:#68788f;margin-bottom:5px"><span>Progreso del envío</span><b style="color:#22314a">862 / 1.240 · 2 fallos</b></div><div style="height:8px;border-radius:6px;background:#edf1f6;overflow:hidden"><div style="width:69%;height:100%;background:linear-gradient(90deg,#3877f2,#12c98a)"></div></div></div>
+        <div class="audit-note" style="background:#f3f6fb;border:1px solid #e5eaf2;color:#68788f"><svg viewBox="0 0 24 24" fill="none" style="color:#2c5fb0"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path d="M12 7.5v5l3 1.8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>Cada difusión queda auditada: quién la lanzó, a qué grupo, con qué plantilla.</div></div>
+    </div></div></div>`,MGR); } },
+
+{ id:'E20', bloque:'Bloque 5 · Motor IA', mad:['dis','Diseño · a validar con producto'],
+  title:'IA <em>independiente</em> del proveedor — multiplexor multi-LLM con clave propia',
+  desc:'La [Organización] elige el modelo (propio, de proveedor o local) y pone su propia clave de API. La memoria del asistente es portable: si cambias de modelo, viaja contigo.',
+  html(){ return consoleShell('mod','Settings · Motor IA','settings',
+    `<div class="mod">${modHeader('ai','Motor IA · proveedores','Multiplexor: cada carga de trabajo puede ir a un modelo distinto. Las claves son de la [Organización], nunca compartidas.','+ Añadir proveedor')}
+    <div class="mx"><div class="mgrid2">
+      <div class="mcard"><div class="ct">${SVGS.ai}Proveedores conectados</div>
+        <div class="mrow" style="background:#f0faf5;border-radius:9px;padding-left:8px;padding-right:8px"><div class="mi">${SVGS.ai}</div><div class="mtx"><b>Athenea · IA de la plataforma</b><span>Clasificación de intención · clave de la [Organización]</span></div><span class="bd ok">Activo</span></div>
+        <div class="mrow"><div class="mi">${SVGS.key}</div><div class="mtx"><b>Proveedor externo A</b><span>Clave propia <span class="mask">sk-····9f2e</span> · redacción asistida</span></div><span class="bd ok">Conectado</span></div>
+        <div class="mrow"><div class="mi">${SVGS.key}</div><div class="mtx"><b>Proveedor externo B</b><span>Clave propia <span class="mask">ak-····71c0</span> · resúmenes</span></div><span class="bd dis">En pausa</span></div>
+        <div class="mrow"><div class="mi">${SVGS.db}</div><div class="mtx"><b>Modelo local (on-prem)</b><span>Para cargas que no deben salir del perímetro</span></div><span class="bd pen">Diseño</span></div></div>
+      <div class="mcard"><div class="ct">${SVGS.export}Memoria portable</div><div class="cd">Lo aprendido (contexto, glosario, estilo de la [Organización]) no pertenece al modelo sino a la plataforma: se exporta y se restaura en otro proveedor.</div>
+        <div class="mrow"><div class="mi">${SVGS.doc}</div><div class="mtx"><b>Memoria del asistente</b><span>Glosario, plantillas de respuesta, contexto operativo</span></div><span class="bd ok">Exportable</span></div>
+        <div class="mrow"><div class="mi">${SVGS.export}</div><div class="mtx"><b>Cambiar de proveedor</b><span>La memoria viaja contigo — sin re-entrenar desde cero</span></div><span class="bd pen">Diseño</span></div>
+        <div class="audit-note" style="background:#f3f6fb;border:1px solid #e5eaf2;color:#68788f"><svg viewBox="0 0 24 24" fill="none" style="color:#2c5fb0"><path d="M12 3l1.8 4.7L18.5 9.5l-4.7 1.8L12 16l-1.8-4.7L5.5 9.5l4.7-1.8z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>Sin matrimonio con ningún LLM: el proveedor es una pieza intercambiable, no un destino.</div></div>
+    </div></div></div>`); } },
+
+{ id:'E21', bloque:'Bloque 5 · Motor IA', mad:['dis','Diseño · a validar con producto'],
+  title:'La IA razona sobre <em>marcadores</em> — sanitización pre-LLM',
+  desc:'Antes de salir hacia el modelo, el gateway de PII sustituye identidades y datos sensibles por marcadores (anonimización o seudonimización reversible bajo clave). La [Organización] controla qué ve la IA.',
+  html(){ return consoleShell('mod','Settings · Motor IA','settings',
+    `<div class="mod">${modHeader('ai','Motor IA · privacidad del dato','Gateway de sanitización de PII en dos modos (perímetro y pre-LLM).','')}
+    <div class="mx">
+    <div class="pipe">
+      <div class="pc"><h4>${SVGS.doc}Dato del caso · en claro</h4>
+        <span class="tok">A. Moreno</span><span class="tok">Doc. 4821-M</span><span class="tok">Importe 240 €</span>
+        <p>El Caso contiene PII real del usuario. Acceso bajo permiso auditado.</p></div>
+      <div class="arrow">→</div>
+      <div class="pc hoy"><h4>${SVGS.shield}Gateway de PII · anonimiza</h4>
+        <span class="tok grn">[NOMBRE]</span><span class="tok grn">[DOCUMENTO]</span><span class="tok grn">[IMPORTE]</span>
+        <p><b>Antes de salir al LLM:</b> dos modos — anonimización (irreversible) o seudonimización (reversible solo bajo clave).</p></div>
+      <div class="arrow">→</div>
+      <div class="pc"><h4>${SVGS.ai}LLM · proveedor</h4>
+        <span class="tok">[NOMBRE]</span><span class="tok">[DOCUMENTO]</span><span class="tok">[IMPORTE]</span>
+        <p>El modelo razona sobre <b>marcadores</b>, no sobre el dato real del usuario.</p></div>
+    </div>
+    <div class="mcard"><div class="ct">${SVGS.lock}Cómputo confidencial (TEE)</div><div class="cd">El absoluto «el modelo nunca ve el dato» exige un enclave con atestación remota — horizonte de roadmap; hoy el control base es la sanitización pre-LLM.</div></div>
+    </div></div>`); } },
+
+{ id:'E22', bloque:'Bloque 5 · Motor IA', mad:['dis','Diseño · a validar con producto'],
+  title:'La voz se vuelve <em>búsqueda</em> — transcripción STT anclada al Caso',
+  desc:'La nota de voz se transcribe, la transcripción queda anclada al Caso y es buscable: lo dicho deja de estar enterrado en un audio.',
+  html(){ const w=[7,12,9,15,11,6,13,9,14,8,12,7,10,15,9,6,11,13,8,12];
+    return consoleShell('dual','Inbox','inbox',
+    bandeja(BAND_STD,0)+
+    `<div class="cv">${cvHeader({ini:'AM'},'A. Moreno',true,'EXP-2026-0481 · asignada a ti','sec')}
+    ${actbar({stt:'on'})}
+    <div class="cv-b">
+      <div class="msg in" style="min-width:230px"><div class="audio"><span class="pl2"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z" fill="currentColor" opacity=".9"/></svg></span><span class="wave">${w.map(h=>`<i style="height:${h}px"></i>`).join('')}</span><span style="font-size:10px;color:#7d8a97">0:42</span></div><span class="m">12:10</span></div>
+      <div class="sys">${SVGS.ai}Transcripción solicitada por D. Robles · el audio original se conserva como prueba</div>
+      <div class="msg in" style="max-width:76%"><div class="trans"><div class="th"><svg viewBox="0 0 24 24" fill="none"><path d="M4 10v4M8 6.5v11M12 8.5v7M16 5v14M20 10v4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>Transcripción · STT</div>«Buenos días, llamo por mi expediente. La <mark>cita del jueves</mark> no puedo atenderla por trabajo y necesito moverla a la semana siguiente, si es posible al turno de tarde.»</div><span class="m">12:11</span></div>
+      <div class="sys">${SVGS.doc}Transcripción anclada al Caso EXP-2026-0481 · buscable desde el Caso</div>
+      <div class="msg out">Recibido: reprogramamos la <b>cita del jueves</b>. Te propongo el martes 21 por la tarde.<span class="m">12:14</span></div>
+    </div>${composer()}</div>
+    <div class="panel"><div class="ph"><div class="big">AM<span class="on"></span></div><div class="nm">A. Moreno</div><div class="vf">${SVGS.shield}Identidad verificada</div></div>
+    <div class="sec"><div class="t"><svg viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.7"/><path d="M20 20l-3.5-3.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>Buscar en el Caso</div>
+      <div class="lfield" style="margin-bottom:8px;background:#101f3a"><svg viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.7"/><path d="M20 20l-3.5-3.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>«cita del jueves»</div>
+      <div class="row"><span class="k">Resultado</span><span class="v ok">${SVGS.check}Audio 12:10 · transcripción</span></div>
+      <div class="row"><span class="k">Resultado</span><span class="v">Mensaje 12:14 · texto</span></div>
+      <div class="audit-note">${SVGS.audit}Audio y transcripción quedan vinculados: la búsqueda devuelve el minuto exacto.</div></div>
+    <div class="sec"><div class="t">${SVGS.doc}Caso / Expediente</div>
+      <div class="row"><span class="k">Nº</span><span class="v">EXP-2026-0481</span></div>
+      <div class="row"><span class="k">Evidencias</span><span class="v">1 audio + transcripción</span></div></div></div>`); } },
+
+{ id:'E23', bloque:'Bloque 5 · Motor IA — Builder', mad:['dis','Diseño · producto en construcción'],
+  title:'Los flujos se <em>dibujan</em> — Bot Builder no-code',
+  desc:'Lienzo visual: bienvenida, entrada del usuario, clasificación de intención por IA y escalado al Agente. «View JSON» exporta el flujo — portable, sin lock-in.',
+  html(){ return consoleShell('mod','Bot Builder','bot',
+    `<div class="mod">${modHeader('bot','Diseña tu flujo de atención','Lo que dibujas se traduce al grafo ejecutable.','{ } View JSON')}
+    <div class="mx" style="grid-template-columns:auto 1fr;display:grid;gap:14px">
+      <div class="nodepal"><div class="tabs2"><span class="on">Nodos</span><span>Variables</span></div>
+        <div class="np"><svg viewBox="0 0 24 24" fill="none"><path d="M8 5v14l11-7z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>Start</div><div class="np"><svg viewBox="0 0 24 24" fill="none"><path d="M4 5h16v11H9l-4 4V5z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>Send Message</div><div class="np"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="7" width="18" height="10" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M7 12h.01M11 12h.01M15 12h.01" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>Receive Input</div><div class="np"><svg viewBox="0 0 24 24" fill="none"><path d="M12 4v6M12 10l-6 5M12 10l6 5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>Condition</div><div class="np"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3l1.8 4.7L18.5 9.5l-4.7 1.8L12 16l-1.8-4.7L5.5 9.5l4.7-1.8z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>IA · clasificar</div><div class="np"><svg viewBox="0 0 24 24" fill="none"><rect x="6" y="6" width="12" height="12" rx="2" stroke="currentColor" stroke-width="1.7"/></svg>End / escalar</div></div>
+      <div class="canvas">
+        <svg class="wires"><path d="M170 76 C 210 76, 210 130, 250 130" stroke="#c9d6e8" stroke-width="2" fill="none"/><path d="M370 150 C 420 150, 420 96, 470 96" stroke="#c9d6e8" stroke-width="2" fill="none"/><path d="M590 116 C 640 116, 640 210, 480 228" stroke="#c9d6e8" stroke-width="2" fill="none"/><path d="M330 250 C 260 265, 200 265, 150 240" stroke="#c9d6e8" stroke-width="2" fill="none"/></svg>
+        <div class="node start" style="left:36px;top:48px"><h5>Start</h5><b>Inicio</b><span class="sub">Entrada del canal</span></div>
+        <div class="node" style="left:250px;top:104px"><h5>Send</h5><b>Bienvenida</b><span class="sub">«¿En qué puedo ayudarte?»</span></div>
+        <div class="node" style="left:470px;top:66px"><h5>Receive</h5><b>Variable: consulta</b><span class="sub">Texto libre del usuario</span></div>
+        <div class="node ia" style="left:330px;top:206px"><h5>IA · Athenea</h5><b>Clasificar intención</b><span class="sub">Clave de IA propia · [Organización]</span></div>
+        <div class="node end" style="left:36px;top:196px"><h5>End</h5><b>Cierre / escala a Agente</b><span class="sub">Con el contexto del caso</span></div>
+      </div>
+    </div></div>`); } },
+
+{ id:'E24', bloque:'Bloque 5 · Motor IA — Marketplace', mad:['vis','Visión · roadmap — no es funcionalidad actual'],
+  title:'La plataforma <em>se extiende</em> — Marketplace de extensiones',
+  desc:'Catálogo de extensiones instalables por la [Organización]: firma, conectores, verticales. Hoy es visión de producto — se enseña como roadmap, no como funcionalidad.',
+  html(){ const ext=(ic,n,d,st,cls)=>`<div class="mcard"><div class="ct">${SVGS[ic]}${n}</div><div class="cd">${d}</div><div style="margin-top:10px"><span class="bd ${cls}">${st}</span></div></div>`;
+    return consoleShell('mod','Marketplace','market',
+    `<div class="mod">${modHeader('market','Marketplace de extensiones','Catálogo · Mis extensiones. Las extensiones respetan permisos, auditoría y cifrado de la plataforma.','')}
+    <div class="mx">
+    <div style="display:flex;gap:4px"><span class="bd ok" style="cursor:pointer">Catálogo</span><span class="bd dis" style="cursor:pointer">Mis extensiones (3)</span></div>
+    <div class="mgrid3">
+      ${ext('doc','Firma cualificada','Firma electrónica de documentos dentro de la conversación.','Instalada','ok')}
+      ${ext('audit','Conector SIEM','Eventos de auditoría hacia el SIEM de la [Organización].','Disponible','dis')}
+      ${ext('channels','Traducción certificada','Traducción jurada de conversaciones para expedientes.','Disponible','dis')}
+      ${ext('shield','Verificación reforzada','Verificación documental del usuario final (videoidentificación).','Instalada','ok')}
+      ${ext('insights','Panel BI','Exporta métricas al cuadro de mando corporativo.','Disponible','dis')}
+      ${ext('bot','Vertical de citas','Flujos preconstruidos de gestión de citas para el sector público.','Instalada','ok')}
+    </div>
+    </div></div>`); } },
+
+{ id:'E25', bloque:'Bloque 5 · Motor IA — Insights', mad:['vis','Visión · roadmap — no es funcionalidad actual'],
+  title:'La operación, <em>medida</em> — Insights y conclusiones IA',
+  desc:'Métricas de la operación (volumen, SLA, sentimiento) y una capa de conclusiones IA que las lee por ti. Hoy es visión de producto — se enseña como roadmap.',
+  html(){ return consoleShell('mod','Insights','insights',
+    `<div class="mod">${modHeader('insights','Insights de la [Organización]','Métricas operativas por canal y cola, con conclusiones generadas por IA.','Exportar informe')}
+    <div class="mx">
+    <div class="mgrid3">
+      <div class="mcard"><div class="cd">Conversaciones hoy</div><div style="font-size:26px;font-weight:800;color:#22314a;margin-top:2px">128</div><div style="font-size:10.5px;color:#0d7a52;font-weight:700;margin-top:2px">▲ +12% vs ayer</div></div>
+      <div class="mcard"><div class="cd">SLA dentro de plazo</div><div style="font-size:26px;font-weight:800;color:#22314a;margin-top:2px">96%</div><div style="font-size:10.5px;color:#0d7a52;font-weight:700;margin-top:2px">objetivo 95%</div></div>
+      <div class="mcard"><div class="cd">Tiempo medio de respuesta</div><div style="font-size:26px;font-weight:800;color:#22314a;margin-top:2px">3m 12s</div><div style="font-size:10.5px;color:#c0552f;font-weight:700;margin-top:2px">▲ pico 11–12 h</div></div>
+    </div>
+    <div class="mgrid2">
+      <div class="mcard"><div class="ct">${SVGS.insights}Volumen por canal · semana</div>
+        <div class="bars">
+          <div class="bcol"><div class="b" style="height:62%"></div><span class="bl">Lun</span></div>
+          <div class="bcol"><div class="b" style="height:78%"></div><span class="bl">Mar</span></div>
+          <div class="bcol"><div class="b" style="height:55%"></div><span class="bl">Mié</span></div>
+          <div class="bcol"><div class="b" style="height:88%"></div><span class="bl">Jue</span></div>
+          <div class="bcol"><div class="b" style="height:70%;background:linear-gradient(180deg,#12c98a,#0e9e6f)"></div><span class="bl">Hoy</span></div>
+        </div></div>
+      <div class="mcard"><div class="ct">${SVGS.ai}Conclusiones IA</div>
+        <div class="gline"><div class="gi">${SVGS.insights}</div><div class="gx"><b>El pico de las 11–12 h concentra el 31% del volumen</b><span>Sugerencia: reforzar la cola «Sin asignar» con un agente en esa franja.</span></div></div>
+        <div class="gline"><div class="gi">${SVGS.shieldwarn}</div><div class="gx"><b>El sentimiento NEG se concentra en Webchat</b><span>3 de cada 4 eventos de moderación vienen del mismo canal.</span></div></div>
+        <div class="gline"><div class="gi">${SVGS.check}</div><div class="gx"><b>Las difusiones de recordatorio reducen un 18% las incomparecencias a citas</b><span>Correlación de las últimas 4 campañas.</span></div></div></div>
+    </div>
+    </div></div>`); } },
+
+{ id:'E26', bloque:'Bloque 6 · Soberanía', mad:['ver','Verificado en producto'],
+  title:'Lo que ve la consola <em>no es</em> lo que reposa — cifrado en reposo',
+  desc:'La misma conversación, dos miradas: legible en la consola con permisos; blob cifrado ilegible en la base de datos. Y la burbuja efímera ni siquiera deja fila.',
+  html(){ return consoleShell('mod','Settings · Cifrado en reposo','settings',
+    `<div class="mod">${modHeader('lock','Dos miradas: consola ‖ base de datos','El contenido reposa cifrado bajo la clave de la [Organización]; sin ella, la fila es ruido.','')}
+    <div class="mx"><div class="mgrid2">
+      <div class="mcard"><div class="ct">${SVGS.eye}Lo que ve la consola (con permisos)</div>
+        <div style="background:#f4f7fb;border:1px solid #e0e7f0;border-radius:11px;padding:12px;margin-top:6px">
+          <div style="font-size:10px;font-weight:700;color:#4a5a74;margin-bottom:6px">A. Moreno · 09:52 · conversación securizada</div>
+          <div style="background:#fff;border:1px solid #e4e9f0;border-radius:9px;padding:8px 11px;font-size:12px;color:#26333d">Os adjunto el documento que me pedís.</div>
+        </div>
+        <div class="gline" style="margin-top:8px"><div class="gi">${SVGS.shield}</div><div class="gx"><b>Descifrado al vuelo, solo en memoria</b><span>Con sesión válida, rol con permiso y traza de acceso.</span></div><span class="bd ok">Verificado</span></div></div>
+      <div class="mcard"><div class="ct">${SVGS.db}Lo que reposa en la base de datos</div>
+        <div class="blob">msg_9f27a1 · enc:AES-256-GCM · iv:c41d…
+0x8A3F 9D2C E7B1 44A0 D9E6 1B7F 52C8 A4E3 7F09 CC5D 2E81 B6F4 0A97 D3E8 66C1 4B2A 91D5 F8E0 3C7A 15B9 E24F A86C D71B 09E3 5F42 C8A7 B310 6D9E…</div>
+        <div class="dbrow"><b>msg_9f27a1</b><span>blob cifrado · ilegible sin la clave maestra (KEK) de la [Organización]</span></div>
+        <div class="dbrow"><b>msg_efim_x</b><span class="miss">— sin fila: la burbuja efímera no persiste —</span></div>
+        <div class="gline" style="margin-top:8px"><div class="gi">${SVGS.ban}</div><div class="gx"><b>Burbuja efímera = sin rastro</b><span>No es «cifrado y oculto»: es que no existe la fila.</span></div><span class="bd ok">Verificado</span></div></div>
+    </div></div></div>`); } },
+
+{ id:'E27', bloque:'Bloque 6 · Soberanía', mad:['dis','Diseño · a validar con producto'],
+  title:'La clave es <em>tuya</em> — BYOK / HYOK',
+  desc:'El dato se cifra con una DEK; la DEK se envuelve con la KEK de la [Organización] (por tenant, nunca clave global). La soberanía es dónde vive la KEK.',
+  html(){ return consoleShell('mod','Settings · Cifrado y clave','settings',
+    `<div class="mod">${modHeader('key','Consola de clave','Envelope encryption por tenant. Cambia de modo sin re-cifrar (re-wrapping).','')}
+    <div class="mx"><div class="mgrid2">
+      <div class="mcard" style="text-align:center"><div class="segkh"><span class="on">BYOK</span><span>HYOK</span></div>
+        <div class="keychain">
+          <div class="kc"><div class="ki">${SVGS.doc}</div><div style="text-align:left"><b>Dato del caso</b><span>cifrado en reposo (AES-256) · IV por canal/mensaje</span></div></div>
+          <div class="kv">↓</div>
+          <div class="kc"><div class="ki">${SVGS.key}</div><div style="text-align:left"><b>DEK · clave de dato</b><span>envuelta por la KEK (envelope encryption)</span></div></div>
+          <div class="kv">↓</div>
+          <div class="kc" style="border-color:#bfe6d5"><div class="ki" style="color:#0d7a52">${SVGS.key}</div><div style="text-align:left"><b>KEK · clave maestra de la [Organización]</b><span>por tenant · nunca clave global</span></div></div>
+        </div></div>
+      <div class="mcard"><div class="ct">${SVGS.shield}Garantías</div>
+        <div class="gline"><div class="gi">${SVGS.lock}</div><div class="gx"><b>Cifrado gobernado server-side (BYOK)</b><span>Bajo la clave de la Organización · nada en claro en servidores de terceros.</span></div><span class="bd ok">Verificado</span></div>
+        <div class="gline"><div class="gi">${SVGS.audit}</div><div class="gx"><b>SoD en KMS</b><span>Ni el propio proveedor de la plataforma (MCCP) puede exportar las KEK ni acceder a la clave maestra.</span></div><span class="bd pen">Diseño</span></div>
+        <div class="gline"><div class="gi">${SVGS.ban}</div><div class="gx"><b>Kill-switch / crypto-shredding</b><span>Revocas la clave y el dato queda ilegible al instante, backups incluidos.</span></div><span class="bd pen">Diseño</span></div>
+        <div class="gline"><div class="gi">${SVGS.db}</div><div class="gx"><b>Residencia UE</b><span>Despliegue soberano en varias modalidades (nube UE, infra del cliente, on-premise); EU-only / «modo isla» (operación aislada) en roadmap.</span></div><span class="bd pen">Diseño</span></div>
+      </div></div></div></div>`); } },
+
+{ id:'E28', bloque:'Bloque 6 · Soberanía', mad:['dis','Diseño · hoy en producto: Brand Logs'],
+  title:'Todo deja <em>huella</em> — auditoría WORM y break-glass',
+  desc:'Registro de auditoría inmutable (WORM): se escribe una vez, no se reescribe nunca. El acceso de emergencia existe, pero es break-glass: doble control y alarma.',
+  html(){ return consoleShell('mod','Audit','audit',
+    `<div class="mod">${modHeader('audit','Registro de auditoría (SystemLog)','Cada acción sensible queda escrita. El registro se consulta, no se edita.','Exportar evidencias')}
+    <div class="mx">
+    <div class="mcard"><div class="ct">${SVGS.audit}Eventos recientes <span class="bd ok" style="margin-left:6px">WORM · inmutable</span></div>
+      <table class="ttable"><tr><th>Evento</th><th>Actor</th><th>Cuándo</th><th>Sello</th></tr>
+      <tr><td><b>Revelado de PII · «Documento»</b><br><span style="font-size:10px;color:#8794ab">S. Duarte · motivo: cotejo del trámite</span></td><td>D. Robles</td><td>hoy 12:06</td><td><span class="bd ok">#a41f…9c</span></td></tr>
+      <tr><td><b>Unstrike · retención levantada</b><br><span style="font-size:10px;color:#8794ab">J. Ortega · falso positivo</span></td><td>D. Robles</td><td>hoy 11:38</td><td><span class="bd ok">#0b93…f7</span></td></tr>
+      <tr><td><b>Permiso en caliente · «Adjuntar al Caso»</b><br><span style="font-size:10px;color:#8794ab">Rol Agente · efecto inmediato</span></td><td>I. Baena</td><td>hoy 10:12</td><td><span class="bd ok">#c1d8…4e</span></td></tr>
+      <tr><td><b>Cambio de postura · moderación ON</b><br><span style="font-size:10px;color:#8794ab">Canal «Webchat»</span></td><td>I. Baena</td><td>hoy 09:12</td><td><span class="bd ok">#77e2…b0</span></td></tr>
+      </table></div>
+    <div class="mgrid2">
+      <div class="mcard"><div class="ct">${SVGS.shieldwarn}Break-glass · acceso de emergencia</div><div class="cd">Para el caso extremo (requerimiento judicial, incidente): acceso excepcional con doble control — lo solicita un rol, lo aprueba otro — y alarma a la [Organización].</div>
+        <div class="mrow"><div class="mi">${SVGS.key}</div><div class="mtx"><b>Solicitud de acceso excepcional</b><span>Auditor · motivo obligatorio + referencia externa</span></div><span class="bd pen">Paso 1</span></div>
+        <div class="mrow"><div class="mi">${SVGS.check}</div><div class="mtx"><b>Aprobación de segunda persona</b><span>Manager · sin auto-aprobación posible</span></div><span class="bd pen">Paso 2</span></div>
+        <div class="mrow"><div class="mi"><svg viewBox="0 0 24 24" fill="none" style="width:16px;height:16px"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg></div><div class="mtx"><b>Alarma y registro reforzado</b><span>La [Organización] es notificada en el momento</span></div><span class="bd pen">Paso 3</span></div></div>
+      <div class="mcard"><div class="ct">${SVGS.audit}Capas del registro</div><div class="cd">El registro (SystemLog) se apoya en los <b>Brand Logs</b> del canal; la capa RegTech (WORM + break-glass + SIEM) se construye sobre él.</div>
+        <div class="gline"><div class="gi">${SVGS.audit}</div><div class="gx"><b>Brand Logs</b><span>Eventos de canal y operación, consultables.</span></div><span class="bd ok">Verificado</span></div>
+        <div class="gline"><div class="gi">${SVGS.shield}</div><div class="gx"><b>WORM + break-glass + SIEM</b><span>Capa RegTech objetivo.</span></div><span class="bd pen">Diseño</span></div></div>
+    </div></div></div>`,MGR); } },
+
+{ id:'E29', bloque:'Bloque 6 · Soberanía — cierre', mad:['dis','Diseño · export de flujos verificado'],
+  title:'Y si te vas, <em>te lo llevas todo</em> — anti lock-in',
+  desc:'Datos y metadatos en formatos abiertos, flujos como JSON, tu clave contigo y sin exit fees: el anti lock-in deja de ser promesa y pasa a ser demostrable.',
+  html(){ return consoleShell('mod','Settings · Portabilidad y salida','settings',
+    `<div class="mod">${modHeader('export','Plan de salida · walk-away','Te vas con tu dato Y tu clave, y lo rehidratas en otra parte.','Generar paquete de salida')}
+    <div class="mx"><div class="mgrid2">
+      <div class="mcard"><div class="gline"><div class="gi">${SVGS.db}</div><div class="gx"><b>Datos + metadatos</b><span>En formatos abiertos · portabilidad (Data Act).</span></div><span class="bd ok">Verificado</span></div>
+        <div class="gline"><div class="gi">${SVGS.doc}</div><div class="gx"><b>Flujos y plantillas</b><span>Exportados como JSON (View JSON del Builder).</span></div><span class="bd ok">Verificado</span></div></div>
+      <div class="mcard"><div class="gline"><div class="gi">${SVGS.key}</div><div class="gx"><b>Exportación de tu clave (BYOK/HYOK)</b><span>Llevarte el material criptográfico raíz — el dato cifrado viaja contigo.</span></div><span class="bd pen">Diseño</span></div>
+        <div class="gline"><div class="gi">${SVGS.check}</div><div class="gx"><b>Sin exit fees · plan de salida</b><span>Portabilidad y reversibilidad documentadas.</span></div><span class="bd ok">Verificado</span></div></div>
+    </div>
+    <div class="mcard" style="display:flex;align-items:center;gap:14px"><div class="mi" style="width:38px;height:38px;border-radius:11px;background:#f3f6fb;border:1px solid #e5eaf2;display:grid;place-items:center;color:#0d7a52">${SVGS.export}</div><div style="flex:1"><b style="font-size:13px;color:#22314a">Walk-away con dato cifrado + clave propia</b><div style="font-size:11.5px;color:#68788f">El cliente se va llevándose su dato cifrado y su clave, y lo rehidrata en otra parte.</div></div><span class="bd pen">Diseño</span></div>
+    </div></div>`); } }
+];
+
+/* ================= motor + secuenciador (capa de página del hilo narrativo validado) ================= */
+const SC=SCENES; // recorrido completo E01-E29 (la cata v0.2.0 filtraba con KEEP)
+const N=SC.length; let i=0, playing=false, timer=null;
+const stage=document.getElementById('stage'), dots=document.getElementById('dots');
+for(let k=0;k<N;k++){const b=document.createElement('button');b.setAttribute('aria-label','Escena '+(k+1));b.addEventListener('click',()=>{go(k);stop();});dots.appendChild(b);}
+function render(){
+  const s=SC[i];
+  document.getElementById('capStep').textContent=`${s.id} · ${i+1}/${N} · ${s.bloque} — ${s.mad[1]}`;
+  document.getElementById('capTitle').innerHTML=s.title;
+  document.getElementById('capText').textContent=s.desc.replaceAll('[Organización]','[Organización]');
+  stage.innerHTML=s.html();
+  Array.prototype.forEach.call(dots.children,(b,x)=>{b.className=x===i?'on':(x<i?'done':'');});
+  bindTips();
+}
+function go(n){i=Math.max(0,Math.min(N-1,n));render();try{history.replaceState(null,'','?p='+(i+1));}catch(e){}}
+function next(){go((i+1)%N);}function prev(){go(Math.max(0,i-1));}
+function stop(){playing=false;if(timer){clearInterval(timer);timer=null;}document.getElementById('playIcon').innerHTML='<path d="M8 5v14l11-7z" fill="currentColor"/>';}
+function start(){playing=true;document.getElementById('playIcon').innerHTML='<path d="M7 5h3v14H7zM14 5h3v14h-3z" fill="currentColor"/>';timer=setInterval(()=>{next();},5200);}
+document.getElementById('next').addEventListener('click',()=>{next();stop();});
+document.getElementById('prev').addEventListener('click',()=>{prev();stop();});
+document.getElementById('play').addEventListener('click',()=>{playing?stop():start();});
+document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'){next();stop();}else if(e.key==='ArrowLeft'){prev();stop();}});
+/* tooltips en portal (master) */
+let tt=null;
+function hideTip(){if(tt){tt.remove();tt=null;}}
+function showTip(el){hideTip();const tip=el.getAttribute('data-tip');if(!tip)return;tt=document.createElement('div');tt.className='tt';tt.textContent=tip;document.body.appendChild(tt);
+  const r=el.getBoundingClientRect(),t=tt.getBoundingClientRect(),pad=6,gap=8;let x,y;
+  if(el.classList.contains('tip-r')){x=r.right+gap;y=r.top+(r.height-t.height)/2;if(x+t.width>window.innerWidth-pad)x=r.left-t.width-gap;}
+  else{x=r.left+(r.width-t.width)/2;y=r.bottom+gap;if(y+t.height>window.innerHeight-pad)y=r.top-t.height-gap;}
+  x=Math.max(pad,Math.min(x,window.innerWidth-pad-t.width));y=Math.max(pad,Math.min(y,window.innerHeight-pad-t.height));
+  tt.style.left=Math.round(x)+'px';tt.style.top=Math.round(y)+'px';requestAnimationFrame(()=>{if(tt)tt.classList.add('show');});}
+function bindTips(){document.querySelectorAll('[data-tip]').forEach(el=>{el.addEventListener('mouseenter',()=>showTip(el));el.addEventListener('mouseleave',hideTip);});}
+window.addEventListener('scroll',hideTip,true);window.addEventListener('resize',hideTip);
+/* estilo tooltip */
+const st=document.createElement('style');st.textContent='.tt{position:fixed;z-index:9999;background:#0a1428;color:#eaf2fd;font-size:11px;font-weight:600;white-space:nowrap;padding:6px 10px;border-radius:8px;box-shadow:0 12px 26px -8px rgba(0,0,0,.55);border:1px solid rgba(160,190,230,.24);pointer-events:none;opacity:0;transition:opacity .1s ease}.tt.show{opacity:1}';document.head.appendChild(st);
+/* deep-link ?p=N */
+(function(){const m=(location.search.match(/[?&]p=(\d+)/)||location.hash.match(/#p?(\d+)/));if(m){i=Math.max(0,Math.min(N-1,parseInt(m[1],10)-1));}})();
+render();
+</script>
+</body>
+</html>

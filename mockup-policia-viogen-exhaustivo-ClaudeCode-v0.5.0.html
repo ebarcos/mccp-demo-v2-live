@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<!-- Mockup Policía · VioGén · recorrido EXHAUSTIVO v0.5.0 (P01-P16) · (Claude-Code). CONSOLA REALINEADA al master D2CC-07 (norma consola-manda + regla de limitación, owner 2026-07-12): topbar+rail+bandeja del master, barra de acciones icon-first, ancho 672px (>2× móvil), sin zona de Usuario. Copy y motor INTACTOS respecto de v0.4.2. Motor acumulativo (data-step + data-until) + deep-link ?p=N (abre en un paso concreto). Global=marca MCCP · Consola=producto. Coherencia móvil↔consola. Neutro ([Cliente]=UFAM). -->
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>MCCP · Plataforma Conversacional de Misión Crítica</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --teal:#17b39a; --teal-d:#0f3d39; --purple:#8e3b7a; --gold:#e2c391;
+  --ink:#eef5f3; --muted:#a3bac0;
+  --wa-head:#0b7d6e; --wa-bg:#efeae2; --wa-in:#ffffff; --wa-out:#d7fdd0; --wa-tick:#53bdeb; --wa-ink:#111b21; --wa-mut:#667781; --wa-blue:#0a7ae0;
+  --c-conv:#ffffff; --c-in:#eef1f6; --c-out:#306cf0; --c-send:#3877f2; --c-green:#12c98a; --c-mut:#8894a6; --c-line:#e7ebf1;
+  --sans:'Archivo',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;
+  --serif:'Fraunces',Georgia,serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--sans);color:var(--ink);-webkit-font-smoothing:antialiased;line-height:1.45;min-height:100vh;
+  background:radial-gradient(1200px 640px at 12% -4%, #164742 0%, transparent 52%),radial-gradient(1100px 720px at 92% 104%, #3d1743 0%, transparent 52%),linear-gradient(135deg,#0b2a27 0%,#10262f 46%,#241038 100%);
+  background-attachment:fixed}
+.app{max-width:1280px;margin:0 auto;width:100%;min-height:100vh;display:flex;flex-direction:column;padding-bottom:6px}
+.brandbar{padding:20px 30px 8px}
+.lockup{display:inline-flex;align-items:center;gap:15px}
+.lockup svg{width:52px;height:52px;flex:0 0 auto}
+.lockup .txt{border-left:2px solid rgba(23,179,154,.45);padding-left:15px}
+.lockup .txt .wm{font-size:28px;font-weight:800;letter-spacing:2px;color:#fff;line-height:.95;display:block}
+.lockup .txt .claim{font-family:var(--serif);font-size:21px;font-weight:500;font-style:italic;color:#eef7f4;margin-top:5px;display:block;line-height:1.05}
+
+.stage{flex:1;display:flex;align-items:center;justify-content:center;padding:2px 24px}
+.rec{display:flex;align-items:stretch;justify-content:center;gap:28px;width:100%}
+.col{display:flex;flex-direction:column;align-items:center;gap:10px}
+.col.off{display:none}
+.col .lbl{font-size:10.5px;font-weight:700;letter-spacing:1.1px;text-transform:uppercase;color:#e2f0ec;display:flex;align-items:center;gap:7px}
+.col .lbl .n{width:17px;height:17px;border-radius:50%;background:var(--teal);color:#04241f;font-size:10px;display:flex;align-items:center;justify-content:center;font-weight:800}
+.hide{display:none!important}
+
+/* iPhone */
+.iphone{width:290px;background:#07070a;border-radius:44px;padding:9px;box-shadow:0 22px 50px rgba(0,0,0,.5),inset 0 0 0 2px #1c1c22;flex:0 0 auto}
+.screen{border-radius:36px;overflow:hidden;height:604px;position:relative;display:flex;flex-direction:column;background:var(--wa-bg)}
+.notch{position:absolute;top:9px;left:50%;transform:translateX(-50%);width:100px;height:25px;background:#000;border-radius:15px;z-index:9}
+.statusbar{position:absolute;top:0;left:0;right:0;height:33px;display:flex;align-items:center;justify-content:space-between;padding:11px 21px 0;font-size:11.5px;font-weight:700;color:#fff;z-index:8;pointer-events:none}
+.statusbar .r{display:flex;align-items:center;gap:5px}
+.statusbar .r svg{width:15px;height:11px}
+.wa-head{background:var(--wa-head);color:#fff;padding:35px 12px 9px;display:flex;align-items:center;gap:9px;flex:0 0 auto;z-index:2}
+.wa-head .bk{font-size:19px;opacity:.95;font-weight:300}
+.wa-av{width:32px;height:32px;border-radius:50%;background:#0a5c50;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700}
+.wa-head .nm{flex:1;min-width:0}
+.wa-head .nm b{font-size:12.5px;display:flex;align-items:center;gap:5px;line-height:1.15}
+.wa-head .nm b svg{width:12px;height:12px}
+.wa-head .nm span{font-size:10px;opacity:.82}
+.wa-head .ic{display:flex;gap:14px;opacity:.95}
+.wa-head .ic svg{width:16px;height:16px}
+.secbar{background:#0d5349;color:#eafff8;padding:7px 13px;display:flex;align-items:center;gap:8px;font-size:11px;flex:0 0 auto}
+.secbar svg{width:14px;height:14px}
+.secbar b{color:#fff;font-weight:700}
+.wa-chat{flex:1;padding:11px 10px;display:flex;flex-direction:column;gap:7px;overflow-y:auto;background:var(--wa-bg)}
+.wa-chat::-webkit-scrollbar{width:0}
+.wsys{align-self:center;background:#d9f2ea;color:#0a5a4f;font-size:9.5px;padding:4px 10px;border-radius:8px;text-align:center;max-width:92%;margin:2px 0}
+.wsys.wt{background:#fff8d6;color:#5b5322}
+.wb{max-width:82%;padding:6px 9px 4px;border-radius:8px;font-size:12.5px;color:var(--wa-ink);box-shadow:0 1px .5px rgba(0,0,0,.13)}
+.wb.in{background:var(--wa-in);align-self:flex-start;border-top-left-radius:0}
+.wb.out{background:var(--wa-out);align-self:flex-end;border-top-right-radius:0}
+.wb .who{font-size:10.5px;font-weight:700;color:#0a7a6a;display:block;margin-bottom:1px}
+.wb .m{font-size:9px;color:var(--wa-mut);float:right;margin:3px 0 -1px 8px}
+.wb .m .tk{color:var(--wa-tick);font-weight:700;letter-spacing:-2px;margin-left:2px}
+.qreplies{display:flex;flex-direction:column;gap:3px;align-self:flex-start;width:82%}
+.qr{background:#fff;color:var(--wa-blue);text-align:center;font-size:12px;font-weight:600;padding:8px;border-radius:8px;box-shadow:0 1px .5px rgba(0,0,0,.13);display:flex;align-items:center;justify-content:center;gap:6px}
+.qr svg{width:14px;height:14px}
+.qr.sel{background:var(--wa-out);color:#0a5a4f}
+.invite{background:#fff;border-radius:9px;padding:10px;align-self:flex-start;max-width:86%;box-shadow:0 1px .5px rgba(0,0,0,.13);overflow:hidden}
+.invite .top{background:linear-gradient(120deg,#0f3d39,#8e3b7a);margin:-10px -10px 9px;padding:11px;color:#fff;display:flex;align-items:center;gap:9px}
+.invite .top .lk{width:28px;height:28px;border-radius:8px;background:rgba(255,255,255,.16);display:flex;align-items:center;justify-content:center;flex:0 0 auto}
+.invite .top .lk svg{width:15px;height:15px}
+.invite .top b{font-size:12px;display:block}
+.invite .top span{font-size:10px;opacity:.85}
+.invite .bd{font-size:11.5px;color:#3a4a52;margin-bottom:7px}
+.invite .ref{font-size:10px;background:#f1f4f6;border-radius:6px;padding:5px 9px;color:#33454e;display:inline-block;margin-bottom:9px}
+.invite .cta{background:var(--wa-head);color:#fff;text-align:center;font-size:12px;font-weight:600;padding:8px;border-radius:8px;display:flex;align-items:center;justify-content:center;gap:7px}
+.invite .cta svg{width:14px;height:14px}
+.invite .ft{font-size:9.5px;color:var(--wa-mut);margin-top:8px;display:flex;gap:6px;align-items:flex-start}
+.invite .ft svg{width:12px;height:12px;flex:0 0 auto;margin-top:1px;color:#0a7a6a}
+.sms{position:absolute;top:44px;left:8px;right:8px;background:rgba(250,250,250,.98);backdrop-filter:blur(6px);border-radius:14px;padding:9px 12px;box-shadow:0 12px 30px -8px rgba(0,0,0,.55);z-index:10;display:flex;gap:10px;align-items:flex-start}
+.sms .si{width:30px;height:30px;border-radius:8px;background:#34c759;display:flex;align-items:center;justify-content:center;flex:0 0 auto}
+.sms .si svg{width:16px;height:16px}
+.sms .sc{flex:1}
+.sms .sc .h{display:flex;justify-content:space-between;align-items:center}
+.sms .sc .h b{font-size:11.5px;color:#111}
+.sms .sc .h .t{font-size:10px;color:#8a8a8a}
+.sms .sc p{font-size:11px;color:#2b2b2b;margin-top:2px;line-height:1.3}
+.sms .sc p b{font-weight:700}
+.wa-comp{background:#f0f2f5;padding:6px 8px;display:flex;align-items:center;gap:7px;flex:0 0 auto}
+.wa-comp .field{flex:1;background:#fff;border-radius:20px;padding:8px 12px;display:flex;align-items:center;gap:9px;box-shadow:0 1px .5px rgba(0,0,0,.1)}
+.wa-comp .field svg{width:16px;height:16px;color:#8696a0;flex:0 0 auto}
+.wa-comp .field span{flex:1;font-size:12px;color:#8696a0}
+.wa-comp .mic{width:36px;height:36px;border-radius:50%;background:var(--wa-head);display:flex;align-items:center;justify-content:center;flex:0 0 auto}
+.wa-comp .mic svg{width:17px;height:17px;color:#fff}
+/* In-App */
+.sec-body{flex:1;background:#f4f7f8;padding:13px 12px;display:flex;flex-direction:column;gap:9px;overflow-y:auto}
+.sec-body::-webkit-scrollbar{width:0}
+.gate h3{font-family:var(--serif);font-size:17px;color:#0f2b26;font-weight:600}
+.gate .lede{font-size:11px;color:#5c6b7c;margin-top:-3px}
+.flow{background:#fff;border:1px solid #e6ecf0;border-radius:10px;overflow:hidden}
+.flow .fr{display:flex;justify-content:space-between;align-items:center;padding:8px 11px;font-size:11.5px;border-bottom:1px solid #eef2f5}
+.flow .fr:last-child{border-bottom:0}
+.flow .fr .k{color:#7c8b98}
+.flow .fr .v{color:#1e2b33;font-weight:600}
+.flow .fr .v.ok{color:#0e9e85;display:flex;align-items:center;gap:5px}
+.flow .fr .v.ok svg{width:14px;height:14px}
+.otp-lbl{font-size:10px;color:#5c6b7c;display:flex;align-items:center;gap:6px;margin-top:1px}
+.otp-lbl svg{width:12px;height:12px;color:#0a7a6a}
+.otp{display:flex;gap:6px;justify-content:center}
+.otp span{width:33px;height:41px;border:1.5px solid #dbe3ea;border-radius:9px;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:19px;font-weight:600;color:#9aa7b3;background:#fbfcfe}
+.otp span.fill{border-color:var(--teal);color:#0f3d39;background:#e7f4f1}
+.verify{background:var(--wa-head);color:#fff;text-align:center;font-size:12.5px;font-weight:600;padding:10px;border-radius:9px;margin-top:2px}
+.sep-note{font-size:9px;color:#7c8b98;text-align:center;line-height:1.35}
+.rb{max-width:86%;padding:6px 9px 4px;border-radius:9px;font-size:12px;color:#1f2b33;box-shadow:0 1px .5px rgba(0,0,0,.09)}
+.rb.in{background:#fff;align-self:flex-start;border-top-left-radius:0}
+.rb.out{background:#dbeeff;align-self:flex-end;border-top-right-radius:0}
+.rb .who{font-size:10px;font-weight:700;color:#0a7a6a;display:block;margin-bottom:1px}
+.rb .m{font-size:9px;color:var(--wa-mut);float:right;margin:3px 0 -1px 7px}
+.rb .m .tk{color:var(--wa-tick);letter-spacing:-2px;margin-left:2px}
+.rsys{align-self:center;background:#e7f4f1;color:#0a5a4f;font-size:9.5px;padding:4px 10px;border-radius:8px;text-align:center;max-width:92%}
+
+/* Consola */
+.console{width:672px;max-width:100%;background:#0f1c39;border-radius:16px;overflow:hidden;box-shadow:0 28px 64px rgba(0,0,0,.6),0 0 0 1px rgba(160,190,230,.14);display:flex;flex-direction:column;height:624px;border:1px solid rgba(160,190,230,.22)}
+.cs-top{background:#0a1428;padding:0 12px;display:flex;align-items:center;gap:9px;flex:0 0 auto;height:44px;border-bottom:1px solid #22355a}
+.cs-top .crumb{font-size:11px;color:#93a6c4;padding-left:9px;border-left:1px solid #22355a}
+.cs-top .srch{flex:1;max-width:220px;margin:0 auto;background:#0e1c37;border:1px solid #22355a;border-radius:8px;padding:5px 9px;display:flex;align-items:center;gap:7px;color:#6b7b98;font-size:10.5px}
+.cs-top .srch svg{width:12px;height:12px;flex:0 0 auto}
+.cs-top .g{width:26px;height:26px;border-radius:8px;background:conic-gradient(from 140deg,#17b39a,#2b6f8c 55%,#8e3b7a);display:flex;align-items:center;justify-content:center;box-shadow:inset 0 0 0 1px rgba(255,255,255,.14)}
+.cs-top .g svg{width:15px;height:15px}
+.cs-top b{font-size:12.5px;color:#eef3fb}
+.cs-top .who{margin-left:auto;display:flex;align-items:center;gap:8px;font-size:11px;color:#a6b6d2;padding-left:10px;border-left:1px solid #22355a}
+.cs-top .who .ot{text-align:right}
+.cs-top .who .ot b{font-size:10.5px;color:#e9f0fb;display:block;line-height:1.15}
+.cs-top .who .ot span{font-size:8.5px;color:#93a6c4}
+.cs-top .who .a{width:24px;height:24px;border-radius:50%;background:#2a4a78;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#d6e6fb}
+.cs-main{flex:1;display:flex;min-height:0}
+/* rail de módulos (master) */
+.rail{width:46px;background:#0a1226;border-right:1px solid rgba(160,190,230,.14);display:flex;flex-direction:column;align-items:center;padding:8px 0;gap:3px;flex:0 0 auto}
+.rail .ic{width:32px;height:32px;border-radius:9px;display:flex;align-items:center;justify-content:center;color:#6b7b98;position:relative}
+.rail .ic svg{width:16px;height:16px}
+.rail .ic.on{background:linear-gradient(140deg,rgba(48,108,240,.22),rgba(18,201,138,.14));color:#8fd3ff;box-shadow:inset 0 0 0 1px rgba(120,170,255,.28)}
+.rail .ic.on::before{content:"";position:absolute;left:-7px;top:50%;transform:translateY(-50%);width:2.5px;height:15px;border-radius:2px;background:#306cf0}
+.rail .sp{flex:1}
+.rail .me{width:26px;height:26px;border-radius:50%;background:linear-gradient(135deg,#e4b363,#c98a3a);display:flex;align-items:center;justify-content:center;color:#3a2906;font-weight:700;font-size:9.5px;margin-top:4px;box-shadow:0 0 0 2px rgba(255,255,255,.12)}
+.bandeja{width:196px;background:#0d1a34;flex:0 0 auto;display:flex;flex-direction:column;border-right:1px solid rgba(160,190,230,.14)}
+.bandeja .bh{padding:12px 13px 8px;font-size:13px;color:#eef3fb;font-weight:700}
+.bandeja .search{margin:0 12px 9px;background:#0d1a34;border:1px solid #26385c;border-radius:8px;padding:7px 10px;font-size:11px;color:#93a4c4;display:flex;align-items:center;gap:7px}
+.bandeja .search svg{width:13px;height:13px}
+.bandeja .tabs{display:flex;gap:5px;padding:0 12px 9px}
+.bandeja .tabs span{font-size:10px;padding:4px 9px;border-radius:6px;color:#a4b3d1}
+.bandeja .tabs span.on{background:#1c3a63;color:#dcebff;font-weight:600}
+.bandeja .tabs span .n2{background:#2a4a78;color:#cfe0ff;font-size:8px;border-radius:20px;padding:0 4px;font-weight:700;margin-left:3px}
+.bandeja .conv{margin:0 7px;padding:9px 10px;border-radius:11px;background:#15305a;box-shadow:inset 0 0 0 1px rgba(120,170,255,.22);display:flex;gap:9px;align-items:flex-start}
+.bandeja .conv .a{width:30px;height:30px;border-radius:50%;background:#2a4a78;display:flex;align-items:center;justify-content:center;font-size:10.5px;font-weight:700;color:#d6e6fb;flex:0 0 auto;position:relative}
+.bandeja .conv .a .wa{position:absolute;bottom:-2px;right:-2px;width:14px;height:14px;border-radius:50%;background:#25d366;border:2px solid #15305a}
+.bandeja .conv .x{flex:1;min-width:0}
+.bandeja .conv .x b{font-size:12px;color:#eef4fd;display:flex;justify-content:space-between}
+.bandeja .conv .x b span{font-size:9.5px;color:#9fb0cf;font-weight:400}
+.bandeja .conv .x .ex{font-size:9px;color:#8fe6c4;background:#123a30;border-radius:4px;padding:1px 5px;display:inline-block;margin-top:3px}
+.bandeja .empty{margin-top:auto;padding:14px;text-align:center;font-size:9.5px;color:#8598ba}
+.cs-conv{flex:1;display:flex;flex-direction:column;background:var(--c-conv);min-width:0}
+.cs-ch{padding:11px 16px;display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--c-line);flex:0 0 auto}
+.cs-ch .a{width:34px;height:34px;border-radius:50%;background:#eef1f6;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#42556a}
+.cs-ch .nm b{font-size:13.5px;color:#1b2430;display:block}
+.cs-ch .nm span{font-size:10.5px;color:var(--c-mut)}
+.cs-ch .ch{margin-left:auto;display:flex;align-items:center;gap:6px;font-size:10.5px;padding:5px 10px;border-radius:999px}
+.cs-ch .ch.pub{color:#3f70c9;background:#eef2f7}
+.cs-ch .ch.sec{color:#12855c;background:#fff;box-shadow:0 1px 3px rgba(20,40,70,.12),inset 0 0 0 1px #e2e8f0}
+.cs-ch .ch svg{width:12px;height:12px}
+.cs-body{flex:1;padding:16px;display:flex;flex-direction:column;gap:9px;overflow-y:auto;background:#fff}
+.cs-body::-webkit-scrollbar{width:0}
+.cb{max-width:74%;padding:8px 11px 6px;border-radius:12px;font-size:12.5px}
+.cb.in{background:var(--c-in);color:#26333d;align-self:flex-start;border-bottom-left-radius:3px}
+.cb.out{background:var(--c-out);color:#fff;align-self:flex-end;border-bottom-right-radius:3px}
+.cb .who{font-size:10px;font-weight:700;color:#5a6b7d;display:block;margin-bottom:2px}
+.cb.out .who{color:#cfe0ff}
+.cb .m{font-size:9px;opacity:.7;float:right;margin:3px 0 0 8px}
+.csys{align-self:center;background:#eef2f7;color:#5a6b7d;font-size:9.5px;padding:5px 12px;border-radius:20px;text-align:center;max-width:88%}
+.csys.ok{background:#e7f7ef;color:#12855c}
+.cs-foot{padding:10px 14px;border-top:1px solid var(--c-line);display:flex;align-items:center;gap:9px;flex:0 0 auto;background:#fff}
+.cs-foot .tools{display:flex;gap:11px;color:#9aa7b6}
+.cs-foot .tools svg{width:16px;height:16px}
+.cs-foot .in{flex:1;background:#f2f5f9;border:1px solid #e4e9f0;border-radius:10px;padding:10px 12px;font-size:11.5px;color:#9aa7b6}
+.cs-foot .snd{background:var(--c-send);color:#fff;border-radius:10px;padding:9px 15px;font-size:12px;font-weight:600;display:flex;align-items:center;gap:6px}
+.cs-foot .snd svg{width:14px;height:14px}
+
+.caption{padding:12px 24px 4px;text-align:center;min-height:70px}
+.caption .step{font-size:10.5px;font-weight:700;letter-spacing:1.4px;text-transform:uppercase;color:var(--teal);margin-bottom:6px}
+.caption h2{font-family:var(--serif);font-size:23px;color:#fff;font-weight:500}
+.caption h2 em{font-style:italic;color:var(--gold)}
+.caption p{font-size:12.5px;color:#c3d6d1;max-width:660px;margin:6px auto 0}
+.seq{display:flex;align-items:center;justify-content:center;gap:14px;padding:10px 24px 20px}
+.seq .nav,.seq .play{border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.05);border-radius:12px;cursor:pointer;display:flex;align-items:center;justify-content:center;color:#dfeeeb}
+.seq .nav{width:40px;height:40px}.seq .play{width:48px;height:48px;background:linear-gradient(135deg,#17b39a,#8e3b7a);border:0;color:#fff}
+.seq .nav:hover{border-color:var(--teal);color:#fff}
+.seq .nav svg,.seq .play svg{width:19px;height:19px}
+.dots{display:flex;gap:7px}
+.dots button{width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,.24);border:0;cursor:pointer;padding:0;transition:.2s}
+.dots button.on{background:var(--teal);transform:scale(1.3)}
+.dots button.done{background:var(--purple)}
+/* ===== P08–P16 · extensiones (add-only, no rediseñar) ===== */
+/* los paneles especiales no deben encogerse en el flex-column que desborda (min-height:auto→0 con overflow:hidden) */
+.callp,.accs,.dilig,.arch-log,.arch-siem,.callmini,.c-mod,.ceph-note,.reph-sys{flex:0 0 auto}
+/* adjunto / doc en burbuja (reutilizado de la cata v0.4.1) */
+.doc{display:flex;align-items:center;gap:8px}
+.doc .i{width:30px;height:30px;border-radius:7px;background:#eaf1f8;display:flex;align-items:center;justify-content:center;flex:0 0 auto}
+.doc .i svg{width:15px;height:15px;color:var(--c-out)}
+.doc .n b{font-size:11px;color:#26333d;display:block}
+.doc .n span{font-size:9px;color:#8a97a3}
+.c-att{display:flex;align-items:center;gap:9px;background:#f5f8fc;border:1px solid #e6ecf3;border-radius:8px;padding:7px 9px;margin-top:2px}
+.c-att .i{width:28px;height:28px;border-radius:6px;background:#e9f0fa;display:flex;align-items:center;justify-content:center;flex:0 0 auto}
+.c-att .i svg{width:14px;height:14px;color:var(--c-out)}
+.c-att .n b{font-size:11px;color:#26333d;display:block}
+.c-att .n span{font-size:9px;color:#12a06f}
+.c-att.block{background:#fbeee9;border-color:#f2d3c6}
+.c-att.block .i{background:#f6d9cd}.c-att.block .i svg{color:#c0552f}
+.c-att.block .n span{color:#c0552f}
+.c-mod{align-self:flex-start;max-width:88%;background:#fbeee9;border:1px solid #f2d3c6;border-radius:10px;padding:8px 11px;font-size:11px;color:#a2492b;display:flex;gap:8px;line-height:1.35}
+.c-mod svg{width:15px;height:15px;flex:0 0 auto;margin-top:1px}
+/* nota de voz + transcripción (In-App room) */
+.vnote{display:flex;align-items:center;gap:8px;min-width:158px}
+.vnote .pl{width:26px;height:26px;border-radius:50%;background:var(--wa-head);display:flex;align-items:center;justify-content:center;flex:0 0 auto}
+.vnote .pl svg{width:11px;height:11px;color:#fff}
+.vnote .wf{flex:1;display:flex;align-items:center;gap:2px;height:20px}
+.vnote .wf i{flex:1;background:#8fbdb2;border-radius:2px}
+.vnote .du{font-size:9.5px;color:var(--wa-mut)}
+.transc{margin-top:6px;padding-top:6px;border-top:1px dashed #cfe0da;font-size:11px;color:#33434b;line-height:1.35}
+.transc .tl{font-size:8.5px;font-weight:700;color:#0a7a6a;text-transform:uppercase;letter-spacing:.5px;display:flex;align-items:center;gap:5px;margin-bottom:3px}
+.transc .tl svg{width:11px;height:11px}
+.c-transc{font-size:9px;color:var(--c-mut);display:flex;align-items:center;gap:5px;margin-top:5px}
+.c-transc svg{width:11px;height:11px;color:#12a06f}
+/* videollamada — panel consola (claro) */
+.callp{align-self:stretch;background:#f4f7fb;border:1px solid #e2e8f0;border-radius:12px;padding:11px;margin:2px 0}
+.callp .ch{font-size:10px;font-weight:700;color:#3a4a5a;text-transform:uppercase;letter-spacing:.7px;display:flex;align-items:center;gap:7px;margin-bottom:9px}
+.callp .ch>svg{width:14px;height:14px;color:var(--c-out)}
+.callp .ch .rec{margin-left:auto;display:flex;align-items:center;gap:5px;color:#d1483a;font-size:9.5px;font-weight:600;letter-spacing:0;text-transform:none}
+.callp .ch .rec i{width:7px;height:7px;border-radius:50%;background:#e0503f;display:inline-block}
+.callp .grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:7px}
+.callp .vt{border-radius:9px;background:linear-gradient(160deg,#26374d,#16223a);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:16px 6px}
+.callp .vt .av{width:34px;height:34px;border-radius:50%;background:#41689e;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:#eaf2fe}
+.callp .vt .nm{font-size:8.5px;color:#c3d3ea;text-align:center;line-height:1.2}
+.callp .cons{margin-top:9px;background:#e7f7ef;border:1px solid #cfeede;border-radius:8px;padding:8px 10px;font-size:10px;color:#2d7358;display:flex;gap:7px;align-items:flex-start;line-height:1.35}
+.callp .cons svg{width:14px;height:14px;flex:0 0 auto;color:#12a06f;margin-top:1px}
+.callp .cons b{color:#1c5c43}
+/* videollamada — mini panel In-App (móvil) */
+.callmini{align-self:stretch;background:#fff;border:1px solid #e6ecf0;border-radius:11px;padding:10px}
+.callmini .h{font-size:9.5px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;display:flex;align-items:center;gap:6px;margin-bottom:8px;color:#0a7a6a}
+.callmini .h>svg{width:12px;height:12px}
+.callmini .h .rec{margin-left:auto;display:flex;align-items:center;gap:4px;color:#d1483a;font-size:9px;text-transform:none;letter-spacing:0;font-weight:600}
+.callmini .h .rec i{width:6px;height:6px;border-radius:50%;background:#e0503f}
+.callmini .g{display:grid;grid-template-columns:1fr 1fr 1fr;gap:5px}
+.callmini .t{background:linear-gradient(160deg,#26374d,#16223a);border-radius:7px;padding:11px 3px;display:flex;flex-direction:column;align-items:center;gap:4px}
+.callmini .t .av{width:24px;height:24px;border-radius:50%;background:#41689e;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;color:#eaf2fe}
+.callmini .t .nm{font-size:7.5px;color:#c3d3ea;text-align:center}
+.callmini .cn{margin-top:8px;font-size:9px;color:#3a4a52;line-height:1.3;display:flex;gap:6px}
+.callmini .cn svg{width:12px;height:12px;flex:0 0 auto;margin-top:1px;color:#0a7a6a}
+/* burbujas efímeras — In-App */
+.rb.eph{background:#eceff3;border:1px dashed #b9c4d0;color:#5a6672;box-shadow:none}
+.rb.eph.out{background:#e7ebf1;align-self:flex-end;border-top-right-radius:0}
+.rb.eph .eh{font-size:8.5px;font-weight:700;color:#8a96a6;text-transform:uppercase;letter-spacing:.5px;display:flex;align-items:center;gap:5px;margin-bottom:2px}
+.rb.eph .eh svg{width:11px;height:11px}
+.rb.eph .ft{font-size:8.5px;color:#9aa6b4;margin-top:3px}
+.reph-sys{align-self:center;background:#eceff3;border:1px dashed #b9c4d0;color:#6b7684;font-size:9.5px;padding:4px 11px;border-radius:8px;text-align:center;max-width:92%;display:flex;align-items:center;gap:6px}
+.reph-sys svg{width:12px;height:12px;flex:0 0 auto}
+/* burbujas efímeras — consola */
+.cb.eph{background:#eef0f4;border:1px dashed #c2ccd8;color:#5a6672}
+.cb.eph.out{background:#e9edf3;align-self:flex-end;border-bottom-right-radius:3px;color:#5a6672}
+.cb.eph .eh{font-size:8.5px;font-weight:700;color:#8a96a6;text-transform:uppercase;letter-spacing:.5px;display:flex;align-items:center;gap:5px;margin-bottom:2px}
+.cb.eph .eh svg{width:11px;height:11px}
+.ceph-note{align-self:center;background:#f1f3f7;border:1px dashed #c9d2de;color:#6b7684;font-size:9.5px;padding:6px 11px;border-radius:9px;text-align:center;max-width:92%;display:flex;gap:7px;align-items:flex-start;line-height:1.35}
+.ceph-note svg{width:13px;height:13px;flex:0 0 auto;margin-top:1px;color:#8a96a6}
+/* tarjeta acceso de terceros — consola (claro) */
+.accs{align-self:stretch;background:#f4f7fb;border:1px solid #e2e8f0;border-radius:11px;padding:10px 11px;margin:2px 0}
+.accs .h{font-size:10px;font-weight:700;color:#3a4a5a;text-transform:uppercase;letter-spacing:.6px;display:flex;align-items:center;gap:7px;margin-bottom:6px}
+.accs .h svg{width:13px;height:13px;color:var(--c-out)}
+.accs .row{display:flex;align-items:center;gap:9px;padding:7px 0;border-top:1px solid #e7ecf2}
+.accs .row:first-of-type{border-top:0}
+.accs .row .av{width:28px;height:28px;border-radius:50%;background:#e3ebf5;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;color:#42618c;flex:0 0 auto}
+.accs .row .x{flex:1;min-width:0}
+.accs .row .x b{font-size:11px;color:#26333d;display:block}
+.accs .row .x span{font-size:9px;color:#7c8b9c}
+.accs .row .tag{font-size:8.5px;color:#12855c;background:#e7f7ef;border-radius:5px;padding:2px 7px;white-space:nowrap}
+/* diligencia / expediente — consola (claro) */
+.dilig{align-self:stretch;background:#fff;border:1px solid #e2e8f0;border-radius:11px;overflow:hidden;margin:2px 0;box-shadow:0 1px 3px rgba(10,20,40,.05)}
+.dilig .h{background:#f4f7fb;padding:9px 12px;font-size:11px;font-weight:700;color:#26333d;display:flex;align-items:center;gap:7px;border-bottom:1px solid #e7ecf2}
+.dilig .h svg{width:14px;height:14px;color:var(--c-out)}
+.dilig .h .st{margin-left:auto;font-size:8.5px;font-weight:700;color:#b06a12;background:#fdf1dc;border-radius:5px;padding:2px 7px;letter-spacing:.4px;text-transform:uppercase}
+.dilig .r{display:flex;justify-content:space-between;gap:10px;padding:7px 12px;font-size:11px;border-top:1px solid #f0f3f7}
+.dilig .r:first-of-type{border-top:0}
+.dilig .r .k{color:#8090a0;flex:0 0 auto}
+.dilig .r .v{color:#26333d;font-weight:600;text-align:right}
+/* archivo / SystemLog — consola (claro) */
+.arch-log{align-self:stretch;background:#f4f7fb;border:1px solid #e2e8f0;border-radius:11px;padding:10px 12px;margin:2px 0}
+.arch-log .h{font-size:10px;font-weight:700;color:#3a4a5a;text-transform:uppercase;letter-spacing:.6px;display:flex;align-items:center;gap:7px;margin-bottom:6px}
+.arch-log .h svg{width:13px;height:13px;color:var(--c-out)}
+.arch-log .lg{display:flex;align-items:flex-start;gap:9px;padding:6px 0;border-top:1px solid #e7ecf2}
+.arch-log .lg:first-of-type{border-top:0}
+.arch-log .lg .d{width:8px;height:8px;border-radius:50%;background:#12a06f;flex:0 0 auto;margin-top:4px;box-shadow:0 0 0 3px rgba(18,160,111,.14)}
+.arch-log .lg .x{flex:1;min-width:0}
+.arch-log .lg .x b{font-size:10.5px;color:#26333d;display:block;font-weight:600}
+.arch-log .lg .x span{font-size:9px;color:#7c8b9c}
+.arch-log .lg .seal{font-size:8px;color:#12855c;background:#e7f7ef;border-radius:4px;padding:2px 6px;white-space:nowrap;align-self:center}
+.arch-siem{align-self:stretch;background:#eef2f7;border-radius:9px;padding:8px 11px;font-size:10px;color:#5a6b7d;display:flex;gap:7px;align-items:flex-start;margin:2px 0;line-height:1.35}
+.arch-siem svg{width:13px;height:13px;flex:0 0 auto;color:#3a6ea5;margin-top:1px}
+/* ===== v0.3.0 · ajustes owner ===== */
+/* robot (bot) y glifo WhatsApp en las identidades */
+.wa-av svg{width:19px;height:19px;color:#cdeee5}
+.bandeja .conv .a .wa{display:flex;align-items:center;justify-content:center}
+.bandeja .conv .a .wa svg{width:9px;height:9px;color:#fff}
+.wb .who svg,.cb .who svg,.rb .who svg{width:11px;height:11px;vertical-align:-1px;margin-right:3px}
+.cs-ch .ch.pub svg,.cs-ch .ch.sec svg{width:13px;height:13px}
+/* item 8.1 · burbuja STT · Anonimización Pre-LLM (no es transcripción de WhatsApp) */
+.stt{align-self:flex-start;max-width:88%;background:#eef4ff;border:1px solid #d3e0f5;border-radius:11px;padding:9px 11px;flex:0 0 auto;box-shadow:0 1px .5px rgba(0,0,0,.05)}
+.stt .sh{font-size:9px;font-weight:700;color:#3a5fa0;text-transform:uppercase;letter-spacing:.5px;display:flex;align-items:center;gap:6px;margin-bottom:5px}
+.stt .sh svg{width:12px;height:12px;flex:0 0 auto}
+.stt .sb{font-size:11.5px;color:#2a3744;line-height:1.4;font-style:italic}
+.stt .mask{font-style:normal;background:#dfe8f7;color:#3a5fa0;border-radius:4px;padding:0 5px;font-size:10px;font-weight:600;white-space:nowrap}
+.stt .sf{margin-top:6px;padding-top:6px;border-top:1px dashed #cddbef;font-size:9px;color:#5b7bab;display:flex;align-items:center;gap:6px}
+.stt .sf svg{width:11px;height:11px;flex:0 0 auto}
+/* item 9/10 · capturas expuestas como imagen en el móvil del usuario */
+.rb.imgb{padding:4px}
+.wimg{width:158px;border-radius:7px;overflow:hidden;display:block}
+.wimg svg{display:block;width:100%;height:auto}
+.rb.imgb .cap{font-size:10px;color:var(--wa-mut);padding:4px 5px 1px;display:flex;justify-content:space-between;align-items:center;gap:8px}
+.rb.imgb .cap .tk{color:var(--wa-tick);letter-spacing:-2px;margin-left:2px}
+/* item 12 · consentimiento del usuario en la sala */
+.rconsent{align-self:flex-end;display:flex;align-items:center;gap:6px;background:#dbeeff;color:#0a5a4f;border:1px solid #b9dcc9;border-radius:9px;padding:7px 11px;font-size:11.5px;font-weight:600;max-width:86%}
+.rconsent svg{width:14px;height:14px;flex:0 0 auto;color:#0e9e85}
+/* item 1.2/14.2 · barra de controles de la consola (siempre visible, sobre la conversación) */
+.cs-tools{display:flex;align-items:center;gap:2px;padding:7px 10px;border-bottom:1px solid var(--c-line);background:#f8fafc;flex:0 0 auto;flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}
+.cs-tools::-webkit-scrollbar{height:0}
+.cs-tools .ctl{font-size:8.5px;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:#a7b4c4;margin-right:3px;flex:0 0 auto}
+.cs-tools .sep{width:1px;height:20px;background:#dde4ec;margin:0 4px;flex:0 0 auto}
+.ct{width:30px;height:30px;border-radius:8px;display:flex;align-items:center;justify-content:center;color:#5a6b7e;background:transparent;border:1px solid transparent;padding:0;font-family:var(--sans);flex:0 0 auto;cursor:pointer;transition:.13s}
+.ct svg{width:16px;height:16px}
+.ct:hover{background:#fff;border-color:#dbe3ec;color:#1f3350;box-shadow:0 2px 6px -3px rgba(20,40,70,.18)}
+.ct.pri:hover{color:#306cf0;border-color:#c3d6f7}
+.ct.sec:hover{color:#12c98a;border-color:#bfe6d5}
+.ct.warn:hover{color:#c0552f;border-color:#f0d2c6}
+.ct.on{background:linear-gradient(120deg,#12c98a,#0e9e6f);color:#fff;border-color:transparent}
+.ct.end.on{background:linear-gradient(120deg,#e08a4f,#c0552f);color:#fff;border-color:transparent}
+.cs-tools.pub .ct.sec{opacity:.38}
+@media(max-width:1180px){.rec{flex-direction:column;align-items:center}.console{width:320px;height:auto;min-height:520px}.cs-main{flex-direction:column}.bandeja{width:100%}.rail{display:none}}
+</style>
+</head>
+<body>
+<div class="app">
+  <div class="brandbar">
+    <div class="lockup">
+      <svg viewBox="0 0 40 40" fill="none"><defs><linearGradient id="mccp" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#17b39a"/><stop offset=".55" stop-color="#3f6f8c"/><stop offset="1" stop-color="#8e3b7a"/></linearGradient></defs>
+        <path d="M20 4.5a15.5 15.5 0 0 1 14 22" stroke="url(#mccp)" stroke-width="5.4" stroke-linecap="round" fill="none"/>
+        <path d="M20 35.5a15.5 15.5 0 0 1 -14 -22" stroke="url(#mccp)" stroke-width="5.4" stroke-linecap="round" fill="none"/>
+      </svg>
+      <div class="txt"><span class="wm">MCCP</span><span class="claim">Plataforma Conversacional de Misión Crítica</span></div>
+    </div>
+  </div>
+
+  <div class="stage"><div class="rec">
+
+    <!-- COLUMNA WHATSAPP -->
+    <div class="col" id="colWhats">
+      <div class="lbl"><span class="n">1</span>WhatsApp del usuario</div>
+      <div class="iphone"><div class="screen">
+        <div class="notch"></div>
+        <div class="statusbar"><span>9:41</span><span class="r"><svg viewBox="0 0 24 24" fill="currentColor"><rect x="1" y="14" width="3" height="6" rx="1"/><rect x="6" y="10" width="3" height="10" rx="1"/><rect x="11" y="6" width="3" height="14" rx="1"/><rect x="16" y="3" width="3" height="17" rx="1" opacity=".4"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 4C7 4 3 7 1 10l11 11 11-11C21 7 17 4 12 4z" opacity=".9"/></svg><svg viewBox="0 0 26 14" fill="none"><rect x="1" y="2" width="20" height="10" rx="2.5" stroke="currentColor" stroke-width="1.3"/><rect x="3" y="4" width="15" height="6" rx="1" fill="currentColor"/><rect x="22.5" y="5" width="1.6" height="4" rx="1" fill="currentColor"/></svg></span></div>
+        <div class="wa-head"><span class="bk">‹</span><div class="wa-av"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="3.6" r="1.2" fill="currentColor"/><rect x="4" y="8" width="16" height="11" rx="3" stroke="currentColor" stroke-width="1.7"/><circle cx="9" cy="13" r="1.4" fill="currentColor"/><circle cx="15" cy="13" r="1.4" fill="currentColor"/><path d="M12 4.8v3.2M8.5 19v1.6M15.5 19v1.6M4 12.5H2.6M21.4 12.5H20" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></div><div class="nm"><b>Atención a Víctimas <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="#34b7f1"/><path d="M8 12.5l2.5 2.5L16 9" stroke="#fff" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg></b><span>UFAM · en línea</span></div><div class="ic"><svg viewBox="0 0 24 24" fill="none"><path d="M23 7l-7 5 7 5V7zM1 5h15v14H1z" stroke="#fff" stroke-width="1.7" stroke-linejoin="round"/></svg><svg viewBox="0 0 24 24" fill="none"><path d="M5 4h3l2 5-2 1c1 2 3 4 5 5l1-2 5 2v3c0 1-1 2-2 2C10 23 1 14 1 6c0-1 1-2 2-2z" stroke="#fff" stroke-width="1.7" stroke-linejoin="round"/></svg></div></div>
+        <div class="wa-chat" id="waChat">
+          <div class="wsys wt" data-step="0">HOY</div>
+          <div class="wb in" data-step="0"><span class="who"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="3.6" r="1.2" fill="currentColor"/><rect x="4" y="8" width="16" height="11" rx="3" stroke="currentColor" stroke-width="1.7"/><circle cx="9" cy="13" r="1.4" fill="currentColor"/><circle cx="15" cy="13" r="1.4" fill="currentColor"/><path d="M12 4.8v3.2M8.5 19v1.6M15.5 19v1.6M4 12.5H2.6M21.4 12.5H20" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>Asistente · Bot</span>Bienvenida al canal de Atención a Víctimas de la UFAM. ¿En qué puedo ayudarte?<span class="m">22:40</span></div>
+          <div class="qreplies" data-step="0">
+            <div class="qr"><svg viewBox="0 0 24 24" fill="none"><path d="M6 4h9l4 4v12H6z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>Estado de mi caso</div>
+            <div class="qr sel"><svg viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>Ampliar denuncia</div>
+            <div class="qr"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.2" stroke="currentColor" stroke-width="1.6"/><path d="M5 19c1-3.4 4-5 7-5s6 1.6 7 5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>Hablar con un agente</div>
+          </div>
+          <div class="wb out" data-step="1">Necesito ampliar mi denuncia. Él ha vuelto a saltarse la orden.<span class="m">22:41 <span class="tk">✓✓</span></span></div>
+          <div class="wb in" data-step="2"><span class="who"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="3.6" r="1.2" fill="currentColor"/><rect x="4" y="8" width="16" height="11" rx="3" stroke="currentColor" stroke-width="1.7"/><circle cx="9" cy="13" r="1.4" fill="currentColor"/><circle cx="15" cy="13" r="1.4" fill="currentColor"/><path d="M12 4.8v3.2M8.5 19v1.6M15.5 19v1.6M4 12.5H2.6M21.4 12.5H20" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>Asistente · Bot</span>Reconozco que es un seguimiento con orden de protección en vigor. Por su gravedad, te paso automáticamente con una persona de tu unidad que ya conoce tu caso.<span class="m">22:41</span></div>
+          <div class="wsys" data-step="2">Te paso con una persona de tu unidad</div>
+          <div class="wb in" data-step="3"><span class="who">Oficial Rueda · UFAM</span>Hola Nadia, soy la oficial Marta Rueda, de la Unidad de Familia y Mujer. Llevo tu caso; vamos con calma.<span class="m">22:41</span></div>
+          <div class="wb in" data-step="4"><span class="who">Oficial Rueda · UFAM</span>Para ampliar tu denuncia de forma segura te abro una sala cifrada. El enlace te llega aquí y, aparte, recibirás un código por SMS: lo necesitas para entrar.<span class="m">22:41</span></div>
+          <div class="invite" data-step="4">
+            <div class="top"><div class="lk"><svg viewBox="0 0 24 24" fill="none"><rect x="4" y="10" width="16" height="10" rx="2.4" stroke="#fff" stroke-width="1.7"/><path d="M8 10V7a4 4 0 018 0v3" stroke="#fff" stroke-width="1.7"/></svg></div><div><b>Sala segura</b><span>UFAM · acceso cifrado</span></div></div>
+            <div class="bd">Has sido invitada a una sala cifrada y trazable para ampliar tu denuncia.</div>
+            <div class="ref">Ampliación · VG-2026/0731</div>
+            <div class="cta">Acceder de forma segura<svg viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 6l6 6-6 6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="ft"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M3 7l9 6 9-6" stroke="currentColor" stroke-width="1.6"/></svg>El código de acceso llega por SMS, aparte de este enlace (doble factor separado).</div>
+          </div>
+          <!-- P16 · vuelta a WhatsApp 24×7 (mensaje del bot) -->
+          <div class="wsys" data-step="15">La sala segura se cerró · seguís en contacto por aquí</div>
+          <div class="wb in" data-step="15"><span class="who"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="3.6" r="1.2" fill="currentColor"/><rect x="4" y="8" width="16" height="11" rx="3" stroke="currentColor" stroke-width="1.7"/><circle cx="9" cy="13" r="1.4" fill="currentColor"/><circle cx="15" cy="13" r="1.4" fill="currentColor"/><path d="M12 4.8v3.2M8.5 19v1.6M15.5 19v1.6M4 12.5H2.6M21.4 12.5H20" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>Asistente · Bot</span>Seguimos por aquí, Nadia. Si necesitas algo, escríbenos cuando quieras — estamos 24 horas.<span class="m">23:10</span></div>
+        </div>
+        <div class="wa-comp"><div class="field"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path d="M9 14c.8.9 1.9 1.4 3 1.4s2.2-.5 3-1.4M9 9.5h.01M15 9.5h.01" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg><span>Mensaje</span><svg viewBox="0 0 24 24" fill="none"><path d="M16 8l-7 7a3 3 0 004 4l7-8a5 5 0 00-7-7l-7 7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="6" width="18" height="13" rx="2.5" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12.5" r="3" stroke="currentColor" stroke-width="1.6"/></svg></div><div class="mic"><svg viewBox="0 0 24 24" fill="none"><rect x="9" y="3" width="6" height="11" rx="3" fill="#fff"/><path d="M6 11a6 6 0 0012 0M12 17v3" stroke="#fff" stroke-width="1.7" stroke-linecap="round"/></svg></div></div>
+        <div class="sms" id="smsPush">
+          <div class="si"><svg viewBox="0 0 24 24" fill="none"><path d="M4 5h16v11H8l-4 4V5z" stroke="#fff" stroke-width="1.8" stroke-linejoin="round"/></svg></div>
+          <div class="sc"><div class="h"><b>UFAM · SMS</b><span class="t">ahora</span></div><p>Tu código para la sala segura es <b>492 137</b>. Caduca en 5 min. No lo compartas.</p></div>
+        </div>
+      </div></div>
+    </div>
+
+    <!-- COLUMNA IN-APP -->
+    <div class="col off" id="colInapp">
+      <div class="lbl"><span class="n">2</span>Sala segura · dentro de WhatsApp</div>
+      <div class="iphone"><div class="screen">
+        <div class="notch"></div>
+        <div class="statusbar"><span>9:44</span><span class="r"><svg viewBox="0 0 24 24" fill="currentColor"><rect x="1" y="14" width="3" height="6" rx="1"/><rect x="6" y="10" width="3" height="10" rx="1"/><rect x="11" y="6" width="3" height="14" rx="1"/><rect x="16" y="3" width="3" height="17" rx="1" opacity=".4"/></svg><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 4C7 4 3 7 1 10l11 11 11-11C21 7 17 4 12 4z" opacity=".9"/></svg><svg viewBox="0 0 26 14" fill="none"><rect x="1" y="2" width="20" height="10" rx="2.5" stroke="currentColor" stroke-width="1.3"/><rect x="3" y="4" width="15" height="6" rx="1" fill="currentColor"/><rect x="22.5" y="5" width="1.6" height="4" rx="1" fill="currentColor"/></svg></span></div>
+        <div class="wa-head"><span class="bk">‹</span><div class="wa-av"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="3.6" r="1.2" fill="currentColor"/><rect x="4" y="8" width="16" height="11" rx="3" stroke="currentColor" stroke-width="1.7"/><circle cx="9" cy="13" r="1.4" fill="currentColor"/><circle cx="15" cy="13" r="1.4" fill="currentColor"/><path d="M12 4.8v3.2M8.5 19v1.6M15.5 19v1.6M4 12.5H2.6M21.4 12.5H20" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></div><div class="nm"><b>Atención a Víctimas</b><span>UFAM · en línea</span></div></div>
+        <div class="secbar"><svg viewBox="0 0 24 24" fill="none"><rect x="5" y="11" width="14" height="9" rx="2" stroke="#eafff8" stroke-width="1.7"/><path d="M8 11V8a4 4 0 018 0v3" stroke="#eafff8" stroke-width="1.7"/></svg>Canal Securizado · <b>UFAM</b></div>
+        <!-- gate -->
+        <div class="sec-body gate" id="iappGate">
+          <h3>Verifica tu identidad</h3>
+          <div class="lede">Confirma tus datos e introduce el código que te hemos enviado por SMS.</div>
+          <div class="flow">
+            <div class="fr"><span class="k">Nombre</span><span class="v">Nadia E. A.</span></div>
+            <div class="fr"><span class="k">Documento</span><span class="v">····-731-M</span></div>
+            <div class="fr"><span class="k">Ampliación</span><span class="v">VG-2026/0731</span></div>
+            <div class="fr"><span class="k">Identidad</span><span class="v ok"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" fill="#0e9e85"/><path d="M7 12.5l3.2 3.2L17 9" stroke="#fff" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Verificada</span></div>
+          </div>
+          <div class="otp-lbl"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.6"/><path d="M3 7l9 6 9-6" stroke="currentColor" stroke-width="1.6"/></svg>Código enviado por SMS al ••• ••• 731</div>
+          <div class="otp"><span class="fill">4</span><span class="fill">9</span><span class="fill">2</span><span data-step="4" data-until="4">—</span><span data-step="4" data-until="4">—</span><span data-step="4" data-until="4">—</span><span class="fill" data-step="5">1</span><span class="fill" data-step="5">3</span><span class="fill" data-step="5">7</span></div>
+          <div class="verify">Verificar y entrar</div>
+          <div class="sep-note">El código viaja por un canal aparte (SMS) y no acompaña al enlace — doble factor separado.</div>
+        </div>
+        <!-- room -->
+        <div class="sec-body hide" id="iappRoom">
+          <div class="rsys">🔒 Conexión establecida — sala cifrada y trazable</div>
+          <div class="rb in"><span class="who">Oficial Rueda</span>Perfecto, ya estás dentro. Cuando quieras, adjunta la documentación que quieras aportar.<span class="m">22:44</span></div>
+          <!-- P08 · nota de voz (audio) + burbuja STT · Anonimización Pre-LLM -->
+          <div class="rb out" data-step="7">
+            <div class="vnote"><div class="pl"><svg viewBox="0 0 24 24" fill="none"><path d="M8 5v14l11-7z" fill="#fff"/></svg></div><div class="wf"><i style="height:35%"></i><i style="height:60%"></i><i style="height:90%"></i><i style="height:50%"></i><i style="height:75%"></i><i style="height:100%"></i><i style="height:45%"></i><i style="height:80%"></i><i style="height:55%"></i><i style="height:95%"></i><i style="height:40%"></i><i style="height:70%"></i><i style="height:30%"></i></div><div class="du">0:14</div></div>
+            <span class="m">22:46 <span class="tk">✓✓</span></span>
+          </div>
+          <div class="stt" data-step="7">
+            <div class="sh"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3l7 3v5c0 5-3 8-7 10-4-2-7-5-7-10V6z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>STT · datos personales protegidos</div>
+            <div class="sb">«Anoche volvió a aparecer en el portal. Me llamó ocho veces desde un número nuevo (<span class="mask">tel. ·· ··· ·41</span>) y me dejó dos notas de voz. Tengo capturas de todo.»</div>
+          </div>
+          <!-- P09 · Nadia anuncia y expone las capturas como imagen, una a una -->
+          <div class="rb out" data-step="8">Os mando las capturas.<span class="m">22:47 <span class="tk">✓✓</span></span></div>
+          <div class="rb out imgb" data-step="8">
+            <div class="wimg"><svg viewBox="0 0 160 116" xmlns="http://www.w3.org/2000/svg"><rect width="160" height="116" fill="#e9e4dd"/><rect width="160" height="20" fill="#0b7d6e"/><circle cx="14" cy="10" r="6" fill="#0a5c50"/><rect x="24" y="6" width="58" height="4" rx="2" fill="#cdeee5"/><rect x="24" y="12" width="32" height="3" rx="1.5" fill="#7fbfb2"/><rect x="10" y="30" width="98" height="16" rx="5" fill="#fff"/><rect x="16" y="35" width="82" height="3" rx="1.5" fill="#c34a3a"/><rect x="16" y="40" width="52" height="3" rx="1.5" fill="#d98a80"/><rect x="10" y="52" width="112" height="14" rx="5" fill="#fff"/><rect x="16" y="57" width="96" height="3" rx="1.5" fill="#c34a3a"/><rect x="10" y="72" width="80" height="14" rx="5" fill="#fff"/><rect x="16" y="77" width="64" height="3" rx="1.5" fill="#8a7f76"/><rect x="10" y="92" width="122" height="14" rx="5" fill="#fff"/><rect x="16" y="97" width="106" height="3" rx="1.5" fill="#c34a3a"/></svg></div>
+            <div class="cap"><span>captura-01.jpg · mensajes</span><span>22:47 <span class="tk">✓✓</span></span></div>
+          </div>
+          <div class="rb out imgb" data-step="8">
+            <div class="wimg"><svg viewBox="0 0 160 116" xmlns="http://www.w3.org/2000/svg"><rect width="160" height="116" fill="#f4f2ef"/><rect width="160" height="18" fill="#dfe3e6"/><rect x="10" y="7" width="58" height="4" rx="2" fill="#7a8790"/><g><circle cx="16" cy="34" r="7" fill="#f3d6d0"/><path d="M12.6 34l2.6 2.6 4-5" stroke="#c34a3a" stroke-width="1.5" fill="none"/><rect x="30" y="29" width="70" height="4" rx="2" fill="#3a464f"/><rect x="30" y="37" width="44" height="3" rx="1.5" fill="#c34a3a"/><rect x="120" y="31" width="28" height="3" rx="1.5" fill="#9aa5ad"/></g><g transform="translate(0,26)"><circle cx="16" cy="34" r="7" fill="#f3d6d0"/><path d="M12.6 34l2.6 2.6 4-5" stroke="#c34a3a" stroke-width="1.5" fill="none"/><rect x="30" y="29" width="60" height="4" rx="2" fill="#3a464f"/><rect x="30" y="37" width="40" height="3" rx="1.5" fill="#c34a3a"/><rect x="120" y="31" width="28" height="3" rx="1.5" fill="#9aa5ad"/></g><g transform="translate(0,52)"><circle cx="16" cy="34" r="7" fill="#f3d6d0"/><path d="M12.6 34l2.6 2.6 4-5" stroke="#c34a3a" stroke-width="1.5" fill="none"/><rect x="30" y="29" width="66" height="4" rx="2" fill="#3a464f"/><rect x="30" y="37" width="48" height="3" rx="1.5" fill="#c34a3a"/><rect x="120" y="31" width="28" height="3" rx="1.5" fill="#9aa5ad"/></g></svg></div>
+            <div class="cap"><span>captura-02.jpg · llamadas</span><span>22:47 <span class="tk">✓✓</span></span></div>
+          </div>
+          <!-- P10 · tercera captura: deja ver la ubicación (el móvil la ve enviada; el rechazo ocurre en la consola) -->
+          <div class="rb out imgb" data-step="9">
+            <div class="wimg"><svg viewBox="0 0 160 116" xmlns="http://www.w3.org/2000/svg"><rect width="160" height="116" fill="#dfe7de"/><path d="M0 40h160M0 82h160M46 0v116M108 0v116" stroke="#c3d0c2" stroke-width="7"/><path d="M0 40h160M0 82h160M46 0v116M108 0v116" stroke="#eef3ec" stroke-width="1.6" stroke-dasharray="4 5"/><rect x="8" y="48" width="30" height="26" fill="#cbd8c9"/><rect x="116" y="10" width="34" height="22" fill="#cbd8c9"/><rect x="116" y="90" width="34" height="20" fill="#cbd8c9"/><rect x="54" y="52" width="52" height="15" rx="2" fill="#1f5fae"/><rect x="58" y="56" width="44" height="3" rx="1.5" fill="#fff"/><rect x="58" y="61" width="30" height="2.5" rx="1.2" fill="#bcd4f2"/><path d="M82 78c-3.6 0-6 2.4-6 6 0 4 6 10 6 10s6-6 6-10c0-3.6-2.4-6-6-6z" fill="#e0503f"/><circle cx="82" cy="84" r="2.2" fill="#fff"/></svg></div>
+            <div class="cap"><span>captura-03.jpg · foto</span><span>22:47 <span class="tk">✓✓</span></span></div>
+          </div>
+          <!-- P11 · diligencia -->
+          <div class="rb in" data-step="10"><span class="who">Oficial Rueda</span>Con la nota de voz y las capturas ya puedo estructurar tu ampliación como diligencia. Un momento.<span class="m">22:49</span></div>
+          <!-- P12 · consentimiento previo del usuario + entrada del tercero acotado -->
+          <div class="rb in" data-step="11"><span class="who">Oficial Rueda</span>Para avanzar puedo pedir apoyo a una psicóloga forense de la OAV y, si te parece, abrir una videollamada con ella. Entraría solo a lo justo. ¿Me das tu consentimiento?<span class="m">22:51</span></div>
+          <div class="rconsent" data-step="11"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Sí, doy mi consentimiento</div>
+          <div class="rsys" data-step="11">Consentimiento registrado (RGPD art. 6) · Cristina Vela (psicóloga forense · OAV) se ha unido — acceso acotado</div>
+          <div class="rb in" data-step="11"><span class="who">Cristina Vela · OAV</span>Hola Nadia, soy Cristina, psicóloga forense. Estoy contigo para acompañarte en esto.<span class="m">22:52</span></div>
+          <!-- P13 · videollamada (mini en el móvil) -->
+          <div class="rsys" data-step="12">Videollamada iniciada · con tu consentimiento</div>
+          <div class="callmini" data-step="12">
+            <div class="h"><svg viewBox="0 0 24 24" fill="none"><path d="M3 7h11v10H3zM14 10l7-4v12l-7-4z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>Videollamada · sala segura<span class="rec"><i></i>Grabando · consentida</span></div>
+            <div class="g"><div class="t"><div class="av">MR</div><div class="nm">Rueda</div></div><div class="t"><div class="av">TÚ</div><div class="nm">Nadia</div></div><div class="t"><div class="av">CV</div><div class="nm">C. Vela</div></div></div>
+            <div class="cn"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="1.9" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>Tu declaración se toma como prueba preconstituida: no tendrás que repetirla en el juicio.</div>
+          </div>
+          <!-- P14 · la oficial expone intención (in-record) y abre la burbuja efímera (fuera del Caso · no persiste) -->
+          <div class="rb in" data-step="13"><span class="who">Oficial Rueda</span>Nadia, no te retires: tengo que comentarte una cosa del traslado de mañana que no debe quedar en el expediente. Voy a abrir un canal efímero, ¿de acuerdo?<span class="m">23:04</span></div>
+          <div class="reph-sys" data-step="13" data-until="13"><svg viewBox="0 0 24 24" fill="none"><path d="M4 14a4 4 0 004 4h8a3 3 0 000-6 5 5 0 00-9.6-1.5A4 4 0 004 14z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>La oficial abrió el modo efímero · fuera del Caso · no se guarda</div>
+          <div class="rb eph in" data-step="13" data-until="13"><span class="eh"><svg viewBox="0 0 24 24" fill="none"><path d="M4 14a4 4 0 004 4h8a3 3 0 000-6 5 5 0 00-9.6-1.5A4 4 0 004 14z" stroke="currentColor" stroke-width="1.6"/></svg>Efímero · Rueda</span>El coche pasa a las 9:15, sin distintivos.<div class="ft">✷ no persiste · sin traza en el expediente</div></div>
+          <div class="rb eph out" data-step="13" data-until="13"><span class="eh"><svg viewBox="0 0 24 24" fill="none"><path d="M4 14a4 4 0 004 4h8a3 3 0 000-6 5 5 0 00-9.6-1.5A4 4 0 004 14z" stroke="currentColor" stroke-width="1.6"/></svg>Efímero · tú</span>Entendido, gracias.<div class="ft">✷ se olvida al cerrar</div></div>
+          <!-- P15 · cierre -->
+          <div class="rsys" data-step="14">La sesión segura se ha cerrado · los terceros han salido</div>
+          <div class="rb in" data-step="14"><span class="who">Oficial Rueda</span>He cerrado la sala, Nadia. Tu ampliación queda en tramitación; te aviso por WhatsApp de cualquier novedad. Cuídate.<span class="m">23:08</span></div>
+        </div>
+        <div class="wa-comp"><div class="field"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path d="M9 14c.8.9 1.9 1.4 3 1.4s2.2-.5 3-1.4M9 9.5h.01M15 9.5h.01" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg><span>Mensaje</span><svg viewBox="0 0 24 24" fill="none"><path d="M16 8l-7 7a3 3 0 004 4l7-8a5 5 0 00-7-7l-7 7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="6" width="18" height="13" rx="2.5" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12.5" r="3" stroke="currentColor" stroke-width="1.6"/></svg></div><div class="mic"><svg viewBox="0 0 24 24" fill="none"><rect x="9" y="3" width="6" height="11" rx="3" fill="#fff"/><path d="M6 11a6 6 0 0012 0M12 17v3" stroke="#fff" stroke-width="1.7" stroke-linecap="round"/></svg></div></div>
+      </div></div>
+    </div>
+
+    <!-- COLUMNA CONSOLA -->
+    <div class="col" id="colConsole">
+      <div class="lbl"><span class="n">3</span>Consola del agente · MCCP</div>
+      <div class="console">
+        <div class="cs-top"><div class="g"><svg viewBox="0 0 40 40" fill="none"><path d="M20 6a14 14 0 0 1 12.6 19.8" stroke="#fff" stroke-width="4.4" stroke-linecap="round"/><path d="M20 34a14 14 0 0 1 -12.6 -19.8" stroke="#fff" stroke-width="4.4" stroke-linecap="round"/></svg></div><b>MCCP</b><span class="crumb">Inbox</span><div class="srch"><svg viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.7"/><path d="M20 20l-3.5-3.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>Buscar en el espacio de trabajo…</div><div class="who"><div class="ot"><b>UFAM</b><span>M. Rueda · Agente · en línea</span></div><div class="a">MR</div></div></div>
+        <div class="cs-main">
+          <div class="rail">
+            <div class="ic on" title="Inbox"><svg viewBox="0 0 24 24" fill="none"><path d="M3 13l3-8h12l3 8v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M3 13h5l1.2 2h5.6L16 13h5" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg></div>
+            <div class="ic" title="Channels"><svg viewBox="0 0 24 24" fill="none"><path d="M9 4L7.2 20M16.8 4L15 20M4 8.5h16M3.4 15.5h16" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></div>
+            <div class="ic" title="Bot Builder"><svg viewBox="0 0 24 24" fill="none"><rect x="4.5" y="8" width="15" height="10.5" rx="3" stroke="currentColor" stroke-width="1.7"/><circle cx="9.3" cy="13.2" r="1.25" fill="currentColor"/><circle cx="14.7" cy="13.2" r="1.25" fill="currentColor"/><path d="M12 4.2V8M2.6 12.5H4.5M19.5 12.5h1.9" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></div>
+            <div class="ic" title="Broadcast"><svg viewBox="0 0 24 24" fill="none"><path d="M4 10v4h3l6 4V6L7 10H4z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></div>
+            <div class="ic" title="Contacts"><svg viewBox="0 0 24 24" fill="none"><rect x="5" y="3" width="14" height="18" rx="2.4" stroke="currentColor" stroke-width="1.7"/><circle cx="12" cy="10" r="2.4" stroke="currentColor" stroke-width="1.6"/><path d="M8.6 16.4c.7-1.6 2-2.4 3.4-2.4s2.7.8 3.4 2.4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg></div>
+            <div class="ic" title="Audit"><svg viewBox="0 0 24 24" fill="none"><rect x="6" y="4" width="12" height="17" rx="2.4" stroke="currentColor" stroke-width="1.7"/><path d="M9 13l2 2 4-4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="ic" title="Insights"><svg viewBox="0 0 24 24" fill="none"><path d="M5 20V12M10 20V6.5M15 20v-6M20 20V4.5" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg></div>
+            <div class="ic" title="Marketplace"><svg viewBox="0 0 24 24" fill="none"><rect x="4" y="4" width="6.5" height="6.5" rx="1.6" stroke="currentColor" stroke-width="1.7"/><rect x="13.5" y="4" width="6.5" height="6.5" rx="1.6" stroke="currentColor" stroke-width="1.7"/><rect x="4" y="13.5" width="6.5" height="6.5" rx="1.6" stroke="currentColor" stroke-width="1.7"/><path d="M17 13.5v6.5M13.7 16.7h6.6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></div>
+            <div class="sp"></div>
+            <div class="ic" title="Settings"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="3.1" stroke="currentColor" stroke-width="1.7"/><path d="M19.2 13.3a7.7 7.7 0 0 0 0-2.6l1.9-1.5-1.9-3.2-2.3.9a7.7 7.7 0 0 0-2.2-1.3L14.3 3H9.7l-.4 2.6a7.7 7.7 0 0 0-2.2 1.3l-2.3-.9-1.9 3.2 1.9 1.5a7.7 7.7 0 0 0 0 2.6l-1.9 1.5 1.9 3.2 2.3-.9a7.7 7.7 0 0 0 2.2 1.3l.4 2.6h4.6l.4-2.6a7.7 7.7 0 0 0 2.2-1.3l2.3.9 1.9-3.2z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg></div>
+            <div class="me" title="M. Rueda (tú)">MR</div>
+          </div>
+          <div class="bandeja">
+            <div class="bh">Conversaciones</div>
+            <div class="search"><svg viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.7"/><path d="M20 20l-3.5-3.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>Buscar conversación…</div>
+            <div class="tabs"><span class="on">Todas <span class="n2">1</span></span><span>Sin asignar</span><span>Mías <span class="n2">1</span></span></div>
+            <div class="conv"><div class="a">NA<span class="wa"><svg viewBox="0 0 32 32" fill="currentColor"><path d="M16 3C9.4 3 4 8.4 4 15c0 2.1.6 4.2 1.6 6L4 27l6.2-1.6c1.7.9 3.7 1.4 5.8 1.4 6.6 0 12-5.4 12-12S22.6 3 16 3zm5.3 14.9c-.3-.1-1.7-.8-1.9-.9-.3-.1-.5-.1-.6.1-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.1.2-.3.3-.4.1-.2 0-.3 0-.5-.1-.1-.6-1.5-.8-2-.2-.5-.4-.4-.6-.5h-.5c-.2 0-.5.1-.7.3-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3.1 4.9 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.7-.7 1.9-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3z"/></svg></span></div><div class="x"><b>Nadia <span>22:45</span></b><div class="ex">VG-2026/0731</div></div></div>
+            <div class="empty">— sin más conversaciones activas —</div>
+          </div>
+          <div class="cs-conv">
+            <div class="cs-ch"><div class="a">NA</div><div class="nm"><b>Nadia</b><span>Ampliación · VG-2026/0731</span></div><span class="ch pub" id="chPub"><svg viewBox="0 0 32 32" fill="currentColor"><path d="M16 3C9.4 3 4 8.4 4 15c0 2.1.6 4.2 1.6 6L4 27l6.2-1.6c1.7.9 3.7 1.4 5.8 1.4 6.6 0 12-5.4 12-12S22.6 3 16 3zm5.3 14.9c-.3-.1-1.7-.8-1.9-.9-.3-.1-.5-.1-.6.1-.2.3-.7.9-.9 1.1-.2.2-.3.2-.6.1-.3-.1-1.2-.5-2.3-1.4-.9-.8-1.4-1.7-1.6-2-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.1.2-.3.3-.4.1-.2 0-.3 0-.5-.1-.1-.6-1.5-.8-2-.2-.5-.4-.4-.6-.5h-.5c-.2 0-.5.1-.7.3-.3.3-1 1-1 2.4s1 2.8 1.2 3c.1.2 2 3.1 4.9 4.3.7.3 1.2.5 1.6.6.7.2 1.3.2 1.8.1.5-.1 1.7-.7 1.9-1.4.2-.7.2-1.2.2-1.4-.1-.1-.3-.2-.6-.3z"/></svg>WhatsApp · público</span><span class="ch sec hide" id="chSec"><svg viewBox="0 0 24 24" fill="none"><rect x="5" y="11" width="14" height="9" rx="2" stroke="currentColor" stroke-width="1.7"/><path d="M8 11V8a4 4 0 018 0v3" stroke="currentColor" stroke-width="1.7"/></svg>Sesión segura</span></div>
+            <div class="cs-tools" id="csTools">
+              <span class="ctl">Acciones</span>
+              <button class="ct pri" title="Escalar a sala segura"><svg viewBox="0 0 24 24" fill="none"><rect x="5" y="11" width="14" height="9" rx="2" stroke="currentColor" stroke-width="1.7"/><path d="M8 11V8a4 4 0 0 1 8 0v3" stroke="currentColor" stroke-width="1.7"/><path d="M12 14.5v2.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></button>
+              <button class="ct sec" id="ctCall" title="Videollamada"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="6" width="12" height="12" rx="2.4" stroke="currentColor" stroke-width="1.7"/><path d="M15 10l6-3.2v10.4L15 14z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg></button>
+              <button class="ct pri" title="Llamada de voz"><svg viewBox="0 0 24 24" fill="none"><path d="M5 4h3l2 5-2 1c1 2 3 4 5 5l1-2 5 2v3c0 1-1 2-2 2C10 23 1 14 1 6c0-1 1-2 2-2z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg></button>
+              <button class="ct" title="Adjuntar"><svg viewBox="0 0 24 24" fill="none"><path d="M16 8l-7 7a3 3 0 0 0 4 4l7-8a5 5 0 0 0-7-7l-7 7" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></button>
+              <button class="ct" title="Plantillas / respuesta rápida"><svg viewBox="0 0 24 24" fill="none"><path d="M13 2 4 14h7l-1 8 9-12h-7z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg></button>
+              <button class="ct" title="Traducir"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path d="M3 12h18M12 3c3 3.2 3 14.8 0 18M12 3c-3 3.2-3 14.8 0 18" stroke="currentColor" stroke-width="1.6"/></svg></button>
+              <span class="sep"></span>
+              <button class="ct sec" title="Transcribir (STT)"><svg viewBox="0 0 24 24" fill="none"><path d="M4 10v4M8 6.5v11M12 8.5v7M16 5v14M20 10v4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>
+              <button class="ct sec" title="Estructurar diligencia (Flow)"><svg viewBox="0 0 24 24" fill="none"><path d="M7 3h7l4 4v14H7z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M14 3v4h4M10 12h5M10 15.5h5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+              <button class="ct sec" title="Invitar a un tercero"><svg viewBox="0 0 24 24" fill="none"><circle cx="9" cy="8" r="3.3" stroke="currentColor" stroke-width="1.7"/><path d="M3 19c1-3.5 3.5-5 6-5 1.2 0 2.4.3 3.3.9" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/><path d="M18 13v6M15 16h6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></button>
+              <span class="sep"></span>
+              <button class="ct warn" title="Moderación del canal"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3l7 3v5c0 5-3 8-7 10-4-2-7-5-7-10V6z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M12 8.5v4M12 15.5h.01" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></button>
+              <button class="ct warn" title="Revelar PII (auditado)"><svg viewBox="0 0 24 24" fill="none"><path d="M2 12s3.6-6.6 10-6.6S22 12 22 12s-3.6 6.6-10 6.6S2 12 2 12z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><circle cx="12" cy="12" r="2.8" stroke="currentColor" stroke-width="1.7"/></svg></button>
+              <button class="ct sec" id="ctEph" title="Modo efímero (fuera del Caso)"><svg viewBox="0 0 24 24" fill="none"><path d="M4 14a4 4 0 004 4h8a3 3 0 000-6 5 5 0 00-9.6-1.5A4 4 0 004 14z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg></button>
+              <span class="sep"></span>
+              <button class="ct" title="Asignar / transferir"><svg viewBox="0 0 24 24" fill="none"><path d="M4 8h13l-3.2-3.2M20 16H7l3.2 3.2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+              <button class="ct sec end" id="ctEnd" title="Cerrar / finalizar sesión"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.7"/><path d="M8.2 12.2l2.5 2.5L16 9.4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+            </div>
+            <div class="cs-body" id="csBody">
+              <div class="cb out" data-step="0"><span class="who"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="3.6" r="1.2" fill="currentColor"/><rect x="4" y="8" width="16" height="11" rx="3" stroke="currentColor" stroke-width="1.7"/><circle cx="9" cy="13" r="1.4" fill="currentColor"/><circle cx="15" cy="13" r="1.4" fill="currentColor"/><path d="M12 4.8v3.2M8.5 19v1.6M15.5 19v1.6M4 12.5H2.6M21.4 12.5H20" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>Asistente · Bot</span>Bienvenida al canal de Atención a Víctimas de la UFAM. ¿En qué puedo ayudarte?<span class="m">22:40</span></div>
+              <div class="cb in" data-step="1"><span class="who">Nadia</span>Necesito ampliar mi denuncia. Él ha vuelto a saltarse la orden.<span class="m">22:41</span></div>
+              <div class="cb out" data-step="2"><span class="who"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="3.6" r="1.2" fill="currentColor"/><rect x="4" y="8" width="16" height="11" rx="3" stroke="currentColor" stroke-width="1.7"/><circle cx="9" cy="13" r="1.4" fill="currentColor"/><circle cx="15" cy="13" r="1.4" fill="currentColor"/><path d="M12 4.8v3.2M8.5 19v1.6M15.5 19v1.6M4 12.5H2.6M21.4 12.5H20" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>Asistente · Bot</span>Reconozco que es un seguimiento con orden de protección en vigor. Por su gravedad, te paso automáticamente con una persona de tu unidad que ya conoce tu caso.<span class="m">22:41</span></div>
+              <div class="csys" data-step="2">Conversación asignada a la Oficial Rueda (UFAM) · seguimiento VioGén</div>
+              <div class="cb out" data-step="3"><span class="who">Oficial Rueda</span>Hola Nadia, soy la oficial Marta Rueda, de la Unidad de Familia y Mujer. Llevo tu caso; vamos con calma.<span class="m">22:41</span></div>
+              <div class="csys ok" data-step="6">Usuario conectado · identidad verificada (Flow + OTP por SMS) · cifrado activo</div>
+              <div class="cb out" data-step="6"><span class="who">Oficial Rueda</span>Perfecto, ya estás dentro. Cuando quieras, adjunta la documentación que quieras aportar.<span class="m">22:44</span></div>
+              <!-- P08 · nota de voz (audio) + STT/anonimización, anclado al expediente -->
+              <div class="cb in" data-step="7"><span class="who">Nadia</span><div class="vnote"><div class="pl"><svg viewBox="0 0 24 24" fill="none"><path d="M8 5v14l11-7z" fill="#fff"/></svg></div><div class="wf"><i style="height:35%"></i><i style="height:60%"></i><i style="height:90%"></i><i style="height:50%"></i><i style="height:75%"></i><i style="height:100%"></i><i style="height:45%"></i><i style="height:80%"></i><i style="height:55%"></i><i style="height:95%"></i><i style="height:40%"></i><i style="height:70%"></i><i style="height:30%"></i></div><div class="du">0:14</div></div><span class="m">22:46</span></div>
+              <div class="stt" data-step="7">
+                <div class="sh"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3v3M12 18v3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M3 12h3M18 12h3M5.6 18.4l2.1-2.1M16.3 7.7l2.1-2.1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="12" cy="12" r="3.4" stroke="currentColor" stroke-width="1.6"/></svg>STT · Anonimización Pre-LLM</div>
+                <div class="sb">«Anoche volvió a aparecer en el portal. Me llamó ocho veces desde un número nuevo (<span class="mask">tel. ·· ··· ·41</span>) y me dejó dos notas de voz. Tengo capturas de todo.»</div>
+                <div class="sf"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3l7 3v5c0 5-3 8-7 10-4-2-7-5-7-10V6z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>Transcrito por IA · PII enmascarada antes del modelo · anclado al expediente</div>
+              </div>
+              <!-- P09 · capturas ancladas una a una -->
+              <div class="cb in" data-step="8"><span class="who">Nadia</span>Os mando las capturas.<span class="m">22:47</span></div>
+              <div class="cb in" data-step="8"><div class="c-att"><div class="i"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="6" width="18" height="13" rx="2" stroke="currentColor" stroke-width="1.7"/><circle cx="12" cy="12.5" r="3" stroke="currentColor" stroke-width="1.7"/></svg></div><div class="n"><b>captura-01.jpg</b><span>Anclada al expediente</span></div></div></div>
+              <div class="cb in" data-step="8"><div class="c-att"><div class="i"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="6" width="18" height="13" rx="2" stroke="currentColor" stroke-width="1.7"/><circle cx="12" cy="12.5" r="3" stroke="currentColor" stroke-width="1.7"/></svg></div><div class="n"><b>captura-02.jpg</b><span>Anclada al expediente</span></div></div></div>
+              <!-- P10 · rechazo de PII (ocurre en la consola) -->
+              <div class="cb in" data-step="9"><div class="c-att block"><div class="i"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.7"/><path d="M6 6l12 12" stroke="currentColor" stroke-width="1.7"/></svg></div><div class="n"><b>captura-03.jpg</b><span>Retenida</span></div></div></div>
+              <div class="c-mod" data-step="9"><svg viewBox="0 0 24 24" fill="none"><path d="M12 9v4M12 17h.01M10.3 3.9L2.4 18a2 2 0 001.7 3h15.8a2 2 0 001.7-3L13.7 3.9a2 2 0 00-3.4 0z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>Moderación — la imagen revelaba el rótulo de la calle del punto seguro. Descartada antes de guardarse: la ubicación no entra en el expediente.</div>
+              <!-- P11 · diligencia estructurada (Flow → expediente) -->
+              <div class="cb out" data-step="10"><span class="who">Oficial Rueda</span>Con la nota de voz y las capturas ya puedo estructurar tu ampliación como diligencia. Un momento.<span class="m">22:49</span></div>
+              <div class="csys" data-step="10">Ampliación estructurada como diligencia y vinculada al expediente</div>
+              <div class="dilig" data-step="10">
+                <div class="h"><svg viewBox="0 0 24 24" fill="none"><path d="M6 2h9l5 5v15H6z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M9 12h6M9 15h6M9 9h3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>Diligencia de ampliación<span class="st">Borrador</span></div>
+                <div class="r"><span class="k">Tipo</span><span class="v">Ampliación de denuncia</span></div>
+                <div class="r"><span class="k">Motivo</span><span class="v">Quebrantamiento de orden de alejamiento</span></div>
+                <div class="r"><span class="k">Pruebas</span><span class="v">1 nota de voz + 2 capturas</span></div>
+                <div class="r"><span class="k">Expediente</span><span class="v">VG-2026/0731</span></div>
+              </div>
+              <!-- P12 · consentimiento previo del usuario + acceso de terceros need-to-know -->
+              <div class="cb out" data-step="11"><span class="who">Oficial Rueda</span>Para avanzar puedo pedir apoyo a una psicóloga forense de la OAV y, si te parece, abrir una videollamada con ella. Entraría solo a lo justo. ¿Me das tu consentimiento?<span class="m">22:51</span></div>
+              <div class="cb in" data-step="11"><span class="who">Nadia</span>Sí, doy mi consentimiento.<span class="m">22:51</span></div>
+              <div class="csys ok" data-step="11">Consentimiento de la víctima registrado (RGPD art. 6) · entrada de terceros + videollamada</div>
+              <div class="csys" data-step="11">Acceso concedido a tercero · need-to-know · auditado y revocable</div>
+              <div class="accs" data-step="11">
+                <div class="h"><svg viewBox="0 0 24 24" fill="none"><circle cx="9" cy="8" r="3.2" stroke="currentColor" stroke-width="1.6"/><path d="M3 19c.9-3 3.3-4.5 6-4.5s5.1 1.5 6 4.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><circle cx="17.5" cy="8.5" r="2.4" stroke="currentColor" stroke-width="1.5"/><path d="M17 14c2 0 3.6 1.1 4.3 3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>Acceso de terceros a la sala</div>
+                <div class="row"><div class="av">CV</div><div class="x"><b>Cristina Vela</b><span>Psicóloga forense · OAV</span></div><span class="tag">solo esta sesión</span></div>
+                <div class="row"><div class="av">IJ</div><div class="x"><b>Intérprete jurada (árabe)</b><span>Entrada puntual</span></div><span class="tag">10 min · revocable</span></div>
+              </div>
+              <div class="cb in" data-step="11"><span class="who">Cristina Vela · OAV</span>Hola Nadia, soy Cristina, psicóloga forense. Estoy contigo para acompañarte en esto.<span class="m">22:52</span></div>
+              <!-- P13 · videollamada con consentimiento (panel especial) -->
+              <div class="csys" data-step="12">Videollamada iniciada · consentimiento de las 3 partes registrado (RGPD art. 6)</div>
+              <div class="callp" data-step="12">
+                <div class="ch"><svg viewBox="0 0 24 24" fill="none"><path d="M3 7h11v10H3zM14 10l7-4v12l-7-4z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>Videollamada · sala segura<span class="rec"><i></i>Grabando · consentida</span></div>
+                <div class="grid"><div class="vt"><div class="av">MR</div><div class="nm">Rueda · Agente</div></div><div class="vt"><div class="av">NA</div><div class="nm">Nadia · Víctima</div></div><div class="vt"><div class="av">CV</div><div class="nm">C. Vela · OAV</div></div></div>
+                <div class="cons"><svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="1.9" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Consentimiento registrado (3 partes) · declaración orientada a <b>prueba preconstituida (art. 449 bis LECrim)</b>: no habrá que repetirla en juicio.</span></div>
+              </div>
+              <!-- P14 · la oficial abre la efímera desde la consola (barra de controles) · fuera del Caso -->
+              <div class="cb out" data-step="13"><span class="who">Oficial Rueda</span>Nadia, no te retires: tengo que comentarte una cosa del traslado de mañana que no debe quedar en el expediente. Voy a abrir un canal efímero, ¿de acuerdo?<span class="m">23:04</span></div>
+              <div class="ceph-note" data-step="13" data-until="13"><svg viewBox="0 0 24 24" fill="none"><path d="M4 14a4 4 0 004 4h8a3 3 0 000-6 5 5 0 00-9.6-1.5A4 4 0 004 14z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg><span>La oficial activó el <b>Modo efímero</b> desde la consola — coordinación del traslado. Cifrado, sin traza, <b>fuera del Caso</b>: estas burbujas no se incorporan al expediente.</span></div>
+              <div class="cb eph in" data-step="13" data-until="13"><span class="eh"><svg viewBox="0 0 24 24" fill="none"><path d="M4 14a4 4 0 004 4h8a3 3 0 000-6 5 5 0 00-9.6-1.5A4 4 0 004 14z" stroke="currentColor" stroke-width="1.6"/></svg>Efímero · Rueda</span>El coche pasa a las 9:15, sin distintivos.<span class="m">23:05</span></div>
+              <div class="cb eph out" data-step="13" data-until="13"><span class="eh"><svg viewBox="0 0 24 24" fill="none"><path d="M4 14a4 4 0 004 4h8a3 3 0 000-6 5 5 0 00-9.6-1.5A4 4 0 004 14z" stroke="currentColor" stroke-width="1.6"/></svg>Efímero · Nadia</span>Entendido, gracias.<span class="m">23:05</span></div>
+              <!-- P15 · cierre y archivo trazable -->
+              <div class="csys ok" data-step="14">Sesión cerrada · terceros fuera (histórico revocado) · ampliación en tramitación</div>
+              <div class="cb out" data-step="14"><span class="who">Oficial Rueda</span>He cerrado la sala, Nadia. Tu ampliación queda en tramitación; te aviso por WhatsApp de cualquier novedad. Cuídate.<span class="m">23:08</span></div>
+              <div class="dilig" data-step="14">
+                <div class="h"><svg viewBox="0 0 24 24" fill="none"><path d="M6 2h9l5 5v15H6z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M9 12h6M9 15h6M9 9h3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>Expediente VG-2026/0731<span class="st">En tramitación</span></div>
+                <div class="r"><span class="k">Diligencia</span><span class="v">Ampliación de denuncia · cerrada</span></div>
+                <div class="r"><span class="k">Siguiente</span><span class="v">Pase a Fiscalía</span></div>
+                <div class="r"><span class="k">Terceros</span><span class="v">Salieron · sin histórico</span></div>
+              </div>
+              <div class="arch-log" data-step="14">
+                <div class="h"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3l7 3v5c0 5-3 8-7 10-4-2-7-5-7-10V6z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/></svg>Registro trazable (SystemLog)</div>
+                <div class="lg"><span class="d"></span><div class="x"><b>Salto a sala segura</b><span>22:44 · Rueda · identidad verificada</span></div><span class="seal">registrado</span></div>
+                <div class="lg"><span class="d"></span><div class="x"><b>Pruebas ancladas</b><span>22:47 · 1 audio + 2 capturas</span></div><span class="seal">registrado</span></div>
+                <div class="lg"><span class="d"></span><div class="x"><b>Captura con PII rechazada</b><span>22:47 · ubicación del punto seguro no incorporada</span></div><span class="seal">registrado</span></div>
+                <div class="lg"><span class="d"></span><div class="x"><b>Videollamada consentida</b><span>22:55 · 3 partes · art. 449 bis</span></div><span class="seal">registrado</span></div>
+                <div class="lg"><span class="d"></span><div class="x"><b>Cierre y archivo</b><span>23:08 · en tramitación · pase a Fiscalía</span></div><span class="seal">registrado</span></div>
+              </div>
+              <div class="arch-siem" data-step="14"><svg viewBox="0 0 24 24" fill="none"><path d="M12 3v12M8 11l4 4 4-4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 21h14" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg><span>SystemLog exportado al SIEM del Cuerpo. La burbuja efímera no aparece aquí: quedó fuera del Caso.</span></div>
+              <!-- P16 · vuelta a WhatsApp 24×7 (mensaje del bot) -->
+              <div class="csys" data-step="15">Sesión segura cerrada · el canal de WhatsApp sigue abierto 24×7 para el seguimiento</div>
+              <div class="cb out" data-step="15"><span class="who"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="3.6" r="1.2" fill="currentColor"/><rect x="4" y="8" width="16" height="11" rx="3" stroke="currentColor" stroke-width="1.7"/><circle cx="9" cy="13" r="1.4" fill="currentColor"/><circle cx="15" cy="13" r="1.4" fill="currentColor"/><path d="M12 4.8v3.2M8.5 19v1.6M15.5 19v1.6M4 12.5H2.6M21.4 12.5H20" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>Asistente · Bot</span>Seguimos por aquí, Nadia. Si necesitas algo, escríbenos cuando quieras — estamos 24 horas.<span class="m">23:10</span></div>
+            </div>
+            <div class="cs-foot"><div class="tools"><svg viewBox="0 0 24 24" fill="none"><path d="M16 8l-7 7a3 3 0 004 4l7-8a5 5 0 00-7-7l-7 7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="6" width="18" height="13" rx="2" stroke="currentColor" stroke-width="1.6"/><circle cx="12" cy="12.5" r="3" stroke="currentColor" stroke-width="1.6"/></svg></div><div class="in">Escribe un mensaje…</div><div class="snd">Enviar<svg viewBox="0 0 24 24" fill="none"><path d="M4 12l16-8-6 16-3-6-7-2z" stroke="#fff" stroke-width="1.6" stroke-linejoin="round"/></svg></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div></div>
+
+  <div class="caption">
+    <div class="step" id="capStep"></div>
+    <h2 id="capTitle"></h2>
+    <p id="capText"></p>
+  </div>
+
+  <div class="seq">
+    <button class="nav" id="prev" aria-label="Anterior"><svg viewBox="0 0 24 24" fill="none"><path d="M15 6l-6 6 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    <div class="dots" id="dots"></div>
+    <button class="play" id="play" aria-label="Reproducir"><svg id="playIcon" viewBox="0 0 24 24" fill="none"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></button>
+    <button class="nav" id="next" aria-label="Siguiente"><svg viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+  </div>
+</div>
+
+<script>
+(function(){
+  var N=16, i=0, playing=false, timer=null;
+  // layout: w=WhatsApp, i=In-App, c=Consola
+  var LAYOUT=[['w','c'],['w','c'],['w','c'],['w','c'],['w','i'],['w','i'],['i','c'],['i','c'],['i','c'],['i','c'],['i','c'],['i','c'],['i','c'],['i','c'],['i','c'],['w','c']];
+  var CAP=[
+    {s:"Paso 1 · Primer contacto",t:"Nadia entra por su <em>WhatsApp</em>",d:"Contacta con el canal de atención a víctimas, de noche y sin desplazarse a dependencias."},
+    {s:"Paso 2 · La petición",t:"Quiere <em>ampliar su denuncia</em>",d:"Un nuevo quebrantamiento de la orden de alejamiento; expone el motivo por el canal que ya usa."},
+    {s:"Paso 3 · Escalado",t:"El bot la pasa a <em>su instructora</em>",d:"No a un canal genérico: a la oficial que ya lleva su caso, sin repetir la historia."},
+    {s:"Paso 4 · Continuidad",t:"La oficial Rueda toma la conversación",d:"Continuidad de la relación de confianza con la Unidad de Familia y Mujer."},
+    {s:"Paso 5 · El salto",t:"Se abre una <em>sala segura</em> dentro de WhatsApp",d:"La invitación llega por WhatsApp; el código, por SMS aparte — doble factor separado."},
+    {s:"Paso 6 · Identidad",t:"Confirma sus datos y el <em>código por SMS</em>",d:"Identidad por Flow + OTP de factor separado, sin instalar nada ni salir de WhatsApp."},
+    {s:"Paso 7 · Dentro",t:"Ya está en la <em>sala segura</em>",d:"Conexión cifrada establecida; la conversación queda gobernada en la consola del agente."},
+    {s:"Paso 8 · La prueba",t:"Relata el hecho en una <em>nota de voz</em>",d:"La sala transcribe su testimonio (STT) y lo ancla al expediente: queda como material estructurado, no como un audio suelto."},
+    {s:"Paso 9 · Adjuntos",t:"Aporta las <em>capturas, una a una</em>",d:"Cada imagen entra por separado y se guarda anclada al expediente de la ampliación."},
+    {s:"Paso 10 · Protección de la prueba",t:"El canal <em>rechaza</em> la captura que expone el punto seguro",d:"Una imagen dejaba ver el rótulo de la calle de la casa de acogida. La consola la descarta antes de guardarla: la ubicación nunca entra en el sistema."},
+    {s:"Paso 11 · Diligencia",t:"Rueda estructura la <em>ampliación como diligencia</em>",d:"El testimonio y las pruebas quedan enganchados al atestado como diligencia, no como conversación dispersa."},
+    {s:"Paso 12 · Need-to-know",t:"Entra la <em>psicóloga forense</em>, con acceso acotado",d:"La OAV y una intérprete jurada entran solo a lo justo y por el tiempo justo; al salir no conservan nada."},
+    {s:"Paso 13 · Declaración",t:"Videollamada <em>con consentimiento</em>",d:"Con las tres partes de acuerdo (RGPD art. 6), la declaración se orienta a prueba preconstituida (art. 449 bis): no habrá que repetirla en juicio."},
+    {s:"Paso 14 · Fuera del Caso",t:"Lo logístico va en una <em>burbuja efímera</em>",d:"La coordinación del traslado de mañana se trata en un espacio cifrado que no persiste ni deja traza: no contamina el expediente."},
+    {s:"Paso 15 · Cierre",t:"La ampliación queda <em>en tramitación</em>",d:"Rueda cierra la sala; los terceros salen y pierden el histórico. Todo el registro se exporta al SIEM y el expediente queda reconstruible para Fiscalía."},
+    {s:"Paso 16 · Continuidad",t:"Vuelta a <em>WhatsApp</em>, 24×7",d:"Cerrada la sala, Nadia conserva un canal de contacto permanente para el próximo hito, siempre desde WhatsApp y sin fricción."}
+  ];
+  var dots=document.getElementById('dots');
+  for(var k=0;k<N;k++){(function(k){var b=document.createElement('button');b.setAttribute('aria-label','Paso '+(k+1));b.addEventListener('click',function(){go(k);stop();});dots.appendChild(b);})(k);}
+  function show(id,on){document.getElementById(id).classList.toggle('off',!on);}
+  function render(){
+    var L=LAYOUT[i];
+    show('colWhats',L.indexOf('w')>=0);
+    show('colInapp',L.indexOf('i')>=0);
+    show('colConsole',L.indexOf('c')>=0);
+    // reveal cumulative messages (data-step = desde; data-until = hasta, p.ej. efímeras que no persisten)
+    document.querySelectorAll('[data-step]').forEach(function(el){
+      var s=parseInt(el.getAttribute('data-step'),10);
+      var uAttr=el.getAttribute('data-until');
+      var u=(uAttr===null)?Infinity:parseInt(uAttr,10);
+      el.classList.toggle('hide', !(i>=s && i<=u));
+    });
+    // gate vs room
+    document.getElementById('iappGate').classList.toggle('hide', i>=6);
+    document.getElementById('iappRoom').classList.toggle('hide', i<6);
+    // sms push only during salto/identidad
+    document.getElementById('smsPush').style.display=(i===4||i===5)?'flex':'none';
+    // console channel chip: securizado dentro de la sala (6..14), público en el resto
+    var secPhase=(i>=6 && i<=14);
+    document.getElementById('chPub').classList.toggle('hide', secPhase);
+    document.getElementById('chSec').classList.toggle('hide', !secPhase);
+    // barra de controles de la consola: los controles de sesión solo operan en la sala securizada
+    document.getElementById('csTools').classList.toggle('pub', !secPhase);
+    document.getElementById('ctCall').classList.toggle('on', i===12); // videollamada en curso (P13)
+    document.getElementById('ctEph').classList.toggle('on', i===13);  // el oficial abre efímera (P14)
+    document.getElementById('ctEnd').classList.toggle('on', i===14);  // cierre de sesión (P15)
+    // dots
+    Array.prototype.forEach.call(dots.children,function(b,x){b.className=x===i?'on':(x<i?'done':'');});
+    var c=CAP[i]||{};document.getElementById('capStep').textContent=c.s||'';document.getElementById('capTitle').innerHTML=c.t||'';document.getElementById('capText').textContent=c.d||'';
+    // scroll chats to bottom
+    ['waChat','csBody','iappRoom'].forEach(function(id){var e=document.getElementById(id);if(e)e.scrollTop=e.scrollHeight;});
+  }
+  function go(n){i=Math.max(0,Math.min(N-1,n));render();try{history.replaceState(null,'','?p='+(i+1));}catch(e){}}
+  function next(){go(i+1);}function prev(){go(i-1);}
+  function stop(){playing=false;if(timer){clearInterval(timer);timer=null;}document.getElementById('playIcon').innerHTML='<path d="M8 5v14l11-7z" fill="currentColor"/>';}
+  function start(){playing=true;document.getElementById('playIcon').innerHTML='<path d="M7 5h3v14H7zM14 5h3v14h-3z" fill="currentColor"/>';timer=setInterval(function(){ if(i===N-1){go(0);} else next(); },5200);}
+  document.getElementById('next').addEventListener('click',function(){next();stop();});
+  document.getElementById('prev').addEventListener('click',function(){prev();stop();});
+  document.getElementById('play').addEventListener('click',function(){playing?stop():start();});
+  document.addEventListener('keydown',function(e){if(e.key==='ArrowRight'){next();stop();}else if(e.key==='ArrowLeft'){prev();stop();}});
+  // deep-link: ?p=N (1-based) o #pN / #N abre el recorrido en un paso concreto
+  (function(){var m=(location.search.match(/[?&]p=(\d+)/)||location.hash.match(/#p?(\d+)/));if(m){i=Math.max(0,Math.min(N-1,parseInt(m[1],10)-1));}})();
+  render();
+})();
+</script>
+</body>
+</html>
