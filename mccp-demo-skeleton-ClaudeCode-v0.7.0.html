@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<!-- MCCP · SKELETON de la demo · portada-índice · v0.7.0 · (Claude-Code).
+     v0.7.0: selector de idioma ENG|ES (diccionario EN inline + conmutador; ES intacto como fuente); enlaces repuntados a Ficha v0.4.0 · genérico v0.3.0 · VioGén v0.6.0 (bilingües).
+     v0.6.0: barrido editorial aplicado (instrucción owner «Redacción pendiente»; «Caso de uso 5», «historia vivida», UFAM=Organización glosada, «Recorrido por bloques», B4 «comunicación saliente gobernada», B6 «(plan de salida)», GovTech glosado, sin «cata»/«BackOffice»/«abstracción» visibles). Enlaces repuntados: Ficha v0.3.0 · genérico v0.2.0 · VioGén v0.5.0 (validado, intacto).
+     Guión del owner (2026-07-12): 1º Ficha Técnica (15 slides: Qué es MCCP 3 · Sectores 2 · 5 casos × 2) → 2º Caso 5 Policía/VioGén (hilo narrativo v0.4.2, se repuntará al realineado) → 3º Bloque fuera de hilo (29 escenas · 6 bloques; absorbe BackOffice). v0.3.0: Ficha v0.2.0 (1.1 eliminado; madurez producto-primero); enlaces 1.1 inutilizados. v0.4.0: hilo VioGén repuntado a v0.5.0 (consola realineada al master, VALIDADA por el owner 2026-07-12). v0.5.0: recorrido completo E01-E29 (mockup-bloque-generico-exhaustivo v0.1.0) — B1-B6 repuntados a la primera escena de cada bloque, fuera el «próximamente» de B4.
+     Identidad de página = hilo narrativo validado. Solo los 3 capítulos (Demo 2/UNICC fuera). Enlaces relativos al mismo directorio. -->
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>MCCP · Demo — skeleton</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --teal:#17b39a; --purple:#8e3b7a; --gold:#e2c391; --muted:#a3bac0;
+  --sans:'Archivo',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;
+  --serif:'Fraunces',Georgia,serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--sans);color:#eef5f3;-webkit-font-smoothing:antialiased;line-height:1.45;min-height:100vh;
+  background:radial-gradient(1200px 640px at 12% -4%, #164742 0%, transparent 52%),radial-gradient(1100px 720px at 92% 104%, #3d1743 0%, transparent 52%),linear-gradient(135deg,#0b2a27 0%,#10262f 46%,#241038 100%);
+  background-attachment:fixed}
+.app{max-width:1180px;margin:0 auto;width:100%;min-height:100vh;display:flex;flex-direction:column;padding:0 24px 30px}
+.brandbar{padding:22px 8px 6px}
+.lockup{display:inline-flex;align-items:center;gap:15px}
+.lockup svg{width:52px;height:52px;flex:0 0 auto}
+.lockup .txt{border-left:2px solid rgba(23,179,154,.45);padding-left:15px}
+.lockup .txt .wm{font-size:28px;font-weight:800;letter-spacing:2px;color:#fff;line-height:.95;display:block}
+.lockup .txt .claim{font-family:var(--serif);font-size:21px;font-weight:500;font-style:italic;color:#eef7f4;margin-top:5px;display:block;line-height:1.05}
+.hero{text-align:center;padding:26px 20px 8px}
+.hero .kicker{font-size:10.5px;font-weight:700;letter-spacing:1.6px;text-transform:uppercase;color:var(--teal)}
+.hero h1{font-family:var(--serif);font-size:34px;font-weight:500;color:#fff;margin-top:6px}
+.hero h1 em{font-style:italic;color:var(--gold)}
+.hero p{font-size:13px;color:#c3d6d1;max-width:700px;margin:8px auto 0}
+/* capítulos */
+.chapters{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:26px;align-items:stretch}
+@media(max-width:980px){.chapters{grid-template-columns:1fr}}
+.ch{background:rgba(10,24,28,.55);border:1px solid rgba(255,255,255,.12);border-radius:18px;padding:22px 20px 18px;display:flex;flex-direction:column;backdrop-filter:blur(6px);position:relative;overflow:hidden}
+.ch::before{content:"";position:absolute;inset:0 0 auto 0;height:3px;background:linear-gradient(90deg,var(--teal),var(--purple))}
+.ch .num{width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,var(--teal),var(--purple));color:#fff;font-weight:800;font-size:15px;display:grid;place-items:center;margin-bottom:12px}
+.ch h2{font-family:var(--serif);font-size:21px;font-weight:500;color:#fff;line-height:1.15}
+.ch h2 em{font-style:italic;color:var(--gold)}
+.ch .sub{font-size:11.5px;color:var(--muted);margin-top:5px}
+.ch .st{display:inline-flex;align-items:center;gap:6px;font-size:9.5px;font-weight:700;letter-spacing:.8px;text-transform:uppercase;border-radius:20px;padding:3px 10px;margin-top:10px;align-self:flex-start}
+.ch .st.ok{color:#8fe6c4;background:rgba(18,110,80,.28);border:1px solid rgba(23,179,154,.4)}
+.ch .st.mix{color:#f0d9a8;background:rgba(120,90,20,.25);border:1px solid rgba(226,195,145,.4)}
+.ch .st.wip{color:#f0b9a0;background:rgba(120,50,30,.25);border:1px solid rgba(226,150,120,.4)}
+.ch .st .dot{width:7px;height:7px;border-radius:50%;background:currentColor}
+.entries{margin-top:14px;display:flex;flex-direction:column;gap:6px;flex:1}
+.gt{font-size:9px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:#7fa39b;margin:7px 0 1px}
+a.e,span.e{display:flex;align-items:center;gap:9px;font-size:12.5px;color:#e6f2ee;text-decoration:none;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09);border-radius:10px;padding:8px 12px;transition:.15s}
+a.e:hover{background:rgba(23,179,154,.14);border-color:rgba(23,179,154,.45)}
+a.e .n,span.e .n{width:20px;height:20px;border-radius:6px;background:rgba(23,179,154,.18);color:#8fe6c4;font-size:9.5px;font-weight:800;display:grid;place-items:center;flex:0 0 auto}
+span.e{opacity:.5;cursor:default}
+span.e .n{background:rgba(255,255,255,.08);color:#9fb4ad}
+a.e .go{margin-left:auto;color:#7fd8c2;font-size:13px}
+span.e .wipx{margin-left:auto;font-size:8.5px;font-weight:800;letter-spacing:.6px;text-transform:uppercase;color:#d9a06a}
+.ch .foot{font-size:10px;color:#7fa39b;margin-top:12px;line-height:1.4}
+.pagefoot{text-align:center;font-size:10.5px;color:#7fa39b;margin-top:26px}
+.pagefoot b{color:#a9c6be}
+/* ===== selector de idioma ENG|ES ===== */
+.brandbar{position:relative}
+.langsel{position:absolute;top:26px;right:30px;display:flex;align-items:center;gap:7px;z-index:60}
+.langsel button{background:none;border:0;cursor:pointer;font-family:inherit;font-size:11px;font-weight:800;letter-spacing:1.2px;color:#93aca5;padding:4px 3px 5px;border-bottom:2px solid transparent}
+.langsel button.on{color:#fff;border-bottom-color:#17b39a}
+.langsel button:hover{color:#fff}
+.langsel .sep{color:#6d837c;font-size:11px}
+</style>
+</head>
+<body>
+<script>
+/* ===== i18n ENG|ES · diccionario EN + conmutador (Claude-Code) ===== */
+const I18N={"MCCP":"MCCP","Plataforma Conversacional de Misión Crítica":"Mission-Critical Conversational Platform","Demo · skeleton":"Demo · skeleton","La demo,":"The demo,","de principio a fin":"from start to finish","Tres capítulos en orden: qué es MCCP y para quién, la historia vivida de principio a fin, y la plataforma por dentro. Cada entrada abre su pieza en el paso exacto.":"Three chapters in order: what MCCP is and who it is for, the story as lived from start to finish, and the platform from the inside. Each entry opens its piece at the exact step.","Ficha":"Technical","Técnica":"Brief","Sectores objetivo · 5 casos de uso — 12 slides":"Target sectors · 5 use cases — 12 slides","Disponible · v0.4.0":"Available · v0.4.0","Qué es MCCP":"What MCCP is","Redacción pendiente":"Draft pending","A quién se dirige · 2 slides":"Who it is for · 2 slides","Sectores objetivo y el patrón común":"Target sectors and the common pattern","5 casos de uso · 2 slides por sector":"5 use cases · 2 slides per sector","B":"B","Banca — «Devuelve primero, investiga después»":"Banking — “Refund first, investigate later”","S":"S","Seguros — «El latigazo que no prescribió»":"Insurance — “The whiplash that never expired”","Sa":"Sa","Salud — «La pauta no cuadra»":"Healthcare — “The regimen doesn’t add up”","G":"G","GovTech / Administración pública — «La muñeca rota de María»":"GovTech / Public administration — “María’s broken wrist”","P":"P","Policía / Ejército / Defensa — «El punto seguro…»":"Police / Military / Defense — “The safe point…”","12 slides · fuente: EJEMPLOS-SECTORIALES v1.0.2 · madurez = estado del producto 07/2026. Termina en Policía/Defensa y da paso al caso vivido.":"12 slides · source: EJEMPLOS-SECTORIALES v1.0.2 · maturity = product status 07/2026. Ends on Police/Defense and leads into the lived case.","Caso de uso 5 ·":"Use case 5 ·","Policía (VioGén)":"Police (VioGén)","El hilo narrativo — Nadia amplía su denuncia · 16 escenas · Organización: UFAM (Policía Nacional)":"The narrative thread — Nadia expands her report · 16 scenes · Organization: UFAM (Policía Nacional)","Validado · v0.5.0 (ES) · consola master · v0.6.0 bilingüe":"Validated · v0.5.0 (ES) · master console · v0.6.0 bilingual","Recorrido completo":"Full walkthrough","P01":"P01","Desde el principio — primer contacto":"From the beginning — first contact","Momentos clave":"Key moments","P05":"P05","El salto — sala segura dentro de WhatsApp":"The leap — secure room inside WhatsApp","P08":"P08","La prueba — nota de voz transcrita (STT)":"The evidence — transcribed voice note (STT)","P10":"P10","Protección — el canal rechaza la captura":"Protection — the channel rejects the screenshot","P13":"P13","Declaración — videollamada con consentimiento":"Statement — video call with consent","P14":"P14","Fuera del Caso (el expediente) — burbuja efímera":"Outside the Case (the case file) — ephemeral bubble","P15":"P15","Cierre — en tramitación · SystemLog":"Closing — in progress · SystemLog","Consola realineada al master (672px, sin zona de Usuario) — validada por el owner el 2026-07-12.":"Console realigned to the master (672px, no User zone) — validated by the owner on 2026-07-12.","La plataforma":"The platform","por dentro":"from the inside","Fuera de hilo narrativo · 29 escenas · 6 bloques":"Outside the narrative thread · 29 scenes · 6 blocks","Disponible · v0.3.0":"Available · v0.3.0","Recorrido por bloques":"Block-by-block walkthrough","B1":"B1","Backstage — Identidad y Permisos":"Backstage — Identity and Permissions","B2":"B2","Operación — el puesto de trabajo":"Operations — the workstation","B3":"B3","Canal Moderado":"Moderated Channel","B4":"B4","Broadcast — comunicación saliente gobernada":"Broadcast — governed outbound communication","B5":"B5","Motor IA y Plataforma":"AI Engine and Platform","B6":"B6","Soberanía — cierre · walk-away (plan de salida)":"Sovereignty — closing · walk-away (exit plan)","Recorrido completo E01–E29. Cada bloque abre en su primera escena: B1 E01 · B2 E09 · B3 E15 · B4 E18 · B5 E20 · B6 E26.":"Full walkthrough E01–E29. Each block opens at its first scene: B1 E01 · B2 E09 · B3 E15 · B4 E18 · B5 E20 · B6 E26.","MCCP · Demo — skeleton v0.7.0":"MCCP · Demo — skeleton v0.7.0","· capítulos en el orden del guión · usuarios ficticios · Confidencial — interno":"· chapters in script order · fictional users · Confidential — internal","MCCP · Demo — skeleton":"MCCP · Demo — skeleton"};
+let LANG=(()=>{try{const q=new URLSearchParams(location.search).get('lang');if(q==='en'||q==='es')return q;const s=localStorage.getItem('mccpLang');if(s==='en'||s==='es')return s;}catch(e){}return 'es';})();
+function setLang(l){if(l===LANG)return;try{localStorage.setItem('mccpLang',l);}catch(e){}const u=new URL(location.href);u.searchParams.set('lang',l);location.replace(u.toString());}
+function applyLang(){document.documentElement.setAttribute('lang',LANG==='en'?'en':'es');
+  document.querySelectorAll('.langsel button').forEach(b=>{b.classList.toggle('on',b.getAttribute('data-lang')===LANG);});
+  if(LANG!=='en')return;
+  const tk=document.title.replace(/\s+/g,' ').trim();if(I18N[tk])document.title=I18N[tk];
+  const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);const nodes=[];let n;
+  while(n=w.nextNode()){const p=n.parentNode&&n.parentNode.nodeName;if(p==='SCRIPT'||p==='STYLE')continue;nodes.push(n);}
+  nodes.forEach(nd=>{const t=nd.nodeValue;const k=t.replace(/\s+/g,' ').trim();if(!k)return;const v=I18N[k];if(v===undefined||v===k)return;const m=t.match(/^(\s*)[\s\S]*?(\s*)$/);nd.nodeValue=(m?m[1]:'')+v+(m?m[2]:'');});
+  document.querySelectorAll('[data-tip]').forEach(el=>{const k=(el.getAttribute('data-tip')||'').replace(/\s+/g,' ').trim();const v=I18N[k];if(v)el.setAttribute('data-tip',v);});
+  document.querySelectorAll('[aria-label]').forEach(el=>{const k=(el.getAttribute('aria-label')||'').replace(/\s+/g,' ').trim();const v=I18N[k];if(v)el.setAttribute('aria-label',v);});
+}
+window.applyLang=applyLang;
+</script>
+
+<div class="app">
+  <div class="brandbar"><div class="langsel" role="group" aria-label="Idioma / Language"><button type="button" data-lang="en" title="English / Inglés" onclick="setLang('en')">ENG</button><span class="sep">|</span><button type="button" data-lang="es" title="Español / Spanish" onclick="setLang('es')">ES</button></div>
+    <div class="lockup">
+      <svg viewBox="0 0 40 40" fill="none"><defs><linearGradient id="mccp" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#17b39a"/><stop offset=".55" stop-color="#3f6f8c"/><stop offset="1" stop-color="#8e3b7a"/></linearGradient></defs>
+        <path d="M20 4.5a15.5 15.5 0 0 1 14 22" stroke="url(#mccp)" stroke-width="5.4" stroke-linecap="round" fill="none"/>
+        <path d="M20 35.5a15.5 15.5 0 0 1 -14 -22" stroke="url(#mccp)" stroke-width="5.4" stroke-linecap="round" fill="none"/>
+      </svg>
+      <div class="txt"><span class="wm">MCCP</span><span class="claim">Plataforma Conversacional de Misión Crítica</span></div>
+    </div>
+  </div>
+
+  <div class="hero">
+    <div class="kicker">Demo · skeleton</div>
+    <h1>La demo, <em>de principio a fin</em></h1>
+    <p>Tres capítulos en orden: qué es MCCP y para quién, la historia vivida de principio a fin, y la plataforma por dentro. Cada entrada abre su pieza en el paso exacto.</p>
+  </div>
+
+  <div class="chapters">
+
+    <!-- 1 · FICHA TÉCNICA -->
+    <div class="ch">
+      <div class="num">1</div>
+      <h2>Ficha <em>Técnica</em></h2>
+      <div class="sub">Sectores objetivo · 5 casos de uso — 12 slides</div>
+      <span class="st ok"><span class="dot"></span>Disponible · v0.4.0</span>
+      <div class="entries">
+        <div class="gt">Qué es MCCP</div>
+        <span class="e"><span class="n">1.1</span>Qué es MCCP<span class="wipx">Redacción pendiente</span></span>
+        <div class="gt">A quién se dirige · 2 slides</div>
+        <a class="e" href="mccp-ficha-tecnica-ClaudeCode-v0.4.0.html?p=1"><span class="n">1.2</span>Sectores objetivo y el patrón común<span class="go">→</span></a>
+        <div class="gt">5 casos de uso · 2 slides por sector</div>
+        <a class="e" href="mccp-ficha-tecnica-ClaudeCode-v0.4.0.html?p=3"><span class="n">B</span>Banca — «Devuelve primero, investiga después»<span class="go">→</span></a>
+        <a class="e" href="mccp-ficha-tecnica-ClaudeCode-v0.4.0.html?p=5"><span class="n">S</span>Seguros — «El latigazo que no prescribió»<span class="go">→</span></a>
+        <a class="e" href="mccp-ficha-tecnica-ClaudeCode-v0.4.0.html?p=7"><span class="n">Sa</span>Salud — «La pauta no cuadra»<span class="go">→</span></a>
+        <a class="e" href="mccp-ficha-tecnica-ClaudeCode-v0.4.0.html?p=9"><span class="n">G</span>GovTech / Administración pública — «La muñeca rota de María»<span class="go">→</span></a>
+        <a class="e" href="mccp-ficha-tecnica-ClaudeCode-v0.4.0.html?p=11"><span class="n">P</span>Policía / Ejército / Defensa — «El punto seguro…»<span class="go">→</span></a>
+      </div>
+      <div class="foot">12 slides · fuente: EJEMPLOS-SECTORIALES v1.0.2 · madurez = estado del producto 07/2026. Termina en Policía/Defensa y da paso al caso vivido.</div>
+    </div>
+
+    <!-- 2 · CASO 5 · POLICÍA (VIOGEN) -->
+    <div class="ch">
+      <div class="num">2</div>
+      <h2>Caso de uso 5 · <em>Policía (VioGén)</em></h2>
+      <div class="sub">El hilo narrativo — Nadia amplía su denuncia · 16 escenas · Organización: UFAM (Policía Nacional)</div>
+      <span class="st ok"><span class="dot"></span>Validado · v0.5.0 (ES) · consola master · v0.6.0 bilingüe</span>
+      <div class="entries">
+        <div class="gt">Recorrido completo</div>
+        <a class="e" href="mockup-policia-viogen-exhaustivo-ClaudeCode-v0.6.0.html?p=1"><span class="n">P01</span>Desde el principio — primer contacto<span class="go">→</span></a>
+        <div class="gt">Momentos clave</div>
+        <a class="e" href="mockup-policia-viogen-exhaustivo-ClaudeCode-v0.6.0.html?p=5"><span class="n">P05</span>El salto — sala segura dentro de WhatsApp<span class="go">→</span></a>
+        <a class="e" href="mockup-policia-viogen-exhaustivo-ClaudeCode-v0.6.0.html?p=8"><span class="n">P08</span>La prueba — nota de voz transcrita (STT)<span class="go">→</span></a>
+        <a class="e" href="mockup-policia-viogen-exhaustivo-ClaudeCode-v0.6.0.html?p=10"><span class="n">P10</span>Protección — el canal rechaza la captura<span class="go">→</span></a>
+        <a class="e" href="mockup-policia-viogen-exhaustivo-ClaudeCode-v0.6.0.html?p=13"><span class="n">P13</span>Declaración — videollamada con consentimiento<span class="go">→</span></a>
+        <a class="e" href="mockup-policia-viogen-exhaustivo-ClaudeCode-v0.6.0.html?p=14"><span class="n">P14</span>Fuera del Caso (el expediente) — burbuja efímera<span class="go">→</span></a>
+        <a class="e" href="mockup-policia-viogen-exhaustivo-ClaudeCode-v0.6.0.html?p=15"><span class="n">P15</span>Cierre — en tramitación · SystemLog<span class="go">→</span></a>
+      </div>
+      <div class="foot">Consola realineada al master (672px, sin zona de Usuario) — validada por el owner el 2026-07-12.</div>
+    </div>
+
+    <!-- 3 · FUERA DE HILO -->
+    <div class="ch">
+      <div class="num">3</div>
+      <h2>La plataforma <em>por dentro</em></h2>
+      <div class="sub">Fuera de hilo narrativo · 29 escenas · 6 bloques</div>
+      <span class="st ok"><span class="dot"></span>Disponible · v0.3.0</span>
+      <div class="entries">
+        <div class="gt">Recorrido por bloques</div>
+        <a class="e" href="mockup-bloque-generico-exhaustivo-ClaudeCode-v0.3.0.html?p=1"><span class="n">B1</span>Backstage — Identidad y Permisos<span class="go">→</span></a>
+        <a class="e" href="mockup-bloque-generico-exhaustivo-ClaudeCode-v0.3.0.html?p=9"><span class="n">B2</span>Operación — el puesto de trabajo<span class="go">→</span></a>
+        <a class="e" href="mockup-bloque-generico-exhaustivo-ClaudeCode-v0.3.0.html?p=15"><span class="n">B3</span>Canal Moderado<span class="go">→</span></a>
+        <a class="e" href="mockup-bloque-generico-exhaustivo-ClaudeCode-v0.3.0.html?p=18"><span class="n">B4</span>Broadcast — comunicación saliente gobernada<span class="go">→</span></a>
+        <a class="e" href="mockup-bloque-generico-exhaustivo-ClaudeCode-v0.3.0.html?p=20"><span class="n">B5</span>Motor IA y Plataforma<span class="go">→</span></a>
+        <a class="e" href="mockup-bloque-generico-exhaustivo-ClaudeCode-v0.3.0.html?p=26"><span class="n">B6</span>Soberanía — cierre · walk-away (plan de salida)<span class="go">→</span></a>
+      </div>
+      <div class="foot">Recorrido completo E01–E29. Cada bloque abre en su primera escena: B1 E01 · B2 E09 · B3 E15 · B4 E18 · B5 E20 · B6 E26.</div>
+    </div>
+
+  </div>
+
+  <div class="pagefoot"><b>MCCP · Demo — skeleton v0.7.0</b> · capítulos en el orden del guión · usuarios ficticios · Confidencial — interno</div>
+</div>
+<script>
+document.addEventListener('DOMContentLoaded',function(){applyLang();
+ if(LANG==='en')document.querySelectorAll('a.e[href]').forEach(a=>{const h=a.getAttribute('href');if(h&&h.indexOf('.html')>-1)a.setAttribute('href',h+(h.indexOf('?')>-1?'&':'?')+'lang=en');});});
+</script>
+</body>
+</html>

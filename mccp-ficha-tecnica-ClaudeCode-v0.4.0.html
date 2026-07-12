@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<!-- v0.4.0: selector de idioma ENG|ES (diccionario EN inline, 262 cadenas; ES intacto). · MCCP · FICHA TÉCNICA de la demo · 15 slides · v0.3.0 · (Claude-Code).
+     v0.3.0 · barrido editorial aplicado (sesión Claude-Code).
+     Guión owner: 1.2 Sectores objetivo ×2 · 1.3 cinco casos ×2 (ficha + resolución/business value; fuente = EJEMPLOS-SECTORIALES v1.0.2). El punto 1.1 «Qué es MCCP» fue ELIMINADO por el owner (no validado, 2026-07-12). MADUREZ: manda la última hora del producto (entrega 07/2026, minado v0.3.0 + CORPUS v1.4.0 §6) sobre los documentos — chips Verificado = visto en producto o CONFIRMADO por el owner (2026-07-12: videollamada agentes+externos con envoltorio probatorio; burbuja efímera no persiste).
+     Capa de página = identidad MCCP del hilo narrativo validado (contenido arriba, leyenda abajo, secuenciador). Terminología «Organización». Deep-link ?p=1..12. -->
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>MCCP · Ficha Técnica — 12 slides</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --teal:#17b39a; --purple:#8e3b7a; --gold:#e2c391; --muted:#a3bac0;
+  --sans:'Archivo',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;
+  --serif:'Fraunces',Georgia,serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--sans);color:#eef5f3;-webkit-font-smoothing:antialiased;line-height:1.45;min-height:100vh;
+  background:radial-gradient(1200px 640px at 12% -4%, #164742 0%, transparent 52%),radial-gradient(1100px 720px at 92% 104%, #3d1743 0%, transparent 52%),linear-gradient(135deg,#0b2a27 0%,#10262f 46%,#241038 100%);
+  background-attachment:fixed}
+.app{max-width:1280px;margin:0 auto;width:100%;min-height:100vh;display:flex;flex-direction:column;padding-bottom:6px}
+.brandbar{padding:20px 30px 8px}
+.lockup{display:inline-flex;align-items:center;gap:15px}
+.lockup svg{width:52px;height:52px;flex:0 0 auto}
+.lockup .txt{border-left:2px solid rgba(23,179,154,.45);padding-left:15px}
+.lockup .txt .wm{font-size:28px;font-weight:800;letter-spacing:2px;color:#fff;line-height:.95;display:block}
+.lockup .txt .claim{font-family:var(--serif);font-size:21px;font-weight:500;font-style:italic;color:#eef7f4;margin-top:5px;display:block;line-height:1.05}
+.stage{flex:1;display:flex;align-items:center;justify-content:center;padding:2px 24px}
+.slide{width:100%;max-width:1120px;min-height:520px;display:flex;flex-direction:column;justify-content:center}
+.caption{padding:12px 24px 4px;text-align:center;min-height:70px}
+.caption .step{font-size:10.5px;font-weight:700;letter-spacing:1.4px;text-transform:uppercase;color:var(--teal);margin-bottom:6px}
+.caption h2{font-family:var(--serif);font-size:23px;color:#fff;font-weight:500}
+.caption h2 em{font-style:italic;color:var(--gold)}
+.caption p{font-size:12.5px;color:#c3d6d1;max-width:660px;margin:6px auto 0}
+.seq{display:flex;align-items:center;justify-content:center;gap:14px;padding:10px 24px 20px}
+.seq .nav,.seq .play{border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.05);border-radius:12px;cursor:pointer;display:flex;align-items:center;justify-content:center;color:#dfeeeb}
+.seq .nav{width:40px;height:40px}.seq .play{width:48px;height:48px;background:linear-gradient(135deg,#17b39a,#8e3b7a);border:0;color:#fff}
+.seq .nav:hover{border-color:var(--teal);color:#fff}
+.seq .nav svg,.seq .play svg{width:19px;height:19px}
+.dots{display:flex;gap:7px}
+.dots button{width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,.24);border:0;cursor:pointer;padding:0;transition:.2s}
+.dots button.on{background:var(--teal);transform:scale(1.3)}
+.dots button.done{background:var(--purple)}
+/* ===== componentes de slide ===== */
+.kick{font-size:10.5px;font-weight:800;letter-spacing:1.8px;text-transform:uppercase;color:var(--teal);text-align:center}
+.h0{font-family:var(--serif);font-size:44px;font-weight:500;color:#fff;text-align:center;line-height:1.12;margin-top:10px}
+.h0 em{font-style:italic;color:var(--gold)}
+.sub0{font-size:15px;color:#c9dcd6;text-align:center;max-width:760px;margin:14px auto 0;line-height:1.55}
+.card{background:rgba(10,24,28,.55);border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:18px 20px;backdrop-filter:blur(6px)}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.grid5{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:980px){.grid3,.grid5,.grid2{grid-template-columns:1fr}}
+.actor{text-align:center;padding:20px 16px}
+.actor .ai{width:52px;height:52px;border-radius:16px;margin:0 auto 10px;background:linear-gradient(140deg,rgba(23,179,154,.28),rgba(142,59,122,.22));border:1px solid rgba(23,179,154,.35);display:grid;place-items:center;color:#8fe6c4}
+.actor .ai svg{width:26px;height:26px}
+.actor b{font-family:var(--serif);font-size:17px;color:#fff;font-weight:500;display:block}
+.actor span{font-size:11.5px;color:var(--muted);display:block;margin-top:4px;line-height:1.4}
+.ejebar{margin-top:18px;text-align:center;background:linear-gradient(90deg,rgba(23,179,154,.16),rgba(142,59,122,.14));border:1px solid rgba(226,195,145,.3);border-radius:14px;padding:13px 20px;font-size:13.5px;color:#f0e6d2}
+.ejebar b{color:var(--gold);font-family:var(--serif);font-style:italic;font-weight:500}
+.tcard{position:relative;padding:16px 16px 14px}
+.tcard .tn{position:absolute;top:-11px;left:14px;background:linear-gradient(135deg,var(--teal),var(--purple));color:#fff;font-size:10px;font-weight:800;border-radius:7px;padding:3px 9px;letter-spacing:.6px}
+.tcard b{font-family:var(--serif);font-size:15.5px;font-weight:500;color:#fff;display:block;line-height:1.25;margin-top:4px}
+.tcard p{font-size:11px;color:#b7ccc6;margin-top:7px;line-height:1.45}
+.motor{display:grid;grid-template-columns:1fr auto 1fr;gap:14px;align-items:center;margin-top:6px}
+.motor .mo{text-align:center;padding:20px 16px}
+.motor .mo .mi{width:46px;height:46px;border-radius:14px;margin:0 auto 9px;display:grid;place-items:center}
+.motor .mo.aeg .mi{background:rgba(23,179,154,.2);border:1px solid rgba(23,179,154,.45);color:#8fe6c4}
+.motor .mo.ath .mi{background:rgba(142,59,122,.25);border:1px solid rgba(200,110,175,.45);color:#e8b8d8}
+.motor .mo .mi svg{width:23px;height:23px}
+.motor .mo b{font-size:15px;font-weight:800;letter-spacing:1.5px;color:#fff;display:block}
+.motor .mo span{font-size:11px;color:var(--muted);display:block;margin-top:5px;line-height:1.4}
+.motor .plus{font-family:var(--serif);font-size:30px;color:var(--gold)}
+.brands{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:16px}
+.brands .bc{padding:13px 16px;display:flex;align-items:center;gap:12px}
+.brands .bc b{font-size:13px;color:#fff}
+.brands .bc span{font-size:10.5px;color:var(--muted);display:block}
+.nums{display:flex;justify-content:center;gap:34px;margin-top:18px}
+.nums .nu{text-align:center}
+.nums .nu b{font-family:var(--serif);font-size:30px;color:var(--gold);font-weight:500;display:block}
+.nums .nu span{font-size:10px;letter-spacing:1px;text-transform:uppercase;color:var(--muted)}
+.seccard{padding:16px 14px;text-align:center;display:flex;flex-direction:column;min-height:196px}
+.seccard .si{width:44px;height:44px;border-radius:13px;margin:0 auto 9px;background:rgba(23,179,154,.16);border:1px solid rgba(23,179,154,.35);display:grid;place-items:center;color:#8fe6c4}
+.seccard .si svg{width:22px;height:22px}
+.seccard b{font-family:var(--serif);font-size:15.5px;color:#fff;font-weight:500}
+.seccard .reg{font-size:9.5px;color:#d9c8a8;margin-top:7px;line-height:1.5;letter-spacing:.2px}
+.seccard .dol{font-size:10.5px;color:var(--muted);margin-top:6px;line-height:1.4;flex:1}
+.journey{display:grid;grid-template-columns:1fr auto 1fr auto 1fr auto 1fr;gap:8px;align-items:stretch;margin-top:8px}
+.journey .jc{padding:16px 13px;text-align:center}
+.journey .jc .ji{width:40px;height:40px;border-radius:12px;margin:0 auto 8px;background:rgba(23,179,154,.16);border:1px solid rgba(23,179,154,.35);display:grid;place-items:center;color:#8fe6c4}
+.journey .jc .ji svg{width:20px;height:20px}
+.journey .jc b{font-size:12.5px;color:#fff;display:block;line-height:1.25}
+.journey .jc span{font-size:10px;color:var(--muted);display:block;margin-top:4px;line-height:1.35}
+.journey .ja{display:grid;place-items:center;color:#7fa39b;font-size:18px}
+/* caso: slide A */
+.caseh{display:flex;align-items:baseline;gap:14px;margin-bottom:14px}
+.caseh .cn{font-size:10px;font-weight:800;letter-spacing:1.4px;text-transform:uppercase;color:var(--teal);background:rgba(23,179,154,.12);border:1px solid rgba(23,179,154,.35);border-radius:8px;padding:4px 11px;flex:0 0 auto}
+.caseh h3{font-family:var(--serif);font-size:22px;font-weight:500;color:#fff;line-height:1.2}
+.caseh h3 em{font-style:italic;color:var(--gold)}
+.frow{display:flex;gap:10px;padding:7px 0;border-top:1px solid rgba(255,255,255,.08);font-size:12px}
+.frow:first-of-type{border-top:0}
+.frow .fk{flex:0 0 108px;color:#8fb5aa;font-weight:700;font-size:10px;letter-spacing:.8px;text-transform:uppercase;padding-top:2px}
+.frow .fv{flex:1;color:#dcebe5;line-height:1.45}
+.frow .fv b{color:#fff}
+.chipline{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.chipline .rc{font-size:9.5px;font-weight:700;color:#e6d6b4;background:rgba(140,110,50,.18);border:1px solid rgba(226,195,145,.35);border-radius:6px;padding:3px 9px}
+.sensi{margin-top:12px;background:rgba(120,40,40,.14);border:1px solid rgba(240,150,130,.3);border-radius:12px;padding:11px 14px;font-size:11.5px;color:#f0d5cc;display:flex;gap:9px;align-items:flex-start}
+.sensi svg{width:15px;height:15px;flex:0 0 auto;margin-top:1px;color:#f0a08a}
+/* caso: slide B */
+.beat{display:flex;gap:11px;align-items:flex-start;padding:8px 0;border-top:1px solid rgba(255,255,255,.08)}
+.beat:first-of-type{border-top:0}
+.beat .bn{width:22px;height:22px;border-radius:7px;background:rgba(23,179,154,.16);border:1px solid rgba(23,179,154,.35);color:#8fe6c4;font-size:10.5px;font-weight:800;display:grid;place-items:center;flex:0 0 auto;margin-top:1px}
+.beat .bx{flex:1;font-size:12px;color:#dcebe5;line-height:1.4}
+.beat .bx b{color:#fff}
+.beat .md{flex:0 0 auto;font-size:8.5px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;border-radius:6px;padding:2px 7px;margin-top:2px}
+.beat .md.v{color:#8fe6c4;background:rgba(18,110,80,.25);border:1px solid rgba(23,179,154,.35)}
+.beat .md.d{color:#f0d9a8;background:rgba(120,90,20,.22);border:1px solid rgba(226,195,145,.35)}
+.bvbox{background:linear-gradient(120deg,rgba(23,179,154,.14),rgba(142,59,122,.12));border:1px solid rgba(226,195,145,.3);border-radius:13px;padding:13px 16px;margin-bottom:12px}
+.bvbox .bt{font-size:9.5px;font-weight:800;letter-spacing:1.2px;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
+.bvbox p{font-size:12px;color:#eee3cd;line-height:1.5}
+.evx{display:flex;gap:9px;align-items:flex-start;padding:6px 0;font-size:11.5px;color:#cfe2db;line-height:1.4}
+.evx svg{width:14px;height:14px;flex:0 0 auto;color:#8fe6c4;margin-top:2px}
+.coltit{font-size:9.5px;font-weight:800;letter-spacing:1.2px;text-transform:uppercase;color:#8fb5aa;margin-bottom:8px}
+/* ===== selector de idioma ENG|ES ===== */
+.brandbar{position:relative}
+.langsel{position:absolute;top:26px;right:30px;display:flex;align-items:center;gap:7px;z-index:60}
+.langsel button{background:none;border:0;cursor:pointer;font-family:inherit;font-size:11px;font-weight:800;letter-spacing:1.2px;color:#93aca5;padding:4px 3px 5px;border-bottom:2px solid transparent}
+.langsel button.on{color:#fff;border-bottom-color:#17b39a}
+.langsel button:hover{color:#fff}
+.langsel .sep{color:#6d837c;font-size:11px}
+</style>
+</head>
+<body>
+<script>
+/* ===== i18n ENG|ES · diccionario EN + conmutador (Claude-Code) ===== */
+const I18N={"MCCP":"MCCP","Plataforma Conversacional de Misión Crítica":"Mission-Critical Conversational Platform","1.2 · A quién se dirige":"1.2 · Who it’s for","Donde la conversación":"Where the conversation","es prueba":"is evidence","Cinco verticales con el mismo denominador: dato sensible, presión regulatoria y conversaciones que acaban delante de un supervisor o de un juez.":"Five verticals with the same denominator: sensitive data, regulatory pressure and conversations that end up in front of a supervisor or a judge.","Banca":"Banking","Fraude, reclamaciones y SCA (autenticación reforzada de cliente): la carga de la prueba es del banco.":"Fraud, claims and SCA (strong customer authentication): the burden of proof falls on the bank.","PSD2 · DORA · MiFID II · AML":"PSD2 · DORA · MiFID II · AML","Seguros":"Insurance","Siniestros con dato de salud y peritación a varias bandas.":"Claims involving health data and multi-party loss adjustment.","IDD · Solvencia II · Ley 35/2015":"IDD · Solvency II · Ley 35/2015","Salud":"Healthcare","Historia clínica y segundas opiniones sin perder el secreto médico.":"Medical records and second opinions without breaking doctor-patient confidentiality.","RGPD art. 9 · Ley 41/2002 · EHDS":"GDPR art. 9 · Ley 41/2002 · EHDS","GovTech":"GovTech","Expediente electrónico que resiste el contencioso, sin brecha digital.":"An electronic case file that holds up in litigation, with no digital divide.","Leyes 39/40 2015 · ENS":"Leyes 39/40 2015 · ENS","Policía / Defensa":"Police / Defense","Diligencias con valor probatorio y datos cuya fuga cuesta vidas.":"Formal proceeding records with evidentiary value, and data whose leaks cost lives.","ENS Alto · 2016/680 · 449 bis":"ENS High · 2016/680 · 449 bis","1.2 · Sectores objetivo · slide 1/12":"1.2 · Target sectors · slide 1/12","Los cinco":"The five","verticales":"verticals","Sectores donde la conversación con el usuario final es, o acabará siendo, prueba.":"Sectors where the conversation with the end user is, or will end up being, evidence.","Anterior":"Previous","Slide 1":"Slide 1","Slide 2":"Slide 2","Slide 3":"Slide 3","Slide 4":"Slide 4","Slide 5":"Slide 5","Slide 6":"Slide 6","Slide 7":"Slide 7","Slide 8":"Slide 8","Slide 9":"Slide 9","Slide 10":"Slide 10","Slide 11":"Slide 11","Slide 12":"Slide 12","Reproducir":"Play","Siguiente":"Next","1.2 · El patrón común":"1.2 · The common pattern","Cinco sectores,":"Five sectors,","un mismo viaje":"one shared journey","Canal abierto":"Open channel","El usuario entra por WhatsApp, 24×7, sin instalar nada.":"The user comes in via WhatsApp, 24×7, without installing anything.","El salto":"The leap","Enlace + OTP de factor separado: sala segura —conversación securizada, cifrada bajo la clave de la Organización—.":"Link + separate-factor OTP: secure room —a secured conversation, encrypted under the Organization’s key—.","El expediente":"The case file","Voz transcrita, adjuntos depurados de PII, terceros con acceso acotado (need-to-know), consentimientos — en MCCP, el Caso.":"Transcribed voice, attachments scrubbed of PII, third parties with scoped access (need-to-know), consents — in MCCP, the Case.","La prueba":"The evidence","Cierre trazable, SystemLog al SIEM, reconstruible años después.":"Traceable closure, SystemLog to the SIEM, reconstructable years later.","La marca cambia según el comprador —público o privado—;":"The brand changes with the buyer —public or private—;","el producto y el viaje, no":"the product and the journey do not",". Lo que sigue: los cinco casos, dos slides cada uno.":". What follows: the five cases, two slides each.","1.2 · Sectores objetivo · slide 2/12":"1.2 · Target sectors · slide 2/12","El viaje que la demo":"The journey the demo","demuestra":"demonstrates","Del canal abierto a la prueba reconstruible: el mismo arco en los cinco casos.":"From the open channel to reconstructable evidence: the same arc across all five cases.","1.3.1 · Banca / servicios financieros":"1.3.1 · Banking / financial services","«Devuelve primero,":"“Refund first,","investiga después":"investigate later","Un banco reconstruye la SCA de un fraude por SIM swapping y decide el reembolso D+1 sin pasear el IBAN por el canal abierto.":"A bank reconstructs the SCA of a SIM swapping fraud and decides on the D+1 refund without parading the IBAN through the open channel.","La escena":"The scene","Protagonista":"Protagonist","Lucía Sanmartín":"Lucía Sanmartín",", clienta minorista, víctima de SIM swapping + fraude APP —transferencia inducida mediante engaño— (4.980 € + 890 € no autorizados)":", retail customer, victim of SIM swapping + APP fraud —a transfer induced by deception— (4.980 € + 890 € unauthorized)","Agente":"Agent","Diego Herrán":"Diego Herrán",", Dpto. de Fraude de Banco Ibérico Peninsular (la Organización)":", Fraud Dept. at Banco Ibérico Peninsular (the Organization)","Tercero":"Third party","Beatriz Colomer":"Beatriz Colomer",", analista forense TI y perita, con la Asesoría Jurídica":", IT forensic analyst and expert witness, with the Legal Department","Situación":"Situation","Reclamación por operaciones de pago no autorizadas tras duplicado fraudulento de SIM (SIM swapping): hay que reconstruir la trazabilidad de la SCA y decidir el reembolso en D+1.":"A claim over unauthorized payment transactions after a fraudulent SIM duplication (SIM swapping): the traceability of the SCA must be reconstructed and the refund decided at D+1.","Lo que está en juego":"What is at stake","Dato sensible:":"Sensitive data:","IBAN completo, número de tarjeta (PAN), DNI, geolocalización de logins y evidencias de la SCA (OTP, dispositivos, IP).":"Full IBAN, card number (PAN), DNI, login geolocation and SCA evidence (OTP, devices, IP).","Gancho regulatorio":"Regulatory hook","PSD2 · RDL 19/2018 arts. 44-46":"PSD2 · RDL 19/2018 arts. 44-46","MiFID II art. 16.7":"MiFID II art. 16.7","AML · SEPBLAC":"AML · SEPBLAC","DORA":"DORA","RGPD":"GDPR","1.3.1 · Banca / servicios financieros · slide 3/12":"1.3.1 · Banking / financial services · slide 3/12","El caso: «Devuelve primero,":"The case: “Refund first,","Cómo lo resuelve":"How it’s resolved","El caso, paso a paso · madurez según entrega de producto 07/2026 — Verificado = ya visto en producto · Diseño = definido en diseño, aún no entregado":"The case, step by step · maturity per product delivery 07/2026 — Verified = already seen in product · Design = defined in design, not yet delivered","Entra por WhatsApp 24×7":"She comes in via WhatsApp 24×7","— el primer contacto queda datado: arranca el reloj del reembolso en D+1 (el día hábil siguiente) y del plazo de 13 meses para comunicar la operación no autorizada.":"— the first contact is date-stamped: it starts the clock on the D+1 refund (the next business day) and on the 13-month window to report the unauthorized transaction.","Verificado":"Verified","Salto a sala segura":"Jump to a secure room","(enlace + OTP de factor separado): el IBAN y el DNI dejan de circular por el canal expuesto.":"(link + separate-factor OTP): the IBAN and the ID number stop circulating over the exposed channel.","La prueba nace depurada":"The evidence is born clean",": nota de voz transcrita (STT) y anclada al expediente; el pantallazo con el PAN completo se rechaza por PII excedente.":": voice note transcribed (STT) and anchored to the case file; the screenshot with the full PAN is rejected as excess PII.","Diseño":"Design","Perita forense con acceso acotado (need-to-know)":"Forensic expert with scoped access (need-to-know)",": auditado y revocable; cruza los logs de la SCA y pierde el acceso al histórico al salir.":": audited and revocable; she cross-checks the SCA logs and loses access to the history on exit.","Videollamada con consentimiento":"Video call with consent","(RGPD art. 6) y grabación con valor de prueba.":"(GDPR Art. 6) and a recording with evidentiary value.","Cierre trazable":"Traceable closure",": decisión de reembolso documentada en D+1, expediente «en tramitación» para la revisión antiblanqueo de capitales (AML), SystemLog exportable al SIEM.":": refund decision documented on D+1, case file “in progress” for the anti-money-laundering (AML) review, SystemLog exportable to the SIEM.","Valor para la Organización":"Value for the Organization","Responder con un dossier probatorio íntegro y no-repudio a la carga de la prueba que PSD2 impone al banco; evitar sanciones por comunicaciones en canales no autorizados (off-channel) y por fallos de registro (recordkeeping); sostener el canal crítico dentro del marco DORA sin exponer PII.":"Meet the burden of proof PSD2 places on the bank with a complete, non-repudiable evidentiary dossier; avoid penalties for off-channel communications and recordkeeping failures; keep the critical channel within the DORA framework without exposing PII.","Qué resuelve / qué evita":"What it solves / what it prevents","La palabra contra palabra en el Servicio de Reclamaciones del Banco de España":"Word against word before the Complaints Service of the Banco de España","PII sensible tratada fuera de marco (RGPD/AML)":"Sensitive PII processed outside the framework (GDPR/AML)","Demoras que agravan el daño y rompen la cadena de custodia":"Delays that worsen the harm and break the chain of custody","1.3.1 · Banca / servicios financieros · slide 4/12":"1.3.1 · Banking / financial services · slide 4/12","La resolución y el":"The resolution and the","valor":"value","Responder con un dossier probatorio íntegro y no-repudio a la carga de la prueba que PSD2 impone al banco.":"Meet the burden of proof PSD2 places on the bank with a complete, non-repudiable evidentiary dossier.","1.3.2 · Seguros":"1.3.2 · Insurance","«El latigazo que":"“The whiplash that","no prescribió":"never expired","Un parte de siniestro (FNOL) en WhatsApp que aguantó la reapertura tres años después.":"A claim notice (FNOL) on WhatsApp that held up when the case was reopened three years later.","Paula Estévez":"Paula Estévez",", asegurada con latigazo cervical tras colisión por alcance":", policyholder with whiplash after a rear-end collision","Álvaro Pena":"Álvaro Pena",", tramitador de daños corporales de Nordés Seguros (la Organización), con bot de primer aviso (FNOL)":", bodily injury claims handler at Nordés Seguros (the Organization), with a first notice of loss (FNOL) bot","Dra. Elena Vázquez":"Dra. Elena Vázquez",", médica valoradora del daño corporal (baremo de autos)":", medical assessor of bodily injury (motor injury scale)","Parte de siniestro (FNOL) con lesiones y peritación a tres —asegurada, tramitador y médico—, con reapertura posterior por agravamiento de secuelas.":"Claim notice (FNOL) with injuries and a three-party assessment —policyholder, handler and physician—, later reopened due to worsening of after-effects.","Datos de salud (art. 9 RGPD): parte de urgencias, exploración de secuelas por vídeo, valoración por baremo; PII de terceros captada por error.":"Health data (Art. 9 GDPR): emergency room report, video examination of after-effects, assessment under the injury scale; third-party PII captured by mistake.","IDD":"IDD","Solvencia II":"Solvency II","RGPD art. 9 y 5":"GDPR Arts. 9 and 5","Ley 35/2015 (baremo)":"Ley 35/2015 (injury scale)","DGSFP":"DGSFP","1.3.2 · Seguros · slide 5/12":"1.3.2 · Insurance · slide 5/12","El caso: «El latigazo que":"The case: “The whiplash that","FNOL por WhatsApp":"FNOL via WhatsApp","en el momento del siniestro, sin apps: el parte queda datado y estructurado desde el minuto uno.":"at the moment of the accident, no apps needed: the claim notice is dated and structured from minute one.","Salto securizado para el dato de salud":"Secured jump for the health data",": la exploración y los informes viven cifrados bajo la clave de la aseguradora.":": the examination and the reports live encrypted under the insurer’s key.","Peritación a tres":"Three-party assessment",": la médica valoradora entra con acceso acotado y auditado, ve lo justo y pierde el acceso al histórico al salir.":": the medical assessor enters with scoped, audited access, sees only what is needed and loses access to the history on exit.","Aceptación con identidad verificada":"Acceptance with verified identity",": la oferta indemnizatoria se acepta dentro de la sala — identidad y consentimiento quedan probados frente a impugnaciones.":": the compensation offer is accepted inside the room — identity and consent stand proven against any challenge.","HYOK para dato de salud":"HYOK for health data",": la clave queda fuera del perímetro del proveedor — ante un requerimiento del CLOUD Act (la ley de EE. UU. que permite exigir datos a los proveedores estadounidenses), el dato es ilegible.":": the key stays outside the provider’s perimeter — under a CLOUD Act demand (the US law that lets authorities compel data from US providers), the data is unreadable.","Reapertura 3 años después":"Reopening 3 years later",": el expediente único se reconstruye íntegro — la prueba no prescribió.":": the single case file is reconstructed in full — the evidence never expired.","Cadena de custodia trazable del expediente probatorio; identidad verificada al aceptar la oferta (evita impugnaciones); expediente único reconstruible ante reaperturas; deliberación anti-fraude separada sin contaminar la prueba.":"Traceable chain of custody for the evidentiary case file; verified identity at offer acceptance (prevents challenges); single case file reconstructible on reopening; separate anti-fraud deliberation without contaminating the evidence.","Impugnación de la aceptación de la oferta":"Challenge to the acceptance of the offer","Expediente disperso e irreconstruible en la reapertura":"A scattered case file impossible to reconstruct on reopening","Dato de salud en canales no gobernados (art. 9)":"Health data on ungoverned channels (Art. 9)","1.3.2 · Seguros · slide 6/12":"1.3.2 · Insurance · slide 6/12","Cadena de custodia trazable del expediente probatorio.":"Traceable chain of custody for the evidentiary case file.","1.3.3 · Salud":"1.3.3 · Healthcare","«La pauta":"“The treatment plan","no cuadra":"doesn’t add up","El Hospital San Andrés convierte una queja de WhatsApp en un expediente probatorio blindado.":"Hospital San Andrés turns a WhatsApp complaint into an armored evidentiary case file.","Irene Cobo":"Irene Cobo",", hija y cuidadora de una paciente oncológica (carcinoma HER2+) en tratamiento":", daughter and caregiver of an oncology patient (HER2+ carcinoma) under treatment","Carmen Nieto":"Carmen Nieto",", gestora del Servicio de Atención al Paciente del Hospital Universitario San Andrés (la Organización)":", manager at the Patient Care Service of Hospital Universitario San Andrés (the Organization)","Dr. Salcedo":"Dr. Salcedo",", oncólogo externo del comité de tumores, para segunda opinión":", external oncologist on the tumor board, for a second opinion","Discrepancia asistencial sobre la pauta de tratamiento que puede derivar en reclamación por presunta negligencia; se activa una segunda opinión externa.":"A clinical disagreement over the treatment plan that could escalate into an alleged negligence claim; an external second opinion is activated.","Historia clínica, anatomía patológica, estadificación y consentimiento informado — categoría especial (art. 9 RGPD); PII de otra paciente en una captura.":"Medical record, pathology, staging and informed consent — special category (Art. 9 GDPR); another patient’s PII in a screenshot.","RGPD arts. 6 y 9":"GDPR Arts. 6 and 9","Ley 41/2002":"Ley 41/2002","LOPDGDD (hasta 20 M€ / 4%)":"LOPDGDD (up to €20M / 4%)","EHDS":"EHDS","NIS2":"NIS2","1.3.3 · Salud · slide 7/12":"1.3.3 · Healthcare · slide 7/12","El caso: «La pauta":"The case: “The treatment plan","La queja entra un domingo por WhatsApp":"The complaint comes in on a Sunday via WhatsApp","; el bot reconoce la discrepancia asistencial y escala a la gestora de Atención al Paciente.":"; the bot recognizes the clinical disagreement and escalates to the Patient Care manager.","El dato art. 9 no se trata en el canal abierto":"Art. 9 data is never processed on the open channel",": salto con OTP de factor separado a la sala segura, cifrada bajo la clave del Hospital.":": a jump with separate-factor OTP to the secure room, encrypted under the Hospital’s key.","Pruebas depuradas":"Clean evidence",": voz transcrita y anclada al expediente, informes clínicos adjuntos, y la captura con el DNI de otra paciente rechazada.":": voice transcribed and anchored to the case file, clinical reports attached, and the screenshot with another patient’s ID number rejected.","IA gobernada":"Governed AI",": la PII se anonimiza antes de llegar al modelo y el multiplexor —que enruta las peticiones al modelo de IA elegido— usa la clave de API propia del Hospital.":": PII is anonymized before it reaches the model, and the multiplexer —which routes requests to the chosen AI model— uses the Hospital’s own API key.","Segunda opinión gobernada":"Governed second opinion",": el oncólogo externo ve solo lo necesario y pierde el acceso al histórico — el secreto médico, intacto.":": the external oncologist sees only what is necessary and loses access to the history — medical confidentiality, intact.","Hipótesis inmaduras en burbuja efímera":"Immature hypotheses in an ephemeral bubble",": cifrada, sin rastro, fuera del expediente.":": encrypted, traceless, outside the case file.","Valor probatorio del expediente ante una reclamación; control del tercero y del secreto médico; reducción de litigiosidad y provisiones; dato oncológico ilegible ante el CLOUD Act (HYOK · Diseño).":"Evidentiary value of the case file in the face of a claim; control over the third party and medical confidentiality; lower litigation and provisions; oncology data unreadable under the CLOUD Act (HYOK · Design).","Historia clínica circulando por chats abiertos (sanción LOPDGDD)":"Medical records circulating in open chats (LOPDGDD penalty)","Segunda opinión sin control de acceso ni trazabilidad":"Second opinion with no access control or traceability","Reclamación ganada por indefensión documental":"Claim won due to lack of documentary defense","1.3.3 · Salud · slide 8/12":"1.3.3 · Healthcare · slide 8/12","Valor probatorio del expediente ante una reclamación.":"Evidentiary value of the case file in the face of a claim.","1.3.4 · GovTech / Administración pública":"1.3.4 · GovTech / Public administration","«La muñeca rota":"“The broken wrist","de María":"of María","Un WhatsApp de sábado por la noche se convierte en un expediente que resiste el contencioso-administrativo.":"A Saturday-night WhatsApp message becomes a case file that withstands administrative litigation.","María Dolores Peral":"María Dolores Peral",", 68 años, jubilada sin Cl@ve ni DNIe operativo; fractura de muñeca por un bache sin señalizar":", 68, retired, with no Cl@ve and no working DNIe; wrist fracture caused by an unmarked pothole","Nuria Alcaraz":"Nuria Alcaraz",", tramitadora de Atención Ciudadana del Ayuntamiento de Puerto Alcázar (la Organización), funcionaria habilitada (art. 12 Ley 39/2015)":", Citizen Services caseworker at Puerto Alcázar City Council (the Organization), authorized civil servant (art. 12 Ley 39/2015)","Perito médico":"Medical expert","valorador del daño; el letrado municipal en la deliberación interna":"assessing the damage; the municipal legal counsel in the internal deliberation","Reclamación de responsabilidad patrimonial contra el Ayuntamiento; requiere dictamen pericial, valoración del daño y plazos con seguridad jurídica.":"Public liability claim against the City Council; it requires an expert report, damage assessment, and deadlines with legal certainty.","Parte de lesiones e informe médico (art. 9 RGPD, al amparo del 9.2.f) y PII de terceros en una captura hospitalaria.":"Injury report and medical report (art. 9 GDPR, under 9.2.f) and third-party PII in a hospital screenshot.","Ley 39/2015 (arts. 67 y 91.3)":"Ley 39/2015 (arts. 67 and 91.3)","Ley 40/2015 (arts. 32-37)":"Ley 40/2015 (arts. 32-37)","ENS RD 311/2022":"ENS RD 311/2022","RGPD arts. 5, 6 y 9.2":"GDPR arts. 5, 6 and 9.2","1.3.4 · GovTech / Administración pública · slide 9/12":"1.3.4 · GovTech / Public administration · slide 9/12","El caso: «La muñeca rota":"The case: “The broken wrist","La brecha digital se salta con WhatsApp":"The digital divide is bypassed with WhatsApp",": sin Cl@ve ni DNIe, María reclama un sábado por la noche por el canal que sí sabe usar.":": with no Cl@ve or DNIe, María files her claim on a Saturday night through the channel she does know how to use.","Salto a sala segura, cifrada bajo la clave del propio Ayuntamiento (BYOK)":"Jump to a secure room, encrypted under the City Council's own key (BYOK)","con OTP: el dato de salud nunca pisa el WhatsApp personal de ningún funcionario.":"with OTP: health data never touches any civil servant's personal WhatsApp.","El relato se vuelve expediente":"The account becomes a case file",": voz transcrita y anclada, fotos del bache, parte de lesiones — y la captura con el DNI ajeno, rechazada.":": voice transcribed and anchored, photos of the pothole, the injury report — and the screenshot with someone else's DNI, rejected.","Perito con acceso acotado":"Expert with scoped access","y videollamada con consentimiento expreso (arts. 6 y 9.2): valoración del daño en directo.":"and a video call with express consent (arts. 6 and 9.2): live damage assessment.","Plazos con constancia":"Deadlines on record",": puesta a disposición acreditada; el año del art. 67 y los 6 meses del art. 91.3 corren con seguridad jurídica.":": availability duly evidenced; the one-year period under art. 67 and the 6 months under art. 91.3 run with legal certainty.","Si acaba en el contencioso, resiste":"If it ends up in court, it holds up",": cadena de custodia, identidad, consentimiento y plazos constan; SystemLog al SIEM municipal.":": chain of custody, identity, consent and deadlines are all on record; SystemLog to the municipal SIEM.","Blindaje probatorio que resiste el recurso contencioso-administrativo y evita la nulidad por indefensión, manteniendo los datos de salud fuera del WhatsApp personal del funcionario (evita sanción de la AEPD).":"Evidentiary shielding that withstands administrative court appeals and avoids annulment for lack of due process, keeping health data out of the civil servant's personal WhatsApp (avoids an AEPD penalty).","Nulidad de actuaciones por indefensión (arts. 47-48)":"Annulment of proceedings for lack of due process (arts. 47-48)","Datos de salud en dispositivos personales":"Health data on personal devices","Exclusión del ciudadano sin identidad digital":"Exclusion of citizens without a digital identity","1.3.4 · GovTech / Administración pública · slide 10/12":"1.3.4 · GovTech / Public administration · slide 10/12","Blindaje probatorio que resiste el recurso contencioso-administrativo y evita la nulidad por indefensión, manteniendo los datos de salud fuera del WhatsApp personal del funcionario (evita sanción de la AEPD)..":"Evidentiary shielding that withstands administrative court appeals and avoids annulment for lack of due process, keeping health data out of the civil servant's personal WhatsApp (avoids an AEPD penalty)..","1.3.5 · Policía / Fuerzas de Seguridad / Defensa":"1.3.5 · Police / Law Enforcement / Defense","«El punto seguro":"“The safe house","nunca entra":"never enters","en el expediente»":"the case file”","Ampliación de denuncia VioGén sin revictimizar.":"Expanding a VioGén report without revictimizing.","Nadia El Amrani":"Nadia El Amrani",", víctima con orden de protección en vigor y riesgo VioGén «alto», alojada en punto seguro":", victim with an active protection order and “high” VioGén risk, staying at a safe house","Oficial Marta Rueda":"Officer Marta Rueda",", instructora de la Unidad de Familia y Mujer (UFAM) del Cuerpo policial (la Organización)":", investigating officer at the Family and Women's Unit (UFAM) of the police force (the Organization)","Cristina Vela":"Cristina Vela",", psicóloga forense de la Oficina de Asistencia a las Víctimas (OAV); intérprete jurado de árabe y letrada del turno de violencia, con entrada puntual":", forensic psychologist at the Victim Support Office (OAV); sworn Arabic interpreter and duty lawyer for violence cases, with one-off access","Ampliar la denuncia tras un nuevo quebrantamiento de la orden de alejamiento y aportar pruebas, sin desplazarse ni exponer la ubicación de la casa de acogida.":"Expand her report after a new breach of the restraining order and submit evidence, without traveling or exposing the location of the shelter.","Domicilio del punto seguro, nivel de riesgo VioGén, identidad de la víctima y del menor a su cargo, contenido con valor de diligencia.":"Address of the safe house, VioGén risk level, identity of the victim and of the minor in her care, content with the value of a formal proceeding record.","ENS nivel ALTO":"ENS HIGH level","Directiva (UE) 2016/680":"Directive (EU) 2016/680","LO 7/2021":"LO 7/2021","Art. 449 bis LECrim":"Art. 449 bis LECrim","Estatuto de la Víctima (Ley 4/2015) · VioGén":"Victims' Statute (Ley 4/2015) · VioGén","1.3.5 · Policía / Fuerzas de Seguridad / Defensa · slide 11/12":"1.3.5 · Police / Law Enforcement / Defense · slide 11/12","El caso: «El punto seguro":"The case: “The safe house","Denuncia sin pisar comisaría":"Reporting without setting foot in a police station",": entra a las 22:40 por WhatsApp; el bot reconoce el seguimiento VioGén y escala a la instructora que ya lleva el caso.":": it comes in at 22:40 via WhatsApp; the bot recognizes the VioGén follow-up and escalates to the investigating officer already handling the case.","Salto a sala segura, cifrada bajo la clave del propio Cuerpo":"Jump to a secure room, encrypted under the force's own key",", con OTP por vía separada — sin instalar nada.":", with OTP through a separate channel — nothing to install.","La ubicación del punto seguro nunca entra":"The location of the safe house never gets in",": la captura que revelaba el rótulo de la calle se rechaza antes de guardarse.":": the screenshot that revealed the street sign is rejected before it is ever saved.","Declaración con valor de prueba":"Statement with evidentiary value",": el testimonio se transcribe (STT) y se ancla como diligencia del expediente.":": the testimony is transcribed (STT) and anchored as a formal proceeding record in the case file.","Videollamada consentida orientada a prueba preconstituida":"Consented video call aimed at pre-constituted evidence","(art. 449 bis LECrim), con grabación de pleno valor probatorio.":"(art. 449 bis LECrim), with a recording of full evidentiary value.","Need-to-know real":"Real need-to-know",": psicóloga e intérprete entran lo justo, auditadas, y pierden el acceso al histórico al salir.":": the psychologist and the interpreter come in only as needed, fully audited, and lose access to the history when they leave.","Cierre gobernado":"Governed closure",": la ampliación queda en tramitación para Fiscalía y el SystemLog se exporta al SIEM del Cuerpo.":": the expanded report remains in progress for the Public Prosecutor's Office, and the SystemLog is exported to the force's SIEM.","Convertir la conversación en diligencia con valor probatorio evitando la nulidad; prevenir la brecha de datos con riesgo VITAL (la ubicación del punto seguro); reducir la revictimización.":"Turn the conversation into a formal proceeding record with evidentiary value while avoiding annulment; prevent the data breach with VITAL risk (the location of the safe house); reduce revictimization.","Exposición del punto seguro (riesgo vital)":"Exposure of the safe house (life-threatening risk)","Revictimización por desplazamientos y repetición del relato":"Revictimization from traveling and repeating her account","Diligencias impugnables por cadena de custodia débil":"Formal proceeding records open to challenge due to a weak chain of custody","1.3.5 · Policía / Fuerzas de Seguridad / Defensa · slide 12/12":"1.3.5 · Police / Law Enforcement / Defense · slide 12/12","Convertir la conversación en diligencia con valor probatorio evitando la nulidad.":"Turn the conversation into a formal proceeding record with evidentiary value while avoiding annulment.","MCCP · Ficha Técnica — 12 slides":"MCCP · Technical Brief — 12 slides"};
+let LANG=(()=>{try{const q=new URLSearchParams(location.search).get('lang');if(q==='en'||q==='es')return q;const s=localStorage.getItem('mccpLang');if(s==='en'||s==='es')return s;}catch(e){}return 'es';})();
+function setLang(l){if(l===LANG)return;try{localStorage.setItem('mccpLang',l);}catch(e){}const u=new URL(location.href);u.searchParams.set('lang',l);location.replace(u.toString());}
+function applyLang(){document.documentElement.setAttribute('lang',LANG==='en'?'en':'es');
+  document.querySelectorAll('.langsel button').forEach(b=>{b.classList.toggle('on',b.getAttribute('data-lang')===LANG);});
+  if(LANG!=='en')return;
+  const tk=document.title.replace(/\s+/g,' ').trim();if(I18N[tk])document.title=I18N[tk];
+  const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);const nodes=[];let n;
+  while(n=w.nextNode()){const p=n.parentNode&&n.parentNode.nodeName;if(p==='SCRIPT'||p==='STYLE')continue;nodes.push(n);}
+  nodes.forEach(nd=>{const t=nd.nodeValue;const k=t.replace(/\s+/g,' ').trim();if(!k)return;const v=I18N[k];if(v===undefined||v===k)return;const m=t.match(/^(\s*)[\s\S]*?(\s*)$/);nd.nodeValue=(m?m[1]:'')+v+(m?m[2]:'');});
+  document.querySelectorAll('[data-tip]').forEach(el=>{const k=(el.getAttribute('data-tip')||'').replace(/\s+/g,' ').trim();const v=I18N[k];if(v)el.setAttribute('data-tip',v);});
+  document.querySelectorAll('[aria-label]').forEach(el=>{const k=(el.getAttribute('aria-label')||'').replace(/\s+/g,' ').trim();const v=I18N[k];if(v)el.setAttribute('aria-label',v);});
+}
+window.applyLang=applyLang;
+</script>
+
+<div class="app">
+  <div class="brandbar"><div class="langsel" role="group" aria-label="Idioma / Language"><button type="button" data-lang="en" title="English / Inglés" onclick="setLang('en')">ENG</button><span class="sep">|</span><button type="button" data-lang="es" title="Español / Spanish" onclick="setLang('es')">ES</button></div>
+    <div class="lockup">
+      <svg viewBox="0 0 40 40" fill="none"><defs><linearGradient id="mccp" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#17b39a"/><stop offset=".55" stop-color="#3f6f8c"/><stop offset="1" stop-color="#8e3b7a"/></linearGradient></defs>
+        <path d="M20 4.5a15.5 15.5 0 0 1 14 22" stroke="url(#mccp)" stroke-width="5.4" stroke-linecap="round" fill="none"/>
+        <path d="M20 35.5a15.5 15.5 0 0 1 -14 -22" stroke="url(#mccp)" stroke-width="5.4" stroke-linecap="round" fill="none"/>
+      </svg>
+      <div class="txt"><span class="wm">MCCP</span><span class="claim">Plataforma Conversacional de Misión Crítica</span></div>
+    </div>
+  </div>
+
+  <div class="stage"><div class="slide" id="stage"></div></div>
+
+  <div class="caption">
+    <div class="step" id="capStep"></div>
+    <h2 id="capTitle"></h2>
+    <p id="capText"></p>
+  </div>
+
+  <div class="seq">
+    <button class="nav" id="prev" aria-label="Anterior"><svg viewBox="0 0 24 24" fill="none"><path d="M15 6l-6 6 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    <div class="dots" id="dots"></div>
+    <button class="play" id="play" aria-label="Reproducir"><svg viewBox="0 0 24 24" id="playIcon"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></button>
+    <button class="nav" id="next" aria-label="Siguiente"><svg viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+  </div>
+</div>
+
+<script>
+const IC={
+  user:'<svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="3.6" stroke="currentColor" stroke-width="1.7"/><path d="M4.5 19.5c1.2-3.8 4.3-5.7 7.5-5.7s6.3 1.9 7.5 5.7" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>',
+  agent:'<svg viewBox="0 0 24 24" fill="none"><rect x="3.5" y="5" width="17" height="13" rx="2.4" stroke="currentColor" stroke-width="1.7"/><path d="M3.5 9.5h17M8 21h8" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>',
+  org:'<svg viewBox="0 0 24 24" fill="none"><path d="M4 21V8l8-4.5L20 8v13" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M9 21v-5h6v5M9 11h.01M12 11h.01M15 11h.01" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>',
+  lock:'<svg viewBox="0 0 24 24" fill="none"><rect x="5" y="11" width="14" height="9" rx="2" stroke="currentColor" stroke-width="1.7"/><path d="M8 11V8a4 4 0 0 1 8 0v3" stroke="currentColor" stroke-width="1.7"/></svg>',
+  ai:'<svg viewBox="0 0 24 24" fill="none"><path d="M12 3l1.8 4.7L18.5 9.5l-4.7 1.8L12 16l-1.8-4.7L5.5 9.5l4.7-1.8z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="M18.5 15l.9 2.3 2.3.9-2.3.9-.9 2.3-.9-2.3-2.3-.9 2.3-.9z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>',
+  chat:'<svg viewBox="0 0 24 24" fill="none"><path d="M4 5h16v11H9l-4 4V5z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>',
+  doc:'<svg viewBox="0 0 24 24" fill="none"><path d="M7 3h8l4 4v14H7z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M15 3v4h4M10 12h5M10 15.5h5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>',
+  audit:'<svg viewBox="0 0 24 24" fill="none"><rect x="6" y="4" width="12" height="17" rx="2.4" stroke="currentColor" stroke-width="1.7"/><path d="M9 13l2 2 4-4.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+  bank:'<svg viewBox="0 0 24 24" fill="none"><path d="M3 9l9-5.5L21 9M4.5 9v9M9 9v9M15 9v9M19.5 9v9M3 20.5h18" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+  shield2:'<svg viewBox="0 0 24 24" fill="none"><path d="M12 3l7 3v5c0 5-3 8-7 10-4-2-7-5-7-10V6z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+  health:'<svg viewBox="0 0 24 24" fill="none"><path d="M12 21C7 17 3.5 13.6 3.5 9.8 3.5 7 5.6 5 8.2 5c1.6 0 3 .8 3.8 2 .8-1.2 2.2-2 3.8-2 2.6 0 4.7 2 4.7 4.8 0 3.8-3.5 7.2-8.5 11.2z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg>',
+  gov:'<svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.7"/><path d="M3 12h18M12 3c3 3.2 3 14.8 0 18M12 3c-3 3.2-3 14.8 0 18" stroke="currentColor" stroke-width="1.6"/></svg>',
+  police:'<svg viewBox="0 0 24 24" fill="none"><path d="M12 3l7 3v5c0 5-3 8-7 10-4-2-7-5-7-10V6z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M12 8l1.2 2.4 2.6.4-1.9 1.9.4 2.6-2.3-1.2-2.3 1.2.4-2.6-1.9-1.9 2.6-.4z" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>',
+  warn:'<svg viewBox="0 0 24 24" fill="none"><path d="M12 3L2 20h20z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="M12 9.5V14M12 17h.01" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>',
+  check:'<svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+  jump:'<svg viewBox="0 0 24 24" fill="none"><rect x="5" y="11" width="14" height="9" rx="2" stroke="currentColor" stroke-width="1.7"/><path d="M8 11V8a4 4 0 0 1 8 0v3M12 14.5v2.5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg>'
+};
+const MD=m=>`<span class="md ${m==='V'?'v':'d'}">${m==='V'?'Verificado':'Diseño'}</span>`;
+
+/* ===== datos: 5 casos sectoriales (fuente EJEMPLOS-SECTORIALES v1.0.2) ===== */
+const SECT=[
+{ id:'Banca', icon:'bank', num:'1.3.1 · Banca / servicios financieros',
+  titular:'«Devuelve primero, <em>investiga después</em>»',
+  gancho:'Un banco reconstruye la SCA de un fraude por SIM swapping y decide el reembolso D+1 sin pasear el IBAN por el canal abierto.',
+  prota:'<b>Lucía Sanmartín</b>, clienta minorista, víctima de SIM swapping + fraude APP —transferencia inducida mediante engaño— (4.980 € + 890 € no autorizados)',
+  agente:'<b>Diego Herrán</b>, Dpto. de Fraude de Banco Ibérico Peninsular (la Organización)',
+  tercero:'<b>Beatriz Colomer</b>, analista forense TI y perita, con la Asesoría Jurídica',
+  situacion:'Reclamación por operaciones de pago no autorizadas tras duplicado fraudulento de SIM (SIM swapping): hay que reconstruir la trazabilidad de la SCA y decidir el reembolso en D+1.',
+  dato:'IBAN completo, número de tarjeta (PAN), DNI, geolocalización de logins y evidencias de la SCA (OTP, dispositivos, IP).',
+  regs:['PSD2 · RDL 19/2018 arts. 44-46','MiFID II art. 16.7','AML · SEPBLAC','DORA','RGPD'],
+  beats:[
+    ['V','<b>Entra por WhatsApp 24×7</b> — el primer contacto queda datado: arranca el reloj del reembolso en D+1 (el día hábil siguiente) y del plazo de 13 meses para comunicar la operación no autorizada.'],
+    ['V','<b>Salto a sala segura</b> (enlace + OTP de factor separado): el IBAN y el DNI dejan de circular por el canal expuesto.'],
+    ['D','<b>La prueba nace depurada</b>: nota de voz transcrita (STT) y anclada al expediente; el pantallazo con el PAN completo se rechaza por PII excedente.'],
+    ['D','<b>Perita forense con acceso acotado (need-to-know)</b>: auditado y revocable; cruza los logs de la SCA y pierde el acceso al histórico al salir.'],
+    ['V','<b>Videollamada con consentimiento</b> (RGPD art. 6) y grabación con valor de prueba.'],
+    ['D','<b>Cierre trazable</b>: decisión de reembolso documentada en D+1, expediente «en tramitación» para la revisión antiblanqueo de capitales (AML), SystemLog exportable al SIEM.']],
+  bv:'Responder con un dossier probatorio íntegro y no-repudio a la carga de la prueba que PSD2 impone al banco; evitar sanciones por comunicaciones en canales no autorizados (off-channel) y por fallos de registro (recordkeeping); sostener el canal crítico dentro del marco DORA sin exponer PII.',
+  evita:['La palabra contra palabra en el Servicio de Reclamaciones del Banco de España','PII sensible tratada fuera de marco (RGPD/AML)','Demoras que agravan el daño y rompen la cadena de custodia']},
+{ id:'Seguros', icon:'shield2', num:'1.3.2 · Seguros',
+  titular:'«El latigazo que <em>no prescribió</em>»',
+  gancho:'Un parte de siniestro (FNOL) en WhatsApp que aguantó la reapertura tres años después.',
+  prota:'<b>Paula Estévez</b>, asegurada con latigazo cervical tras colisión por alcance',
+  agente:'<b>Álvaro Pena</b>, tramitador de daños corporales de Nordés Seguros (la Organización), con bot de primer aviso (FNOL)',
+  tercero:'<b>Dra. Elena Vázquez</b>, médica valoradora del daño corporal (baremo de autos)',
+  situacion:'Parte de siniestro (FNOL) con lesiones y peritación a tres —asegurada, tramitador y médico—, con reapertura posterior por agravamiento de secuelas.',
+  dato:'Datos de salud (art. 9 RGPD): parte de urgencias, exploración de secuelas por vídeo, valoración por baremo; PII de terceros captada por error.',
+  regs:['IDD','Solvencia II','DORA','RGPD art. 9 y 5','Ley 35/2015 (baremo)','DGSFP'],
+  beats:[
+    ['V','<b>FNOL por WhatsApp</b> en el momento del siniestro, sin apps: el parte queda datado y estructurado desde el minuto uno.'],
+    ['V','<b>Salto securizado para el dato de salud</b>: la exploración y los informes viven cifrados bajo la clave de la aseguradora.'],
+    ['D','<b>Peritación a tres</b>: la médica valoradora entra con acceso acotado y auditado, ve lo justo y pierde el acceso al histórico al salir.'],
+    ['D','<b>Aceptación con identidad verificada</b>: la oferta indemnizatoria se acepta dentro de la sala — identidad y consentimiento quedan probados frente a impugnaciones.'],
+    ['D','<b>HYOK para dato de salud</b>: la clave queda fuera del perímetro del proveedor — ante un requerimiento del CLOUD Act (la ley de EE. UU. que permite exigir datos a los proveedores estadounidenses), el dato es ilegible.'],
+    ['D','<b>Reapertura 3 años después</b>: el expediente único se reconstruye íntegro — la prueba no prescribió.']],
+  bv:'Cadena de custodia trazable del expediente probatorio; identidad verificada al aceptar la oferta (evita impugnaciones); expediente único reconstruible ante reaperturas; deliberación anti-fraude separada sin contaminar la prueba.',
+  evita:['Impugnación de la aceptación de la oferta','Expediente disperso e irreconstruible en la reapertura','Dato de salud en canales no gobernados (art. 9)']},
+{ id:'Salud', icon:'health', num:'1.3.3 · Salud',
+  titular:'«La pauta <em>no cuadra</em>»',
+  gancho:'El Hospital San Andrés convierte una queja de WhatsApp en un expediente probatorio blindado.',
+  prota:'<b>Irene Cobo</b>, hija y cuidadora de una paciente oncológica (carcinoma HER2+) en tratamiento',
+  agente:'<b>Carmen Nieto</b>, gestora del Servicio de Atención al Paciente del Hospital Universitario San Andrés (la Organización)',
+  tercero:'<b>Dr. Salcedo</b>, oncólogo externo del comité de tumores, para segunda opinión',
+  situacion:'Discrepancia asistencial sobre la pauta de tratamiento que puede derivar en reclamación por presunta negligencia; se activa una segunda opinión externa.',
+  dato:'Historia clínica, anatomía patológica, estadificación y consentimiento informado — categoría especial (art. 9 RGPD); PII de otra paciente en una captura.',
+  regs:['RGPD arts. 6 y 9','Ley 41/2002','LOPDGDD (hasta 20 M€ / 4%)','EHDS','NIS2'],
+  beats:[
+    ['D','<b>La queja entra un domingo por WhatsApp</b>; el bot reconoce la discrepancia asistencial y escala a la gestora de Atención al Paciente.'],
+    ['V','<b>El dato art. 9 no se trata en el canal abierto</b>: salto con OTP de factor separado a la sala segura, cifrada bajo la clave del Hospital.'],
+    ['D','<b>Pruebas depuradas</b>: voz transcrita y anclada al expediente, informes clínicos adjuntos, y la captura con el DNI de otra paciente rechazada.'],
+    ['D','<b>IA gobernada</b>: la PII se anonimiza antes de llegar al modelo y el multiplexor —que enruta las peticiones al modelo de IA elegido— usa la clave de API propia del Hospital.'],
+    ['D','<b>Segunda opinión gobernada</b>: el oncólogo externo ve solo lo necesario y pierde el acceso al histórico — el secreto médico, intacto.'],
+    ['V','<b>Hipótesis inmaduras en burbuja efímera</b>: cifrada, sin rastro, fuera del expediente.']],
+  bv:'Valor probatorio del expediente ante una reclamación; control del tercero y del secreto médico; reducción de litigiosidad y provisiones; dato oncológico ilegible ante el CLOUD Act (HYOK · Diseño).',
+  evita:['Historia clínica circulando por chats abiertos (sanción LOPDGDD)','Segunda opinión sin control de acceso ni trazabilidad','Reclamación ganada por indefensión documental']},
+{ id:'Govtech', icon:'gov', num:'1.3.4 · GovTech / Administración pública',
+  titular:'«La muñeca rota <em>de María</em>»',
+  gancho:'Un WhatsApp de sábado por la noche se convierte en un expediente que resiste el contencioso-administrativo.',
+  prota:'<b>María Dolores Peral</b>, 68 años, jubilada sin Cl@ve ni DNIe operativo; fractura de muñeca por un bache sin señalizar',
+  agente:'<b>Nuria Alcaraz</b>, tramitadora de Atención Ciudadana del Ayuntamiento de Puerto Alcázar (la Organización), funcionaria habilitada (art. 12 Ley 39/2015)',
+  tercero:'<b>Perito médico</b> valorador del daño; el letrado municipal en la deliberación interna',
+  situacion:'Reclamación de responsabilidad patrimonial contra el Ayuntamiento; requiere dictamen pericial, valoración del daño y plazos con seguridad jurídica.',
+  dato:'Parte de lesiones e informe médico (art. 9 RGPD, al amparo del 9.2.f) y PII de terceros en una captura hospitalaria.',
+  regs:['Ley 39/2015 (arts. 67 y 91.3)','Ley 40/2015 (arts. 32-37)','ENS RD 311/2022','RGPD arts. 5, 6 y 9.2'],
+  beats:[
+    ['V','<b>La brecha digital se salta con WhatsApp</b>: sin Cl@ve ni DNIe, María reclama un sábado por la noche por el canal que sí sabe usar.'],
+    ['V','<b>Salto a sala segura, cifrada bajo la clave del propio Ayuntamiento (BYOK)</b> con OTP: el dato de salud nunca pisa el WhatsApp personal de ningún funcionario.'],
+    ['D','<b>El relato se vuelve expediente</b>: voz transcrita y anclada, fotos del bache, parte de lesiones — y la captura con el DNI ajeno, rechazada.'],
+    ['D','<b>Perito con acceso acotado</b> y videollamada con consentimiento expreso (arts. 6 y 9.2): valoración del daño en directo.'],
+    ['D','<b>Plazos con constancia</b>: puesta a disposición acreditada; el año del art. 67 y los 6 meses del art. 91.3 corren con seguridad jurídica.'],
+    ['D','<b>Si acaba en el contencioso, resiste</b>: cadena de custodia, identidad, consentimiento y plazos constan; SystemLog al SIEM municipal.']],
+  bv:'Blindaje probatorio que resiste el recurso contencioso-administrativo y evita la nulidad por indefensión, manteniendo los datos de salud fuera del WhatsApp personal del funcionario (evita sanción de la AEPD).',
+  evita:['Nulidad de actuaciones por indefensión (arts. 47-48)','Datos de salud en dispositivos personales','Exclusión del ciudadano sin identidad digital']},
+{ id:'Policía / Ejército / Defensa', icon:'police', num:'1.3.5 · Policía / Fuerzas de Seguridad / Defensa',
+  titular:'«El punto seguro <em>nunca entra</em> en el expediente»',
+  gancho:'Ampliación de denuncia VioGén sin revictimizar.',
+  prota:'<b>Nadia El Amrani</b>, víctima con orden de protección en vigor y riesgo VioGén «alto», alojada en punto seguro',
+  agente:'<b>Oficial Marta Rueda</b>, instructora de la Unidad de Familia y Mujer (UFAM) del Cuerpo policial (la Organización)',
+  tercero:'<b>Cristina Vela</b>, psicóloga forense de la Oficina de Asistencia a las Víctimas (OAV); intérprete jurado de árabe y letrada del turno de violencia, con entrada puntual',
+  situacion:'Ampliar la denuncia tras un nuevo quebrantamiento de la orden de alejamiento y aportar pruebas, sin desplazarse ni exponer la ubicación de la casa de acogida.',
+  dato:'Domicilio del punto seguro, nivel de riesgo VioGén, identidad de la víctima y del menor a su cargo, contenido con valor de diligencia.',
+  regs:['ENS nivel ALTO','Directiva (UE) 2016/680','LO 7/2021','Art. 449 bis LECrim','Estatuto de la Víctima (Ley 4/2015) · VioGén'],
+  beats:[
+    ['D','<b>Denuncia sin pisar comisaría</b>: entra a las 22:40 por WhatsApp; el bot reconoce el seguimiento VioGén y escala a la instructora que ya lleva el caso.'],
+    ['V','<b>Salto a sala segura, cifrada bajo la clave del propio Cuerpo</b>, con OTP por vía separada — sin instalar nada.'],
+    ['D','<b>La ubicación del punto seguro nunca entra</b>: la captura que revelaba el rótulo de la calle se rechaza antes de guardarse.'],
+    ['D','<b>Declaración con valor de prueba</b>: el testimonio se transcribe (STT) y se ancla como diligencia del expediente.'],
+    ['V','<b>Videollamada consentida orientada a prueba preconstituida</b> (art. 449 bis LECrim), con grabación de pleno valor probatorio.'],
+    ['D','<b>Need-to-know real</b>: psicóloga e intérprete entran lo justo, auditadas, y pierden el acceso al histórico al salir.'],
+    ['D','<b>Cierre gobernado</b>: la ampliación queda en tramitación para Fiscalía y el SystemLog se exporta al SIEM del Cuerpo.']],
+  bv:'Convertir la conversación en diligencia con valor probatorio evitando la nulidad; prevenir la brecha de datos con riesgo VITAL (la ubicación del punto seguro); reducir la revictimización.',
+  evita:['Exposición del punto seguro (riesgo vital)','Revictimización por desplazamientos y repetición del relato','Diligencias impugnables por cadena de custodia débil']}
+];
+
+/* ===== slides 1.2 ===== */
+function s4(){return `
+  <div class="kick">1.2 · A quién se dirige</div>
+  <div class="h0" style="font-size:32px">Donde la conversación <em>es prueba</em></div>
+  <p class="sub0" style="margin-top:10px">Cinco verticales con el mismo denominador: dato sensible, presión regulatoria y conversaciones que acaban delante de un supervisor o de un juez.</p>
+  <div class="grid5" style="margin-top:20px">
+    <div class="card seccard"><div class="si">${IC.bank}</div><b>Banca</b><div class="dol">Fraude, reclamaciones y SCA (autenticación reforzada de cliente): la carga de la prueba es del banco.</div><div class="reg">PSD2 · DORA · MiFID II · AML</div></div>
+    <div class="card seccard"><div class="si">${IC.shield2}</div><b>Seguros</b><div class="dol">Siniestros con dato de salud y peritación a varias bandas.</div><div class="reg">IDD · Solvencia II · Ley 35/2015</div></div>
+    <div class="card seccard"><div class="si">${IC.health}</div><b>Salud</b><div class="dol">Historia clínica y segundas opiniones sin perder el secreto médico.</div><div class="reg">RGPD art. 9 · Ley 41/2002 · EHDS</div></div>
+    <div class="card seccard"><div class="si">${IC.gov}</div><b>GovTech</b><div class="dol">Expediente electrónico que resiste el contencioso, sin brecha digital.</div><div class="reg">Leyes 39/40 2015 · ENS</div></div>
+    <div class="card seccard"><div class="si">${IC.police}</div><b>Policía / Defensa</b><div class="dol">Diligencias con valor probatorio y datos cuya fuga cuesta vidas.</div><div class="reg">ENS Alto · 2016/680 · 449 bis</div></div>
+  </div>`;}
+function s5(){return `
+  <div class="kick">1.2 · El patrón común</div>
+  <div class="h0" style="font-size:32px">Cinco sectores, <em>un mismo viaje</em></div>
+  <div class="journey">
+    <div class="card jc"><div class="ji">${IC.chat}</div><b>Canal abierto</b><span>El usuario entra por WhatsApp, 24×7, sin instalar nada.</span></div>
+    <div class="ja">→</div>
+    <div class="card jc"><div class="ji">${IC.jump}</div><b>El salto</b><span>Enlace + OTP de factor separado: sala segura —conversación securizada, cifrada bajo la clave de la Organización—.</span></div>
+    <div class="ja">→</div>
+    <div class="card jc"><div class="ji">${IC.doc}</div><b>El expediente</b><span>Voz transcrita, adjuntos depurados de PII, terceros con acceso acotado (need-to-know), consentimientos — en MCCP, el Caso.</span></div>
+    <div class="ja">→</div>
+    <div class="card jc"><div class="ji">${IC.audit}</div><b>La prueba</b><span>Cierre trazable, SystemLog al SIEM, reconstruible años después.</span></div>
+  </div>
+  <div class="ejebar" style="margin-top:20px">La marca cambia según el comprador —público o privado—; <b>el producto y el viaje, no</b>. Lo que sigue: los cinco casos, dos slides cada uno.</div>`;}
+
+/* ===== slides de caso (A: ficha · B: resolución) ===== */
+function slideA(c){return `
+  <div class="caseh"><span class="cn">${c.num}</span><h3>${c.titular}</h3></div>
+  <p style="font-size:13px;color:#c9dcd6;margin:-6px 0 14px">${c.gancho}</p>
+  <div class="grid2">
+    <div class="card">
+      <div class="coltit">La escena</div>
+      <div class="frow"><span class="fk">Protagonista</span><span class="fv">${c.prota}</span></div>
+      <div class="frow"><span class="fk">Agente</span><span class="fv">${c.agente}</span></div>
+      <div class="frow"><span class="fk">Tercero</span><span class="fv">${c.tercero}</span></div>
+      <div class="frow"><span class="fk">Situación</span><span class="fv">${c.situacion}</span></div>
+    </div>
+    <div class="card">
+      <div class="coltit">Lo que está en juego</div>
+      <div class="sensi" style="margin-top:0">${IC.warn}<span><b>Dato sensible:</b> ${c.dato}</span></div>
+      <div class="coltit" style="margin-top:14px">Gancho regulatorio</div>
+      <div class="chipline">${c.regs.map(r=>`<span class="rc">${r}</span>`).join('')}</div>
+    </div>
+  </div>`;}
+function slideB(c){return `
+  <div class="caseh"><span class="cn">${c.num}</span><h3>Cómo lo resuelve <em>MCCP</em></h3></div>
+  <div class="grid2">
+    <div class="card">
+      <div class="coltit">El caso, paso a paso · madurez según entrega de producto 07/2026 — Verificado = ya visto en producto · Diseño = definido en diseño, aún no entregado</div>
+      ${c.beats.map((b,i)=>`<div class="beat"><span class="bn">${i+1}</span><span class="bx">${b[1]}</span>${MD(b[0])}</div>`).join('')}
+    </div>
+    <div>
+      <div class="bvbox"><div class="bt">Valor para la Organización</div><p>${c.bv}</p></div>
+      <div class="card"><div class="coltit">Qué resuelve / qué evita</div>
+        ${c.evita.map(e=>`<div class="evx">${IC.check}<span>${e}</span></div>`).join('')}
+      </div>
+    </div>
+  </div>`;}
+
+/* ===== estructura de 15 slides + leyendas ===== */
+const SLIDES=[
+ {sec:'1.2 · Sectores objetivo · slide 1/12', t:'Los cinco <em>verticales</em>', d:'Sectores donde la conversación con el usuario final es, o acabará siendo, prueba.', html:s4},
+ {sec:'1.2 · Sectores objetivo · slide 2/12', t:'El viaje que la demo <em>demuestra</em>', d:'Del canal abierto a la prueba reconstruible: el mismo arco en los cinco casos.', html:s5},
+];
+SECT.forEach((c,ix)=>{
+  SLIDES.push({sec:`${c.num} · slide ${3+ix*2}/12`, t:`El caso: ${c.titular}`, d:c.situacion, html:()=>slideA(c)});
+  SLIDES.push({sec:`${c.num} · slide ${4+ix*2}/12`, t:'La resolución y el <em>valor</em>', d:c.bv.split(';')[0]+'.', html:()=>slideB(c)});
+});
+
+/* ===== motor (capa de página del hilo narrativo validado) ===== */
+const N=SLIDES.length; let i=0, playing=false, timer=null;
+const stage=document.getElementById('stage'), dots=document.getElementById('dots');
+for(let k=0;k<N;k++){const b=document.createElement('button');b.setAttribute('aria-label','Slide '+(k+1));b.addEventListener('click',()=>{go(k);stop();});dots.appendChild(b);}
+function render(){
+  const s=SLIDES[i];
+  document.getElementById('capStep').textContent=s.sec;
+  document.getElementById('capTitle').innerHTML=s.t;
+  document.getElementById('capText').textContent=s.d.replace(/<[^>]+>/g,'');
+  stage.innerHTML=s.html();
+  Array.prototype.forEach.call(dots.children,(b,x)=>{b.className=x===i?'on':(x<i?'done':'');});
+  applyLang();
+}
+function go(n){i=Math.max(0,Math.min(N-1,n));render();try{history.replaceState(null,'','?p='+(i+1)+(LANG==='en'?'&lang=en':''));}catch(e){}}
+function next(){go(Math.min(N-1,i+1));}function prev(){go(Math.max(0,i-1));}
+function stop(){playing=false;if(timer){clearInterval(timer);timer=null;}document.getElementById('playIcon').innerHTML='<path d="M8 5v14l11-7z" fill="currentColor"/>';}
+function start(){playing=true;document.getElementById('playIcon').innerHTML='<path d="M7 5h3v14H7zM14 5h3v14h-3z" fill="currentColor"/>';timer=setInterval(()=>{ if(i===N-1){go(0);} else next(); },6500);}
+document.getElementById('next').addEventListener('click',()=>{next();stop();});
+document.getElementById('prev').addEventListener('click',()=>{prev();stop();});
+document.getElementById('play').addEventListener('click',function(){playing?stop():start();this.setAttribute('aria-label',playing?'Pausar':'Reproducir');});
+document.addEventListener('keydown',e=>{if(e.key==='ArrowRight'){next();stop();}else if(e.key==='ArrowLeft'){prev();stop();}});
+(function(){const m=(location.search.match(/[?&]p=(\d+)/)||location.hash.match(/#p?(\d+)/));if(m){i=Math.max(0,Math.min(N-1,parseInt(m[1],10)-1));}})();
+render();
+</script>
+</body>
+</html>
